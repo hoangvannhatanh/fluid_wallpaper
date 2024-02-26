@@ -1,0 +1,38 @@
+
+uniform float uGlowThreshold;
+
+vec4 store(vec3 color, float alpha)
+{
+	// Moved this bit from glow_input due to the need to have it output 4 components
+	// (store_hdr is only used by the glow input shader anyway - should probably reword the ShaderMgr to have two pipelines for glow and regular shaders, as they differ now so much)
+	float luminance = max(color.r, max(color.g, color.b));
+	float lumHigh = max(uGlowThreshold, 0.1);
+	//float lumLow = lumHigh-0.1;
+	float lumLow = lumHigh*0.5;
+	
+	color = mix(vec3(0.0), color, clamp((luminance-lumLow) / (lumHigh - lumLow), 0.0, 1.0));
+	// 
+	float maxComp = luminance;//max(color.r, max(color.g, color.b));
+	
+	
+	// Version 1, fluid "density" in the alpha channel for shadowing
+	return vec4(color, max(alpha, 0.0));
+	
+	/*
+	// Version 2, encoding a HDR "exponent" into the alpha channel
+	
+	// 0.0-0.5 of the maxComp goes to 0.0-0.5 range of the value. It is used for shadowing (represents fluid density)
+	// 1.0-2.0 of the maxComp gets squeezed into 0.5-1.0 range and is used to provide a bit of poor HDR for the glow (gets used/decoded in GlowCombine.frag)
+	// The essence of why this encoding works is that the "second half" will be nonzero only when the "first half" is maxxed out at 0.5.
+	// So you can always get the correct value of the second half component by subtracting 0.5 and clamping to 0.
+	// It would be much less confusing to just squeeze the whole maxComp in range 0-2 into 0-1 and pass forward, but then the shadow part suffers the most from the lost precision and flickers on low shadow intensities
+	float encoding = clamp( maxComp, 0.0, 0.5) + clamp((maxComp - 1.0) * 0.5, 0.0, 0.5);
+	color = color / max(maxComp, 1.0);
+	return vec4( clamp(color, 0.0, 1.0 ), encoding);
+	
+	//color = color / 3.0;
+	//return vec4( clamp(color, 0.0, 1.0 ), 0.0);
+	
+	*/
+	
+}

@@ -1,0 +1,5 @@
+
+vec3 combineGlow(vec3 color, vec4 colorModeData, vec4 glowData, vec3 lightMul, vec3 diffuse, vec3 specular)
+{
+	return mix(colorModeData.rgb, color * diffuse + specular, colorModeData.a);
+}

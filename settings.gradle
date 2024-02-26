@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name = "Fluid Magic Wallpaper"
+include ':fluids_module'
+include ':color_picker'

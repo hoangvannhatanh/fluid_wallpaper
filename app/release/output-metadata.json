@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.fozechmoblive.fluidwallpaper.livefluid",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 100,
+      "versionName": "1.0.0",
+      "outputFile": "Fluids_Magic_Wallpaper_v1.0.0_v100_01.15.2024-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

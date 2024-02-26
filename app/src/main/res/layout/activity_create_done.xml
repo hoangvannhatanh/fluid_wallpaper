@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_main"
+        tools:context=".ui.component.create_done.CreateDoneActivity">
+
+        <ImageView
+            android:id="@+id/imv_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="16dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_pro_semi_bold"
+            android:text="@string/saved"
+            android:textColor="@color/colorTitle"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imv_back" />
+
+        <ImageView
+            android:id="@+id/imv_goto_home"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="14dp"
+            android:src="@drawable/ic_goto_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imv_preset"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_main"
+            app:layout_constraintBottom_toTopOf="@id/ll_set_wallpaper"
+            app:layout_constraintTop_toBottomOf="@id/imv_back"
+            app:riv_corner_radius="@dimen/_15sdp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_done"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="@id/imv_preset"
+            app:layout_constraintEnd_toEndOf="@id/imv_preset"
+            app:layout_constraintStart_toStartOf="@id/imv_preset"
+            app:layout_constraintTop_toTopOf="@id/imv_preset">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="14dp"
+                android:src="@drawable/ic_done"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/be_vietnam_pro_regular"
+                android:text="@string/create_effect_success"
+                android:textColor="@color/colorTitle"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imv_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imv_back" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_set_wallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_tab_setting"
+            android:paddingTop="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <TextView
+                android:id="@+id/txt_set_wallpaper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/background_apply"
+                android:fontFamily="@font/be_vietnam_pro_semi_bold"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="@string/set_wallpaper"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/txt_make_another" />
+
+            <TextView
+                android:id="@+id/txt_make_another"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_40sdp"
+                android:layout_marginBottom="@dimen/_7sdp"
+                android:background="@drawable/background_make_another"
+                android:fontFamily="@font/be_vietnam_pro_semi_bold"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="@string/make_another"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/ll_banner" />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <FrameLayout
+                    android:id="@+id/fr_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:tag="binding_1">
+
+                    <include
+                        android:id="@+id/include"
+                        layout="@layout/layout_banner_control"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </FrameLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

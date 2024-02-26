@@ -1,0 +1,32 @@
+
+uniform vec3 color0;
+uniform vec3 color1;
+uniform vec3 color2;
+uniform vec3 colorActiveMask;
+uniform vec3 backgrColor;
+
+vec3 applyColorMode(vec3 color, out vec4 colorModeData)
+{
+	vec3 intens = color;
+	intens = smoothstep(0.0, 1.0, intens);
+	color = vec3(0.0);
+	
+	float paintAmount = min(dot(intens, colorActiveMask), 1.0);
+	
+	colorModeData = vec4(backgrColor, paintAmount);
+	
+	paintAmount += 0.001;
+	
+	intens /= paintAmount;
+	
+	color += color0 * intens.r * colorActiveMask.r;
+	color += color1 * intens.g * colorActiveMask.g;
+	color += color2 * intens.b * colorActiveMask.b;
+	
+	
+	//color /= max(paintAmount, 1.0);
+	
+	
+	
+	return color;
+}

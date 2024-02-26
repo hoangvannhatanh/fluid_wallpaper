@@ -1,0 +1,32 @@
+
+uniform vec3 uBackgr;
+uniform vec3 uColor00;
+uniform vec3 uColor01;
+uniform vec3 uColor02;
+uniform vec3 uColor03;
+uniform vec3 uColor10;
+uniform vec3 uColor11;
+uniform vec3 uColor12;
+uniform vec3 uColor13;
+
+vec3 applyColorMode(vec3 color, out vec4 colorModeData)
+{
+	vec3 final = vec3(0.0);
+	
+	float s = 1.0 * (color.r - color.g);
+
+	
+	if(s > 5.0) final = uColor13;
+	else if(s > 3.0) final = uColor12;
+	else if(s >= 1.5) final = uColor11;
+	else if(s >= 0.25) final = uColor10; // thresholds for first two colors should be +- 0.5 (as per ranges in non-cartoon basic mode), but they are modified to +-0.25 because paint
+	else if(s >= -0.25) final = uBackgr; // at low density is generally quite persistent and cuting at 0.5 to the background color results in a much smaller area covered by fluid (while I want cartoon and non cartoon mode to be "comparable" in terms of the ranges
+	else if(s >= -1.5) final = uColor00;
+	else if(s >= -3.0) final = uColor01;
+	else if(s >= -5.0) final = uColor02;
+	else final = uColor03;
+	
+	colorModeData = vec4(0.0, 0.0, 0.0, 1.0);
+
+	return final * mix(1.0, max(abs(s), 1.0), uRenderGlowInput);
+}

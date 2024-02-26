@@ -1,0 +1,34 @@
+
+uniform vec3 uMagicBase;
+uniform vec3 uMagicFreq;
+uniform float uMagicBlackBackgr;
+
+vec3 applyColorMode(vec3 color, out vec4 colorModeData)
+{
+	colorModeData = vec4(0.0, 0.0, 0.0, 1.0);
+	
+	vec3 a = vec3(0.5);
+	vec3 b = vec3(0.5);
+	vec3 c = 6.28318*vec3(1.0);//uMagicFreq;
+	vec3 d = 6.28318*uMagicBase;
+	float C = 0.25 * color.r;//clamp(0.25 * color.r, 0.0, 1.6777);
+	
+	//float A = dFdx(color.r);
+	//float B = dFdy(color.r);
+	vec3 colorFinal = a + b*cos( c*C + d );// * smoothstep(1.0, 0.0, 0.5 * max(abs(A), abs(B))); // simpler bandlimiting than below due to IQ: https://iquilezles.org/articles/bandlimiting/ scale 0.5 is chosen arbitrarily
+	
+	
+	// Integration of the color function across the screen pixel. I've worked out the math and it seems correct.
+	// However it doesn't work correctly when A or B is zero, so in these cases the base formula has to be used instead anyway. (smooth transition between the two should be used to remove artifacts).
+	// In any case the antialising it produces is not very visually pleasing, most likely because it in fact averages between two "opposite" colors
+	// (that's more or less how the palette works - oscillates between two opposing colors; this relation can be modified to some extent by modifying frequency params)
+	// thus resulting in big gray areas wherever there is high frequency. It might be fine for some applications (e.g. when flickering must absolutely be avoided), but here it seems better to just leave the colorful flicker.
+	//if( (abs(A) > 0.1 || abs(B) > 0.1))
+	//	colorFinal = a + b/(c*c*A*B)*(cos(c*B + c*C + d) + cos(c*A + c*C + d) - cos(c*A + c*B + c*C + d) - cos(c*C + d));
+
+	
+	colorFinal *= mix(1.0, clamp(5.0 * C, 0.0, 1.0), uMagicBlackBackgr);
+	
+	return colorFinal;// * clamp(5.0 * color.r, 0.0, 1.0);
+	//return color;
+}

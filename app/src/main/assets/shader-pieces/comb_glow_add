@@ -1,0 +1,9 @@
+
+vec3 combineGlow(vec3 color, vec4 colorModeData, vec4 glowData, vec3 lightMul, vec3 diffuse, vec3 specular)
+{
+	vec3 shadowedFluid = color * lightMul * glowData.a * diffuse;
+	
+	//shadowedFluid *= mix(glowData.rgb, vec3(1.0), uRenderGlowInput);
+	
+	return shadowedFluid + glowData.rgb + glowData.a * glowData.a * specular; // specular looks more realistic when shadowed more
+}

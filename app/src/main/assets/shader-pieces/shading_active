@@ -1,0 +1,79 @@
+
+
+//uniform float uShadingGlowSource;
+//uniform float uSwitch;
+
+//uniform float uSpecType;
+//uniform float uDiffuseMod;
+//uniform float uShadingCutoff;
+//uniform float uShadingAttenDisable;
+
+//varying vec2 varyTexCoordL;
+//varying vec2 varyTexCoordR;
+//varying vec2 varyTexCoordT;
+//varying vec2 varyTexCoordB;
+
+uniform vec4 uShadingParams; // bumpiness, specAtten, specular, specpower
+uniform vec4 uShadingParams2; // specType, diffuseMod, shadingCutoff, shadingAttenDisable
+uniform vec3 uFluidTexelSizeAndGridNorm;
+uniform vec3 uShadingLightColor;
+uniform vec2 uShadingLightPos;
+uniform vec2 uShadingViewportSizeNormalized;
+
+
+
+vec3 getShadingData(vec3 color, out vec3 diffuseOut)
+{
+	vec3 dirLight = normalize(vec3((uShadingLightPos - varyTexCoord) * uShadingViewportSizeNormalized, 0.15));
+	dirLight.x = -dirLight.x;
+	
+	//vec3 L = abs(evalFluidTex(texture2D(texFluid, varyTexCoordL)));
+	//vec3 R = abs(evalFluidTex(texture2D(texFluid, varyTexCoordR)));
+	//vec3 T = abs(evalFluidTex(texture2D(texFluid, varyTexCoordT)));
+	//vec3 B = abs(evalFluidTex(texture2D(texFluid, varyTexCoordB)));
+	
+	//vec3 L = abs(evalFluidTex(texture2D(texFluid, varyTexCoord + vec2(-uFluidTexelSize.x, 0.0))));
+	//vec3 R = abs(evalFluidTex(texture2D(texFluid, varyTexCoord + vec2(uFluidTexelSize.x, 0.0))));
+	//vec3 T = abs(evalFluidTex(texture2D(texFluid, varyTexCoord + vec2(0.0, -uFluidTexelSize.y))));
+	//vec3 B = abs(evalFluidTex(texture2D(texFluid, varyTexCoord + vec2(0.0, uFluidTexelSize.y))));
+	vec3 C = abs(color);
+	
+	
+	
+	
+	float aggrColorL = getFluidAmount(varyTexCoord + vec2(-uFluidTexelSizeAndGridNorm.x, 0.0));
+	float aggrColorR = getFluidAmount(varyTexCoord + vec2( uFluidTexelSizeAndGridNorm.x, 0.0));
+	float aggrColorT = getFluidAmount(varyTexCoord + vec2(0.0, -uFluidTexelSizeAndGridNorm.y));
+	float aggrColorB = getFluidAmount(varyTexCoord + vec2(0.0,  uFluidTexelSizeAndGridNorm.y));
+	float aggrColorC = C.r + C.g + C.b;
+	vec3 grad = normalize(vec3( (aggrColorR - aggrColorL) * uFluidTexelSizeAndGridNorm.z, (aggrColorT - aggrColorB) * uFluidTexelSizeAndGridNorm.z, uShadingParams.x));
+	
+	float light = dot(grad, dirLight);
+	float surfStr = min(max(C.r, max(C.g, C.b)), 1.0);
+	
+	vec3 diffuse = (uShadingLightColor * 0.25 + vec3(0.75)) * (light * 0.5 + 0.5);
+	diffuse = mix(vec3(1.0), diffuse, step(uShadingParams2.z, surfStr));
+	diffuseOut = mix(vec3(1.0), diffuse, 1.0 * max(surfStr, uShadingParams2.w)) * uShadingParams2.y;
+	
+	vec3 H = normalize(dirLight + vec3(0.0, 0.0, 1.0));
+	float blinnPhong = dot(H, grad);
+	
+	// Replace the two commented lines to enable the option for the "smooth" reflection mode
+	//float specBase = pow(clamp(mix(light, blinnPhong, uShadingParams2.x), 0.0, 1.0), uShadingParams.w);
+	float specBase = pow(clamp(blinnPhong, 0.0, 1.0), uShadingParams.w);
+	
+	//float lapl = 2.0 * (4 * aggrColorC - aggrColorL - aggrColorR - aggrColorT - aggrColorB);
+	float lapl2 = 2.0 * max(abs(2.0 * aggrColorC - aggrColorL - aggrColorR), abs(2.0 * aggrColorC - aggrColorT - aggrColorB));
+	// the cell-size related normalization (division by "hx") comes through the uShadingParams.z uniform
+	
+	//float lightHeightAttenMod = mix( max(dirLight.z - 0.4, 0.0) * 35.0, 15.0, uShadingParams2.x); // in the "smooth" reflection mode, most attenuation is needed when the light is above the surface
+	float lightHeightAttenMod = 15.0;
+	float specAtten3 = clamp( 1.0 - uShadingParams.y * lapl2 * lapl2 * (1.0 + lightHeightAttenMod), 0.0, 1.0 );
+	
+	
+	float specular = surfStr * surfStr * uShadingParams.z * specAtten3 * specBase * step(uShadingParams2.z, surfStr);
+	return uShadingLightColor * specular;
+	
+	//diffuseOut = vec3(1.0) - (C + vec3(aggrColorL + aggrColorR + aggrColorT + aggrColorB)) * 0.01;
+	//return vec3((C + vec3(aggrColorL + aggrColorR + aggrColorT + aggrColorB)) * 0.01);
+}

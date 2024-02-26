@@ -1,0 +1,5 @@
+
+vec3 applyPaintHsl(vec3 color)
+{
+	return color;
+}

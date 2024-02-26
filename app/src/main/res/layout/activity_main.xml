@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.component.main.MainActivity">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/layout_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_56sdp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/logo_app"
+                    app:riv_corner_radius="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/text_app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_toEndOf="@id/img_logo"
+                    android:fontFamily="@font/abrilfatface_regular"
+                    android:gravity="center|start"
+                    android:paddingVertical="8dp"
+                    android:text="@string/title_main"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color_051522"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/btn_settings"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:padding="@dimen/_6sdp"
+                    android:src="@drawable/ic_setting" />
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:id="@+id/relay_ads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
+
+            <FrameLayout
+                android:id="@+id/fr_ads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:tag="binding_1"
+                android:visibility="visible">
+
+                <include layout="@layout/ads_shimmer_native_large" />
+            </FrameLayout>
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_themes"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_46sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/border_cta_native_on_boarding"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:gravity="center"
+            android:text="@string/themes"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@id/relay_ads" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_custom_themes"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_46sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/border_cta_native_on_boarding"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:gravity="center"
+            android:text="@string/customs_themes"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@id/btn_themes" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

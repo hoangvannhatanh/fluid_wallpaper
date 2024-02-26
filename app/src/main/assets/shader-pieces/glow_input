@@ -1,0 +1,6 @@
+
+vec4 getGlowData(vec3 color, out vec3 lightMul)
+{
+	lightMul = vec3(1.0);
+	return vec4(0.0);
+}

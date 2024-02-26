@@ -1,0 +1,5 @@
+
+vec4 store(vec3 color, float alpha)
+{
+	return vec4(color, 0.0);
+}

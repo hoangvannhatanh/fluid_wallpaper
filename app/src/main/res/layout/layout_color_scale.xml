@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:layout_marginBottom="2dp">
+    <include android:id="@+id/colorScaleButtonBackgr" layout="@layout/config_base_color_button"/>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginRight="1dp" android:layout_weight="0.5">
+            <include android:id="@+id/colorScaleButton00" layout="@layout/config_base_color_button"/>
+            <include android:id="@+id/colorScaleButton01" layout="@layout/config_base_color_button"/>
+            <include android:id="@+id/colorScaleButton02" layout="@layout/config_base_color_button"/>
+            <include android:id="@+id/colorScaleButton03" layout="@layout/config_base_color_button"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/colorScaleSecondPalette" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="1dp" android:layout_weight="0.5">
+            <include android:id="@+id/colorScaleButton10" layout="@layout/config_base_color_button"/>
+            <include android:id="@+id/colorScaleButton11" layout="@layout/config_base_color_button"/>
+            <include android:id="@+id/colorScaleButton12" layout="@layout/config_base_color_button"/>
+            <include android:id="@+id/colorScaleButton13" layout="@layout/config_base_color_button"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

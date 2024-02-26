@@ -1,0 +1,31 @@
+vec3 applyColorModeAndGlow(vec3 color, vec3 colorRaw)
+{
+	vec4 colorModeData = vec4(0.0);
+	color = uColorModeSaturation * applyColorMode(color, colorModeData);
+	vec3 lightData = vec3(1.0);
+	//vec4 glowData = getGlowData(color * colorModeData.a, lightData);
+	vec4 glowData = getGlowData(colorRaw, lightData);
+	vec3 diffuse;
+	vec3 specular = getShadingData(colorRaw, diffuse);
+	return combineGlow(color, colorModeData, glowData, lightData, diffuse, specular);
+}
+
+
+
+void main()
+{
+	vec3 color = evalFluidTex(texture2D(texFluid, varyTexCoord));
+	vec3 colorRaw = abs(color);
+	
+	float maxCompRaw = max(colorRaw.r, max(colorRaw.g, colorRaw.b));
+	vec3 clampedColor = color / max(maxCompRaw, 1.0);
+	color = mix(color, clampedColor, uClampColors);
+	
+	color = applyDetail(color);
+	
+	color = applyColorModeAndGlow(color, colorRaw);
+
+	color = mix(color, vec3(1.0) - clamp(color, 0.0, 1.0), uInvertColors);
+
+	gl_FragColor = store(color, maxCompRaw);
+}

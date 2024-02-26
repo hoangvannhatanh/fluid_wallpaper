@@ -1,0 +1,43 @@
+
+uniform vec3 uBackgr;
+uniform vec3 uColor00;
+uniform vec3 uColor01;
+uniform vec3 uColor02;
+uniform vec3 uColor03;
+uniform vec3 uColor10;
+uniform vec3 uColor11;
+uniform vec3 uColor12;
+uniform vec3 uColor13;
+
+vec3 applyColorMode(vec3 color, out vec4 colorModeData)
+{
+	vec3 final = vec3(0.0);
+	
+	float s = 1.0 * (color.r - color.g);
+	
+	
+	final += clamp(-(s+4.5),          0.0, 1.0) * uColor03;
+	final += clamp(-abs(s+4.0) + 1.5, 0.0, 1.0) * uColor02;
+	final += clamp(-abs(s+2.25)+1.25, 0.0, 1.0) * uColor01;
+	final += clamp(-abs(s+1.0) + 1.0, 0.0, 1.0) * uColor00;
+	final += clamp(-abs(s+0.0) + 1.0, 0.0, 1.0) * uBackgr;
+	final += clamp(-abs(s-1.0) + 1.0, 0.0, 1.0) * uColor10;
+	final += clamp(-abs(s-2.25)+1.25, 0.0, 1.0) * uColor11;
+	final += clamp(-abs(s-4.0) + 1.5, 0.0, 1.0) * uColor12;
+	final += clamp(s-4.5,             0.0, 1.0) * uColor13;
+	
+	/*final += clamp(-(s+2.0),          0.0, 1.0) * uColor12;
+	final += clamp(-abs(s+2.0) + 1.0, 0.0, 1.0) * uColor11;
+	final += clamp(-abs(s+1.0) + 1.0, 0.0, 1.0) * uColor10;
+	final += clamp(-abs(s+0.0) + 1.0, 0.0, 1.0) * uBackgr;
+	final += clamp(-abs(s-1.0) + 1.0, 0.0, 1.0) * uColor00;
+	final += clamp(-abs(s-2.0) + 1.0, 0.0, 1.0) * uColor01;
+	final += clamp(s-2.0,             0.0, 1.0) * uColor02;*/
+	
+	//float fluidAmount = uMultiRendGlow ? 1.0 : clamp(abs(s), 0.0, 1.0);
+	//colorModeData = vec4(uBackgr, fluidAmount);
+	
+	colorModeData = vec4(0.0, 0.0, 0.0, 1.0);
+
+	return final * mix(1.0, max(abs(s), 1.0), uRenderGlowInput);
+}

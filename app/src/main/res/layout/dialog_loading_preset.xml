@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_dialog_success"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading3" />
+
+        <TextView
+            android:id="@+id/tv_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_pro_semi_bold"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:text="@string/txt_loading"
+            android:textColor="@color/color_343944"
+            android:textSize="@dimen/_14sdp" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginTop="16dp"
+            android:max="100"
+            android:progressDrawable="@drawable/gradient_progress"
+            tools:progress="60" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_pro_regular"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:text="@string/please_wait_for_us_to_process_the_animation_thank_you"
+            android:textColor="@color/color_80838A"
+            android:textSize="@dimen/_12sdp" />
+
+        <RelativeLayout
+            android:id="@+id/relay_ads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_loading_preset_ad">
+
+            <FrameLayout
+                android:id="@+id/fr_ads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:tag="binding_1"
+                android:visibility="visible">
+
+                <include
+                    android:id="@+id/layout_shimmer"
+                    layout="@layout/shimmer_ads_small" />
+            </FrameLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

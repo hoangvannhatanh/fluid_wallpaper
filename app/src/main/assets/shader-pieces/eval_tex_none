@@ -1,0 +1,10 @@
+
+vec3 evalFluidTex(vec4 tex)
+{
+	return tex.rgb;
+}
+
+float getFluidAmount(vec2 texCoord)
+{
+	return texture2D(texFluid, texCoord).w;
+}

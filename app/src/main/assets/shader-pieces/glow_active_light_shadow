@@ -1,0 +1,54 @@
+
+uniform sampler2D texGlow;
+uniform sampler2D texNoise;
+uniform float shadowActive;
+uniform float lightActive;
+uniform float paintSelfShadow;
+uniform float inverseShadow;
+uniform float uShadowScale;
+
+
+uniform highp vec2 noiseTexCoordScale;
+
+// There were a number of precision issues here. Maybe resolving them one by one is a less reliable way, than to simply change the shaders's global precision o highp
+// (which I think also resolved all the issues), but I'm a bit wary to do that yet.
+// - noiseTexCoordScale, which repeats the noise texture over the screen, needs highp, because otherwise the fractional part of the texture coords used in noise sampling
+// is not accurate enough. I vaguely recall a similar issue with fluid textures (I hope it was also successfully solved there)
+// (... other issues were related to light computation and they were moved together with the code to CombineGlowShadow.frag)
+
+
+vec4 getGlowData(vec3 colorRaw, out vec3 lightMul)
+{
+	float fluidAmount = min(max(colorRaw.r, max(colorRaw.g, colorRaw.b)), 1.0);
+    vec4 glowShadow = texture2D(texGlow, varyTexCoord);
+	
+	float shadow = glowShadow.a;
+	
+	// Consider restructuring the code below (moving what's can be moved to glow combine shader, for example), so that texGlow doesn't need to be 16 bit (currently it's necessary when a colored but overbright glow gets shadowed, which without 16 bit glow texture results in a grey, instead of colored, glow.
+	vec3 glow = glowShadow.rgb;
+
+	float selfShadow = mix(1.0 - fluidAmount, 1.0, paintSelfShadow);
+	shadow = selfShadow * shadowActive * shadow;
+	
+	//shadow *= uShadowScale;
+	
+	vec3 light = vec3(0.50) + 0.50 * mix(vec3(1.0), glow, lightActive);
+	
+	float maxComp = max(glow.r, max(glow.g, glow.b));
+	vec3 glowNormed = glow / max(maxComp, 1.0);
+	vec3 c1 = mix(glow - glowNormed * shadow, glow * shadow, inverseShadow);
+	
+	// todo: interesting variation with light on
+	//c1 *= (1.0 - fluidAmount);
+	
+	vec3 noise = texture2D(texNoise, varyTexCoord * noiseTexCoordScale).rgb;
+	const float noiseStr = 0.05; // this is tuned to remove most of the color banding on Nexus7, and not introduce too much grain at the same time.
+	c1 = max(c1 - noise * noiseStr, 0.0);
+	c1 *= 1.0 / (1.0 - noiseStr); // scale the values back to 0-1, so that the glow can saturate at whites
+	
+	float fluidShadowFactor = mix(1.0 - shadow, 1.0, inverseShadow);
+	//color = c0 * fluidShadowFactor + (c0  + background) * c1;
+
+	lightMul = light;
+	return vec4(c1, fluidShadowFactor);
+}

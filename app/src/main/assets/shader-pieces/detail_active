@@ -1,0 +1,44 @@
+
+varying vec2 varyTexCoordDetail;
+
+uniform sampler2D texDetailUV0;
+uniform sampler2D texDetailUV1;
+uniform sampler2D texDetailUV2;
+uniform sampler2D texDetailDef0_8;
+uniform sampler2D texDetail;
+
+uniform vec3 uUVInterp0;
+uniform vec3 uUVInterp1;
+
+float calcDetailLayerCoeff(vec3 def0, vec3 weights0)
+{
+	return clamp( 1.5 - 2.5 * dot(def0, weights0), 0.0, 1.0 );
+}
+
+vec3 applyDetail(vec3 color)
+{
+	
+	vec4 detailCoords0 = texture2D(texDetailUV0, varyTexCoordDetail);
+	vec4 detailCoords1 = texture2D(texDetailUV1, varyTexCoordDetail);
+	vec4 detailCoords2 = texture2D(texDetailUV2, varyTexCoordDetail);
+	vec3 detail0 = vec3(
+		texture2D(texDetail, detailCoords0.xy).a,
+		texture2D(texDetail, detailCoords1.xy).a,
+		texture2D(texDetail, detailCoords2.xy).a);
+	vec3 detail1 = vec3(
+		texture2D(texDetail, detailCoords0.zw).a,
+		texture2D(texDetail, detailCoords1.zw).a,
+		texture2D(texDetail, detailCoords2.zw).a);
+		
+	vec3 slowLayerDef = texture2D(texDetailDef0_8, varyTexCoordDetail).xyz;
+	
+	float detailLayer0 = dot(detail0, uUVInterp0);
+	float detailLayer1 = dot(detail1, uUVInterp1);
+
+	float C = calcDetailLayerCoeff(slowLayerDef, uUVInterp0);
+	
+	float detail = mix(detailLayer1, detailLayer0, C);
+	
+	color *= (1.9 * detail); // TODO lower this? Textures are barely visible on bright colors because of this.
+	return color;// vec3(detail);
+}

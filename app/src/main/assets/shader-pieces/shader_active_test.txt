@@ -1,0 +1,56 @@
+
+uniform sampler2D texLighting;
+uniform float uSwitch;
+
+uniform float uShadingGlowSource;
+
+vec4 getShadingData(vec3 color)
+{
+	// Lighting test
+	vec3 dirLight = vec3(0.707, 0.707, 0.0);
+	
+	float texelSize = 1.0 / 1024.0;
+	vec3 L = abs(texture2D(texFluid, varyTexCoord + vec2(-texelSize, 0.0)).rgb);
+        vec3 R = abs(texture2D(texFluid, varyTexCoord + vec2(texelSize, 0.0)).rgb);
+        vec3 T = abs(texture2D(texFluid, varyTexCoord + vec2(0.0, -texelSize * 2.0)).rgb);
+        vec3 B = abs(texture2D(texFluid, varyTexCoord + vec2(0.0, texelSize * 2.0)).rgb);
+        vec3 C = abs(color);
+	
+	float aggrColorL = L.r + L.g + L.b;
+	float aggrColorR = R.r + R.g + R.b;
+	float aggrColorT = T.r + T.g + T.b;
+	float aggrColorB = B.r + B.g + B.b;
+	float aggrColorC = C.r + C.g + C.b;
+	vec3 grad = normalize(vec3(aggrColorR - aggrColorL, aggrColorT - aggrColorB, 1.1));
+	
+	float specAtten = aggrColorC < min(aggrColorL, min(aggrColorR, min(aggrColorT, aggrColorB))) ? 0.0 : 1.0;
+	specAtten *= aggrColorC > max(aggrColorL, max(aggrColorR, max(aggrColorT, aggrColorB))) ? 0.0 : 1.0;
+	
+	float colorLT = 0.5 * (aggrColorL + aggrColorT);
+	float colorRT = 0.5 * (aggrColorR + aggrColorT);
+	float colorLB = 0.5 * (aggrColorL + aggrColorB);
+	float colorRB = 0.5 * (aggrColorR + aggrColorB);
+	
+	specAtten *= aggrColorC < min(colorLT, min(colorRT, min(colorLB, colorRB))) ? 0.0 : 1.0;
+	specAtten *= aggrColorC > max(colorLT, max(colorRT, max(colorLB, colorRB))) ? 0.0 : 1.0;
+
+	float specAtten2 = texture2D(texLighting, varyTexCoord).g;
+	
+	float light = dot(grad, dirLight);
+	
+	//light = texture2D(texLighting, varyTexCoord).r * 2.0 - 1.0;
+	
+	//light = dot(normalize(texture2D(texLighting, varyTexCoord).xyz * 2.0 - 1.0), dirLight);
+	
+	
+	float diffuse = ((light * 0.5 + 0.5) * 0.99 + 0.0);
+	vec3 lightRefl = reflect(dirLight, grad);
+	vec3 specular = clamp(max(C.r, max(C.g, C.b)), 0.0, 1.0) * 1.0 * vec3(pow(clamp(-lightRefl.z, 0.0, 1.0), 8.0)) * specAtten;
+	//specular = clamp(specular, 0.0, 1.0);
+	
+	//specular *= (1.0 + uShadingGlowSource * 10.0);
+	vec3 specOut = specular;// mix(specular, vec3(0.0), uSwitch * uShadingGlowSource ); 
+
+	return vec4(specOut, diffuse);
+	//return vec4(0.0, 0.0, 0.0, 1.0);
+}

@@ -1,0 +1,81 @@
+
+uniform sampler2D texGlow;
+uniform sampler2D texNoise;
+uniform float shadowActive;
+uniform float lightActive;
+uniform float paintSelfShadow;
+uniform float inverseShadow;
+
+uniform vec4 uLightPosRadiusIntensity;
+uniform vec2 uViewportSizeNormalized;
+uniform vec3 uLightColor;
+
+uniform highp vec2 noiseTexCoordScale;
+
+// There were a number of precision issues here. Maybe resolving them one by one is a less reliable way, than to simply change the shaders's global precision o highp
+// (which I think also resolved all the issues), but I'm a bit wary to do that yet.
+// - noiseTexCoordScale, which repeats the noise texture over the screen, needs highp, because otherwise the fractional part of the texture coords used in noise sampling
+// is not accurate enough. I vaguely recall a similar issue with fluid textures (I hope it was also successfully solved there)
+// - uViewportSizeNormalized was previously sent as uViewportSize to the shader, and normalized in glowSource(), but the squaring being the part of normalization
+// put the values in poorly represented range
+// - varyTexCoord (see base_header) needed to get highp to accurately compute the distance from light ('dist'), otherwise the high frequency brightness near the light position was not right
+// varyTexCoord doesn't need highp otherwise, but I don't think it impacts performance too much when the lighting is disabled
+
+vec3 glowSource()
+{
+	float dist = length((uLightPosRadiusIntensity.xy - varyTexCoord) * uViewportSizeNormalized);
+	vec3 v = uLightColor * uLightPosRadiusIntensity.w * clamp(1.0 - sqrt(0.5 * dist / uLightPosRadiusIntensity.z), 0.0, 1.0);
+	return v*v;
+}
+
+//vec3 linearToGamma (vec3 color) {
+//        color = max(color, vec3(0));
+//        return max(pow(color, vec3(0.416666667)), vec3(0));
+//    }
+
+vec4 getGlowData(vec3 colorRaw, out vec3 lightMul)
+{
+	float fluidAmount = min(dot(colorRaw, vec3(1.0)), 1.0);
+	//vec3 c0 = color;
+    vec4 glowShadow = texture2D(texGlow, varyTexCoord);
+	vec3 c1 = glowShadow.rgb;
+	
+	
+	
+	float shadow = glowShadow.a;
+	
+	vec3 glow = (glowShadow.rgb * glowShadow.rgb) * 1.8; // decoding. Corresponding encoding in GlowCombine.frag
+	
+	
+	float maxComp = max(glow.r, max(glow.g, glow.b));
+	vec3 glowNormed = glow / max(maxComp, 1.0);
+
+	float selfShadow = mix(1.0 - fluidAmount, 1.0, paintSelfShadow);
+	shadow = selfShadow * shadowActive*(shadow);
+	
+	
+	
+	vec3 unshadowedLight = lightActive * glowSource();
+	
+	vec3 light = vec3(0.50) + 0.50 * mix(vec3(1.0), c1 + unshadowedLight, lightActive);
+	
+	c1 = mix(glow - glowNormed * shadow, glow * shadow, inverseShadow);
+	c1 += mix(unshadowedLight * (1.0 - shadow), unshadowedLight * shadow, inverseShadow);
+	//c1 = glow - glowNormed * (1.0 - shadow);
+	//c1 += shadow * unshadowedLight;
+	
+	// todo: interesting variation with light on
+	//c1 *= (1.0 - fluidAmount);
+	
+	
+	vec3 noise = texture2D(texNoise, varyTexCoord * noiseTexCoordScale).rgb;
+	const float noiseStr = 0.05; // this is tuned to remove most of the color banding on Nexus7, and not introduce too much grain at the same time.
+	c1 = max(c1 - noise * noiseStr, 0.0);
+	c1 *= 1.0 / (1.0 - noiseStr); // scale the values back to 0-1, so that the glow can saturate at whites
+	
+	float fluidShadowFactor = mix(1.0 - shadow, 1.0, inverseShadow);
+	//color = c0 * fluidShadowFactor + (c0  + background) * c1;
+
+	lightMul = light;
+	return vec4(c1, fluidShadowFactor);
+}

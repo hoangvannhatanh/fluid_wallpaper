@@ -1,0 +1,6 @@
+
+vec3 applyColorMode(vec3 color, out vec4 colorModeData)
+{
+	colorModeData = vec4(0.0, 0.0, 0.0, 1.0);
+	return color;
+}

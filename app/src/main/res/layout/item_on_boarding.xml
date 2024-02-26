@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_title"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:id="@+id/img_guide"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_sub_text"
+            android:layout_marginHorizontal="@dimen/_25sdp"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:text="Title"
+            android:textColor="@color/color_19171F"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tv_sub_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/be_vietnam_pro_regular"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:textColor="@color/color_343434"
+            android:text="SubTitle"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</layout>

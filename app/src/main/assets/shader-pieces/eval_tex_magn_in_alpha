@@ -1,0 +1,12 @@
+
+vec3 evalFluidTex(vec4 tex)
+{
+	vec3 color = tex.rgb * (5.0 * tex.a + 1.0);
+	return color;
+}
+
+float getFluidAmount(vec2 texCoord)
+{
+	vec3 sample = abs(evalFluidTex(texture2D(texFluid, texCoord)));
+	return dot(vec3(1.0), sample);
+}

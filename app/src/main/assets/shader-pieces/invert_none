@@ -1,0 +1,5 @@
+
+vec3 applyInvert(vec3 color)
+{
+	return color;
+}

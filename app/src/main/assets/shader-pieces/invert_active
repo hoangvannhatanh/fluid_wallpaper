@@ -1,0 +1,5 @@
+
+vec3 applyInvert(vec3 color)
+{
+	return vec3(1.0) - clamp(color, 0.0, 1.0);
+}

@@ -1,0 +1,11 @@
+
+vec3 combineGlow(vec3 color, vec4 colorModeData, vec4 glowData, vec3 lightMul, vec3 diffuse, vec3 specular)
+{
+	vec3 factor = lightMul * glowData.a;
+	vec3 background = colorModeData.rgb;
+	//return mix(background + glowData.rgb * factor, color + glowData.rgb * factor, colorModeData.a);
+	return mix(background + glowData.rgb, color * (glowData.a + glowData.rgb) * diffuse + glowData.a * glowData.a * specular, colorModeData.a);
+	//return (color + background * 0.5) * factor + glowData.rgb;
+	// return (color + background * 0.5) * factor + (color + background) * glowData.rgb;
+	//return color * factor + (color + background) * glowData.rgb;
+}

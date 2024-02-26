@@ -1,0 +1,11 @@
+precision mediump float;
+
+// highp can possibly be removed. Check if it doesn't cause precision issues
+varying highp vec2 varyTexCoord;
+uniform sampler2D texFluid;
+uniform float uClampColors;
+uniform float uColorModeSaturation;
+uniform float uRenderGlowInput;
+uniform float uInvertColors;
+uniform float uFlag;
+
