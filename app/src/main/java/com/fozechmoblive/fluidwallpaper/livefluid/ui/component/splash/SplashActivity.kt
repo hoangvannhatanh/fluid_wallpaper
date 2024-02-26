@@ -1,15 +1,14 @@
 package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.splash
 
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.ads.control.ads.ITGAd
 import com.ads.control.ads.ITGAdCallback
 import com.bumptech.glide.Glide
 import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.loadNativeLanguage
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.loadNativeOnBoarding
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.RemoteConfigUtils
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants.KEY_FIRST_ON_BOARDING
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants.KEY_SELECT_LANGUAGE
@@ -22,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SplashActivity : BaseActivity<ActivitySplashBinding>(), RemoteConfigUtils.Listener {
+class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     private var getConfigSuccess = false
     private var selectLanguage = false
     private var selectOnBoarding = false
@@ -35,12 +34,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), RemoteConfigUtils.
 
     override fun initViews() {
         super.initViews()
-//        MobileAds.initialize(this) {}
         Glide.with(this).load(R.drawable.logo_app).into(mBinding.imgSplash)
         selectLanguage = prefs[KEY_SELECT_LANGUAGE, false] == true
         selectOnBoarding = prefs[KEY_FIRST_ON_BOARDING, false] == true
-//        RemoteConfigUtils.init(this)
-//        loadingRemoteConfig()
         checkMoveToLanguages = false
         Routes.startLanguageActivity(this, null)
         finish()
@@ -66,34 +62,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), RemoteConfigUtils.
 
 
     private fun checkRemoteConfigResult() {
-        // check if not select language => show language screen
-        if (!selectLanguage) {
-            loadNativeLanguage(this, true)
-        } else {
-            loadNativeLanguage(this, false)
-        }
-        // check if not select onBoarding => show onBoarding screen
-        if (!selectOnBoarding) {
-            loadNativeOnBoarding(this, true)
-        } else {
-            loadNativeOnBoarding(this, false)
-        }
-
-        if (RemoteConfigUtils.getOnInterSplash()) {
-            ITGAd.getInstance().loadSplashInterstitialAds(
-                this,
-                BuildConfig.admob_inter_splash,
-                20000,
-                5000,
-                object : ITGAdCallback() {
-                    override fun onNextAction() {
-                        super.onNextAction()
-                        moveActivity()
-                    }
-                })
-        } else {
+        Handler(Looper.getMainLooper()).postDelayed({
             moveActivity()
-        }
+        }, 2000)
     }
 
 
@@ -103,22 +74,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(), RemoteConfigUtils.
             Routes.startLanguageActivity(this, null)
             finish()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-//        ITGAd.getInstance()
-//            .onCheckShowSplashWhenFail(this@SplashActivity, object : ITGAdCallback() {
-//                override fun onNextAction() {
-//                    super.onNextAction()
-//                    moveActivity()
-//                }
-//            }, 1000)
-    }
-
-
-    override fun loadSuccess() {
-        getConfigSuccess = true
     }
 
     override fun onBackPressed() {

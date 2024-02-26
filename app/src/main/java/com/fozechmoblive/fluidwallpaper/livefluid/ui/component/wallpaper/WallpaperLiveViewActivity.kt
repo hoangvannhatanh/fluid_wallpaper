@@ -12,7 +12,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.work.impl.Scheduler
-import com.ads.control.ads.ITGAd
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.magicfluids.Config
@@ -23,8 +22,6 @@ import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityWallpaperL
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.goneView
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.visibleView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.dialog.DialogLoading
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.GLES20Renderer
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
@@ -33,8 +30,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>(),
-    com.fozechmoblive.fluidwallpaper.livefluid.ads.PreLoadNativeListener {
+class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>() {
 
     private var presetModel: PresetModel? = null
     private lateinit var orientationSensor: com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.OrientationSensor
@@ -64,7 +60,6 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
     override fun getLayoutActivity(): Int = R.layout.activity_wallpaper_live_view
     override fun initViews() {
         super.initViews()
-        shimmerSmall = findViewById(R.id.shimmer_small)
         showDialogLoading()
         loadConfigPreset()
         loadDataSettingController()
@@ -72,7 +67,7 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
 
     private fun showDialogLoading() {
         DialogLoading(this@WallpaperLiveViewActivity, onFinishedLoading = {
-            showNativeMain()
+
         }).show()
     }
 
@@ -201,42 +196,6 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
             mGLSurfaceView?.onResume()
             nativeInterface?.onResume()
         }, 200)
-
-    }
-
-    override fun onLoadNativeSuccess() {
-        showNativeMain()
-    }
-
-    override fun onLoadNativeFail() {
-        if (com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.nativeAdTheme != null) {
-            mBinding.frAds.visibleView()
-        } else {
-            mBinding.frAds.goneView()
-        }
-    }
-
-    var showAds = false
-
-    private fun showNativeMain() {
-        if (com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.nativeAdTheme != null && !showAds) {
-            mBinding.frAds.visibleView()
-            showAds = true
-            try {
-                ITGAd.getInstance().populateNativeAdView(
-                    this, com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.nativeAdTheme, mBinding.frAds, shimmerSmall
-                )
-            } catch (_: Exception) {
-
-            }
-        } else {
-            mBinding.frAds.goneView()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        nativeInterface?.onDestroy()
 
     }
 

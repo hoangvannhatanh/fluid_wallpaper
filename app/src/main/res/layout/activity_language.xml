@@ -7,82 +7,51 @@
 
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white">
 
-        <LinearLayout
-            android:id="@+id/linear_language"
+        <RelativeLayout
+            android:id="@+id/toolbar_language"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize">
 
-            <RelativeLayout
-                android:id="@+id/toolbar_language"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize">
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:text="@string/language"
+                android:fontFamily="@font/be_vietnam_pro_medium"
+                android:textColor="@color/color_38BB6D"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="15dp"
-                    android:text="@string/language"
-                    android:fontFamily="@font/be_vietnam_pro_medium"
-                    android:textColor="@color/color_38BB6D"
-                    android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/iv_done"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="14dp"
+                android:onClick="ivDone"
+                android:padding="4dp"
+                android:src="@drawable/ic_done_language"
+                app:tint="@color/color_38BB6D" />
+        </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/iv_done"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="14dp"
-                    android:onClick="ivDone"
-                    android:padding="4dp"
-                    android:src="@drawable/ic_done_language"
-                    app:tint="@color/color_38BB6D" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcl_language"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/relay_ads"
-                    android:orientation="vertical"
-                    android:paddingTop="3dp"
-                    tools:listitem="@layout/item_language"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-                <RelativeLayout
-                    android:id="@+id/relay_ads"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_5sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:layout_alignParentBottom="true">
-
-                    <FrameLayout
-                        android:id="@+id/fr_ads"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:tag="binding_1"
-                        android:visibility="visible">
-
-                        <include layout="@layout/ads_shimmer_native_large" />
-                    </FrameLayout>
-                </RelativeLayout>
-            </RelativeLayout>
-        </LinearLayout>
-    </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcl_language"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_language"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            tools:listitem="@layout/item_language"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

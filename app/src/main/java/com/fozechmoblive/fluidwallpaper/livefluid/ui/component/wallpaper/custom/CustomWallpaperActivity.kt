@@ -12,7 +12,6 @@ import com.ads.control.ads.ITGAdCallback
 import com.ads.control.ads.wrapper.ApAdError
 import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.RemoteConfigUtils
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCustomWallpaperBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
@@ -71,8 +70,6 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
         nativeInterface?.onCreate(300, Scheduler.MAX_GREEDY_SCHEDULER_LIMIT, false)
 
         updateConfig()
-        initAdsBanner()
-
     }
 
     private fun loadConfigPreset() {
@@ -144,22 +141,4 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
     private fun updateConfig() {
         nativeInterface?.updateConfig(Config.Current)
     }
-
-    private fun initAdsBanner() {
-        if (RemoteConfigUtils.getOnBannerAll()) {
-            ITGAd.getInstance()
-                .loadBanner(this, BuildConfig.admob_banner_all, object : ITGAdCallback() {
-                    override fun onAdLoaded() {
-                        super.onAdLoaded()
-
-                    }
-
-                    override fun onAdFailedToLoad(adError: ApAdError?) {
-                        super.onAdFailedToLoad(adError)
-                        mBinding.frBanner.removeAllViews()
-                    }
-                })
-        } else mBinding.frBanner.removeAllViews()
-    }
-
 }

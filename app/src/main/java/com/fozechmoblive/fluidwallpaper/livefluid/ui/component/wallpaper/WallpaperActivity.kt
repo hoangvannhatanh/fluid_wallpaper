@@ -23,9 +23,6 @@ import com.ads.control.ads.ITGAdCallback
 import com.ads.control.ads.wrapper.ApAdError
 import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.CheckTimeShowAdsInter
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.RemoteConfigUtils
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants.KEY_IS_CUSTOM
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants.KEY_NAME_EFFECT
@@ -85,7 +82,7 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
                         false
                     ) && !SharePrefUtils.getBoolean(AppConstants.IS_FIRST_RATED, false)
                 ) {
-                    if (RemoteConfigUtils.getIsShowRate()) {
+                    if (true) {
                         showRateDialog(this@WallpaperActivity, false)
                         SharePrefUtils.putBoolean(AppConstants.IS_FIRST_RATED, true)
 
@@ -154,31 +151,12 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
             launch(Dispatchers.Main) {
                 job.join()
                 if (job.isCompleted) {
-                    initAdsBanner()
-                    AdsManager.loadInterSetWallpaper(this@WallpaperActivity)
+
                 }
             }
 
         }
 
-    }
-
-
-    private fun initAdsBanner() {
-        if (RemoteConfigUtils.getOnBannerAll()) {
-            ITGAd.getInstance()
-                .loadBanner(this, BuildConfig.admob_banner_all, object : ITGAdCallback() {
-                    override fun onAdLoaded() {
-                        super.onAdLoaded()
-
-                    }
-
-                    override fun onAdFailedToLoad(adError: ApAdError?) {
-                        super.onAdFailedToLoad(adError)
-                        mBinding.frBanner.removeAllViews()
-                    }
-                })
-        } else mBinding.frBanner.removeAllViews()
     }
 
 
@@ -374,45 +352,8 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
 
 
     private fun applyWallpaper() {
-        if (AdsManager.mInterstitialAdSetWallpaper != null && AdsManager.mInterstitialAdSetWallpaper!!.isReady && CheckTimeShowAdsInter.isTimeShow) {
-
-            ITGAd.getInstance().forceShowInterstitial(
-                this@WallpaperActivity,
-                AdsManager.mInterstitialAdSetWallpaper,
-                object : ITGAdCallback() {
-                    override fun onAdFailedToLoad(adError: ApAdError?) {
-                        super.onAdFailedToLoad(adError)
-                        applyCurrentSettingsToLwp()
-                        setLiveWallpaper()
-                        AdsManager.mInterstitialAdSetWallpaper = null
-                        AdsManager.loadInterSetWallpaper(this@WallpaperActivity)
-                    }
-
-                    override fun onAdClosed() {
-                        super.onAdClosed()
-                        CheckTimeShowAdsInter.logShowed()
-                        applyCurrentSettingsToLwp()
-                        setLiveWallpaper()
-                        AdsManager.mInterstitialAdSetWallpaper = null
-                        AdsManager.loadInterSetWallpaper(this@WallpaperActivity)
-                        
-                    }
-
-                    override fun onAdFailedToShow(adError: ApAdError?) {
-                        super.onAdFailedToShow(adError)
-                        applyCurrentSettingsToLwp()
-                        setLiveWallpaper()
-                        AdsManager.mInterstitialAdSetWallpaper = null
-                        AdsManager.loadInterSetWallpaper(this@WallpaperActivity)
-                    }
-                },
-                true
-            )
-
-        } else {
-            applyCurrentSettingsToLwp()
-            setLiveWallpaper()
-        }
+        applyCurrentSettingsToLwp()
+        setLiveWallpaper()
 
         onSettingsChanged()
     }

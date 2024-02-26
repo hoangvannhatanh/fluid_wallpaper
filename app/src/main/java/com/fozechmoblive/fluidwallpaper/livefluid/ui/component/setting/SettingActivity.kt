@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.widget.Toast
 import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.RemoteConfigUtils
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivitySettingBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
@@ -27,15 +26,11 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>() {
         }
 
         mBinding.layoutMoreApp.setOnClickListener {
-            if (RemoteConfigUtils.getIsShowRate()) {
-                if (!SharePrefUtils.getBoolean(AppConstants.IS_RATED, false)) {
-                    showRateDialog(this, false)
-                } else {
-                    Toast.makeText(this, getString(R.string.text_thank_you), Toast.LENGTH_SHORT)
-                        .show()
-                }
+            if (!SharePrefUtils.getBoolean(AppConstants.IS_RATED, false)) {
+                showRateDialog(this, false)
             } else {
-                Toast.makeText(this, getString(R.string.text_thank_you), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.text_thank_you), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }

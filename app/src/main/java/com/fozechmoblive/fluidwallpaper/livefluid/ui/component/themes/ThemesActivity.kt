@@ -6,10 +6,6 @@ import com.ads.control.ads.ITGAdCallback
 import com.ads.control.ads.wrapper.ApAdError
 import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.loadBanner
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.CheckTimeShowAdsInter
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.RemoteConfigUtils
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityThemesBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
@@ -60,7 +56,7 @@ class ThemesActivity : BaseActivity<ActivityThemesBinding>() {
                     false
                 ) && !SharePrefUtils.getBoolean(AppConstants.IS_FIRST_RATED, false)
             ) {
-                if (RemoteConfigUtils.getIsShowRate()) {
+                if (true) {
                     showRateDialog(this@ThemesActivity, false)
                     SharePrefUtils.putBoolean(AppConstants.IS_FIRST_RATED, true)
 
@@ -74,12 +70,7 @@ class ThemesActivity : BaseActivity<ActivityThemesBinding>() {
             }
         }
         super.initViews()
-        initAdsBanner()
         initAdapterPager()
-
-        AdsManager.loadInterWallpaper(this)
-        AdsManager.loadNativeTheme(this)
-        AdsManager.loadNativeLoading(this)
     }
 
     override fun onClickViews() {
@@ -146,56 +137,13 @@ class ThemesActivity : BaseActivity<ActivityThemesBinding>() {
 
     }
 
-    private fun initAdsBanner() {
-        loadBanner(
-            this,
-            BuildConfig.admob_banner_all,
-            mBinding.frBanner,
-            RemoteConfigUtils.getOnBannerAll()
-        )
-
-    }
-
-
     private fun loadDataPreset() {
         wallpaperAdapter = WallpaperAdapter(presetName = prefs.getString(
             AppConstants.KEY_NAME_EFFECT, "Floating Flames"
         ) ?: "", onClickItemSound = { presetModel, position ->
-
-
-            if (AdsManager.mInterstitialAdWallpaper != null && CheckTimeShowAdsInter.isTimeShow && AdsManager.mInterstitialAdWallpaper!!.isReady) {
-
-                ITGAd.getInstance().forceShowInterstitial(
-                    this, AdsManager.mInterstitialAdWallpaper, object : ITGAdCallback() {
-                        override fun onAdFailedToLoad(adError: ApAdError?) {
-                            super.onAdFailedToLoad(adError)
-                            moveToPresetActivity(presetModel)
-                            AdsManager.mInterstitialAdWallpaper = null
-                            AdsManager.loadInterWallpaper(this@ThemesActivity)
-                        }
-
-                        override fun onAdClosed() {
-                            super.onAdClosed()
-                            CheckTimeShowAdsInter.logShowed()
-                            moveToPresetActivity(presetModel)
-                            AdsManager.mInterstitialAdWallpaper = null
-                            AdsManager.loadInterWallpaper(this@ThemesActivity)
-                        }
-
-                        override fun onAdFailedToShow(adError: ApAdError?) {
-                            super.onAdFailedToShow(adError)
-                            moveToPresetActivity(presetModel)
-                            AdsManager.mInterstitialAdWallpaper = null
-                            AdsManager.loadInterWallpaper(this@ThemesActivity)
-                        }
-                    }, true
-                )
-
-            } else {
-                moveToPresetActivity(presetModel)
-            }
-
+            moveToPresetActivity(presetModel)
         })
+
         listPresetModelTotal.clear()
         listPresetModelTotal.addAll(CommonData.getListPreset())
         addNativeToList(listPresetModelTotal)

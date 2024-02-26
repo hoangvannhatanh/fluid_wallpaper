@@ -50,27 +50,6 @@ class DialogLoading(val context: WallpaperLiveViewActivity, val onFinishedLoadin
             ), null, Shader.TileMode.CLAMP
         )
         mBinding.tvLoading.paint.shader = textShader
-        showNativeLoading()
-    }
-
-
-    private fun showNativeLoading() {
-        if (com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.nativeAdLoading != null && !AppPurchase.getInstance().isPurchased) {
-            mBinding.frAds.visibleView()
-
-            try {
-                ITGAd.getInstance().populateNativeAdView(
-                    context,
-                    com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.nativeAdLoading,
-                    mBinding.frAds,
-                    mBinding.layoutShimmer.shimmerSmall
-                )
-            } catch (_: Exception) {
-
-            }
-        } else {
-            mBinding.frAds.goneView()
-        }
     }
 
 }

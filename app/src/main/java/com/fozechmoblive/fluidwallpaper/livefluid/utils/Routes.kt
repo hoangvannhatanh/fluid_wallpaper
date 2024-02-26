@@ -79,7 +79,6 @@ object Routes {
             putExtra(AppConstants.KEY_PRESET_MODEL, presetModel)
             putExtra(AppConstants.KEY_IS_CUSTOM, isCustom)
             fromActivity.startActivity(this)
-
         }
 
     fun startPresetLiveActivity(fromActivity: Activity, presetModel: PresetModel) =

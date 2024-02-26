@@ -62,8 +62,8 @@
             android:background="@drawable/bg_done"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/_10sdp"
             android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="@id/imv_preset"
             app:layout_constraintEnd_toEndOf="@id/imv_preset"
             app:layout_constraintStart_toStartOf="@id/imv_preset"
@@ -131,29 +131,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:visibility="visible"
-                app:layout_constraintBottom_toTopOf="@id/ll_banner" />
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ll_banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <FrameLayout
-                    android:id="@+id/fr_banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:tag="binding_1">
-
-                    <include
-                        android:id="@+id/include"
-                        layout="@layout/layout_banner_control"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </FrameLayout>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

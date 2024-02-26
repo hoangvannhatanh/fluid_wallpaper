@@ -43,17 +43,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:drawablePadding="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:fontFamily="@font/be_vietnam_pro_semi_bold"
                 android:gravity="center"
                 android:paddingHorizontal="@dimen/_16sdp"
                 android:paddingVertical="@dimen/_8sdp"
                 android:text="@string/preview"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/image_share"
@@ -62,8 +62,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/round_button_toolbar"
-                android:src="@drawable/ic_share"
                 android:padding="4dp"
+                android:src="@drawable/ic_share"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -91,15 +91,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/_20sdp"
-            app:layout_constraintBottom_toTopOf="@id/relay_ads"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:id="@+id/image_setting"
+                android:id="@+id/imageSetting"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="8dp"
@@ -123,27 +123,6 @@
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/relay_ads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <FrameLayout
-                android:id="@+id/fr_ads"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:tag="binding_1"
-                android:visibility="visible">
-
-                <include layout="@layout/shimmer_ads_small" />
-            </FrameLayout>
-        </RelativeLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

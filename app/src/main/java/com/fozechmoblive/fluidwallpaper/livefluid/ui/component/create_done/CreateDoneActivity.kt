@@ -6,15 +6,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.widget.Toast
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.ads.control.ads.ITGAd
-import com.ads.control.ads.ITGAdCallback
-import com.ads.control.ads.wrapper.ApAdError
 import com.bumptech.glide.Glide
-import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.CheckTimeShowAdsInter
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.RemoteConfigUtils
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCreateDoneBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
@@ -54,9 +47,6 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
 
             Glide.with(this).load(presetModel?.pathImageCustom).into(mBinding.imvPreset)
         }
-
-        initAdsBanner()
-        AdsManager.loadInterSetWallpaper(this@CreateDoneActivity)
     }
 
     override fun onClickViews() {
@@ -82,44 +72,8 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
     }
 
     private fun applyWallpaper() {
-        if (AdsManager.mInterstitialAdSetWallpaper != null && AdsManager.mInterstitialAdSetWallpaper!!.isReady && CheckTimeShowAdsInter.isTimeShow) {
-
-            ITGAd.getInstance().forceShowInterstitial(
-                this@CreateDoneActivity,
-                AdsManager.mInterstitialAdSetWallpaper,
-                object : ITGAdCallback() {
-                    override fun onAdFailedToLoad(adError: ApAdError?) {
-                        super.onAdFailedToLoad(adError)
-                        applyCurrentSettingsToLwp()
-                        setLiveWallpaper()
-                        AdsManager.mInterstitialAdSetWallpaper = null
-                        AdsManager.loadInterSetWallpaper(this@CreateDoneActivity)
-                    }
-
-                    override fun onAdClosed() {
-                        super.onAdClosed()
-                        CheckTimeShowAdsInter.logShowed()
-                        applyCurrentSettingsToLwp()
-                        setLiveWallpaper()
-                        AdsManager.mInterstitialAdSetWallpaper = null
-                        AdsManager.loadInterSetWallpaper(this@CreateDoneActivity)
-                    }
-
-                    override fun onAdFailedToShow(adError: ApAdError?) {
-                        super.onAdFailedToShow(adError)
-                        applyCurrentSettingsToLwp()
-                        setLiveWallpaper()
-                        AdsManager.mInterstitialAdSetWallpaper = null
-                        AdsManager.loadInterSetWallpaper(this@CreateDoneActivity)
-                    }
-                },
-                true
-            )
-
-        } else {
-            applyCurrentSettingsToLwp()
-            setLiveWallpaper()
-        }
+        applyCurrentSettingsToLwp()
+        setLiveWallpaper()
     }
 
     private fun applyCurrentSettingsToLwp() {
@@ -162,23 +116,6 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
         }
     }
 
-    private fun initAdsBanner() {
-        if (RemoteConfigUtils.getOnBannerAll()) {
-            ITGAd.getInstance()
-                .loadBanner(this, BuildConfig.admob_banner_all, object : ITGAdCallback() {
-                    override fun onAdLoaded() {
-                        super.onAdLoaded()
-
-                    }
-
-                    override fun onAdFailedToLoad(adError: ApAdError?) {
-                        super.onAdFailedToLoad(adError)
-                        mBinding.frBanner.removeAllViews()
-                    }
-                })
-        } else mBinding.frBanner.removeAllViews()
-    }
-
     private fun sendLocalBroadcast() {
         prefs[AppConstants.KEY_NAME_EFFECT] = presetModel?.name
         val intent = Intent(AppConstants.ACTION_CHANGE_DATA)
@@ -189,8 +126,5 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(serviceDestroyedReceiver)
-
     }
-
-
 }

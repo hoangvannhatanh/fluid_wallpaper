@@ -12,17 +12,18 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/relay_ads"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/ll_circle" />
+                android:layout_height="0dp"
+                android:layout_above="@+id/ll_circle"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/text_skip"
@@ -36,7 +37,9 @@
                 android:paddingVertical="8dp"
                 android:text="@string/text_skip"
                 android:textColor="@color/color_80838A"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/ll_circle"
@@ -46,6 +49,7 @@
                 android:layout_marginHorizontal="@dimen/_12sdp"
                 android:layout_marginBottom="@dimen/_12sdp"
                 android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/view_pager2"
                 tools:ignore="SmallSp">
 
                 <LinearLayout
@@ -95,27 +99,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relay_ads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginHorizontal="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <FrameLayout
-                android:id="@+id/fr_ads"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:tag="binding_1"
-                android:visibility="visible">
-
-                <include layout="@layout/ads_shimmer_native_large" />
-            </FrameLayout>
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

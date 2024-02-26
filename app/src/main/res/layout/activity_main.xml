@@ -66,30 +66,8 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <RelativeLayout
-            android:id="@+id/relay_ads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_50sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
-
-            <FrameLayout
-                android:id="@+id/fr_ads"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:tag="binding_1"
-                android:visibility="visible">
-
-                <include layout="@layout/ads_shimmer_native_large" />
-            </FrameLayout>
-        </RelativeLayout>
-
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_themes"
+            android:id="@+id/btnThemes"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
@@ -101,7 +79,7 @@
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_15sdp"
-            app:layout_constraintTop_toBottomOf="@id/relay_ads" />
+            app:layout_constraintTop_toBottomOf="@id/layout_toolbar" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -117,8 +95,7 @@
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_15sdp"
-            app:layout_constraintTop_toBottomOf="@id/btn_themes" />
-
+            app:layout_constraintTop_toBottomOf="@id/btnThemes" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

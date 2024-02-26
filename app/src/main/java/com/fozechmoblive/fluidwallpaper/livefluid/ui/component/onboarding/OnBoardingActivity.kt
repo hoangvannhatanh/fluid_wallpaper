@@ -8,31 +8,21 @@ import androidx.viewpager2.widget.ViewPager2
 import com.ads.control.ads.ITGAd
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.PreLoadNativeListener
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityOnboardingBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.GuideModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.invisibleView
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.visibleView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.onboarding.adapter.OnBoardingAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import timber.log.Timber
 import kotlin.math.abs
 
-class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>(),
-    PreLoadNativeListener {
+class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>() {
     private var tutorialAdapter: OnBoardingAdapter? = null
     private var posViewPager = 0
-
-    private var populateNativeAdView = false
-    private var shimmerSmall: ShimmerFrameLayout? = null
 
     override fun getLayoutActivity(): Int = R.layout.activity_onboarding
 
     override fun initViews() {
-        shimmerSmall = findViewById(R.id.shimmer_native_large)
-
         mBinding.tvGetStart.text = getString(R.string.next)
         tutorialAdapter = OnBoardingAdapter()
         mBinding.viewPager2.adapter = tutorialAdapter
@@ -84,11 +74,6 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>(),
         })
 
         getData()
-        AdsManager.setPreLoadNativeCallback(this)
-        showNativeOnBoardingAds()
-
-        AdsManager.loadNativeHome(this)
-
     }
 
     override fun onClickViews() {
@@ -119,27 +104,7 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>(),
         }
     }
 
-    private fun showNativeOnBoardingAds() {
-        if (AdsManager.nativeAdOnBoarding != null && !populateNativeAdView) {
-            Timber.e("initAdmob: ${AdsManager.nativeAdOnBoarding}")
-            mBinding.frAds.visibleView()
-            populateNativeAdView = true
-            ITGAd.getInstance().populateNativeAdView(
-                this,
-                AdsManager.nativeAdOnBoarding,
-                mBinding.frAds,
-                shimmerSmall
-            )
-        } else {
-            mBinding.frAds.invisibleView()
-            Timber.d(
-                "LanguageActivity initAds nativeAdOnBoarding = ${AdsManager.nativeAdOnBoarding} - nativeAdLanguage = ${AdsManager.nativeAdOnBoarding}"
-            )
-        }
-    }
-
     private fun gotoNextScreen() {
-
         Routes.startMainActivity(this)
         finish()
 
@@ -170,18 +135,6 @@ class OnBoardingActivity : BaseActivity<ActivityOnboardingBinding>(),
             )
         )
         tutorialAdapter?.submitData(mHelpGuide as List<GuideModel>)
-    }
-
-    override fun onLoadNativeSuccess() {
-        showNativeOnBoardingAds()
-    }
-
-    override fun onLoadNativeFail() {
-        if (AdsManager.nativeAdOnBoarding != null) {
-            mBinding.frAds.visibleView()
-        } else {
-            mBinding.frAds.invisibleView()
-        }
     }
 
 }

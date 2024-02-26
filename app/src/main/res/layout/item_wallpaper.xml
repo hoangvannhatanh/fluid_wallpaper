@@ -66,23 +66,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <RelativeLayout
-            android:id="@+id/relay_ads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
-
-            <FrameLayout
-                android:id="@+id/fr_ads"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <include
-                    android:id="@+id/layout_shimmer"
-                    layout="@layout/ads_shimmer_native_small" />
-            </FrameLayout>
-        </RelativeLayout>
-
     </RelativeLayout>
 
 </layout>

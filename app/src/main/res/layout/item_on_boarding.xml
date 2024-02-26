@@ -6,26 +6,20 @@
 
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/img_guide"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/tv_title"
-            android:layout_alignParentTop="true">
-
-            <ImageView
-                android:id="@+id/img_guide"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:scaleType="centerCrop"
-                app:layout_constraintDimensionRatio="w,1:1"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.75"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -38,6 +32,7 @@
             android:fontFamily="@font/be_vietnam_pro_bold"
             android:gravity="center_horizontal"
             android:maxLines="2"
+            app:layout_constraintTop_toBottomOf="@+id/img_guide"
             android:text="Title"
             android:textColor="@color/color_19171F"
             android:textSize="22sp" />
@@ -50,6 +45,7 @@
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_30sdp"
             android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             android:fontFamily="@font/be_vietnam_pro_regular"
             android:gravity="center_horizontal"
             android:maxLines="2"
@@ -57,5 +53,5 @@
             android:text="SubTitle"
             android:textSize="14sp" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

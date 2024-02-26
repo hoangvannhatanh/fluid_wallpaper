@@ -1,40 +1,27 @@
 package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language
 
 import android.content.res.Configuration
-import com.ads.control.ads.ITGAd
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager.nativeAdLanguage
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.PreLoadNativeListener
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.app.GlobalApp
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityLanguageBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.goneView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.showToastById
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.visibleView
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.get
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.set
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import java.util.Locale
 
 @AndroidEntryPoint
-class LanguageActivity : BaseActivity<ActivityLanguageBinding>(), PreLoadNativeListener {
+class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
     private var adapter: LanguageAdapter? = null
     private var model: LanguageModel? = null
-
-    private var populateNativeAdView = false
-    private var shimmerSmall: ShimmerFrameLayout? = null
 
     override fun getLayoutActivity() = R.layout.activity_language
 
     override fun initViews() {
         super.initViews()
-        shimmerSmall = findViewById(R.id.shimmer_native_large)
-
         adapter = LanguageAdapter(this, onClickItemLanguage = {
             adapter?.setSelectLanguage(it)
             model = it
@@ -42,10 +29,6 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(), PreLoadNativeL
         mBinding.rclLanguage.adapter = adapter
 
         setLanguageDefault()
-
-        AdsManager.setPreLoadNativeCallback(this)
-        showNativeLanguage()
-
     }
 
     override fun onClickViews() {
@@ -138,34 +121,5 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>(), PreLoadNativeL
 
         adapter?.submitData(listLanguages)
         mBinding.rclLanguage.smoothScrollToPosition(listLanguages.size - 1)
-    }
-
-    private fun showNativeLanguage() {
-        if (nativeAdLanguage != null && !populateNativeAdView) {
-            Timber.e("initAdmob: $nativeAdLanguage")
-            mBinding.frAds.visibleView()
-            populateNativeAdView = true
-            ITGAd.getInstance().populateNativeAdView(
-                this, nativeAdLanguage, mBinding.frAds, shimmerSmall
-            )
-        } else {
-            mBinding.frAds.goneView()
-            Timber.d(
-                "LanguageActivity initAds nativeAdViewLanguage = $nativeAdLanguage - nativeAdLanguage = $nativeAdLanguage"
-            )
-        }
-    }
-
-    override fun onLoadNativeSuccess() {
-
-        showNativeLanguage()
-    }
-
-    override fun onLoadNativeFail() {
-        if (nativeAdLanguage != null) {
-            mBinding.frAds.visibleView()
-        } else {
-            mBinding.frAds.goneView()
-        }
     }
 }

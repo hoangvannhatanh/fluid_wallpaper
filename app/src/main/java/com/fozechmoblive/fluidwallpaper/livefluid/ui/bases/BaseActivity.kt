@@ -8,13 +8,19 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.Window
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -42,6 +48,8 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initWindow()
+        fullScreenCall()
         super.onCreate(savedInstanceState)
 
         prefs = EasyPreferences.defaultPrefs(this)
@@ -49,16 +57,9 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         setLocal()
 
         requestWindow()
+
         val layoutView = getLayoutActivity()
         mBinding = DataBindingUtil.setContentView(this, layoutView)
-        Log.d(TAG, "onCreate: name Class: ${this::class.java.simpleName}")
-//        ITGTrackingHelper.addScreenTrack(this::class.java.simpleName)
-//        if (intent.getStringExtra(AppConstants.KEY_TRACKING_SCREEN_FROM) != null) {
-//            Routes.addTrackingMoveScreen(
-//                intent.getStringExtra(AppConstants.KEY_TRACKING_SCREEN_FROM).toString(),
-//                this::class.java.simpleName
-//            )
-//        }
         mBinding.lifecycleOwner = this
 
         initViews()
@@ -97,43 +98,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
             config.locale = locale
             resources.updateConfiguration(config, resources.displayMetrics)
         }
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        hideNavigationBar()
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        hideNavigationBar()
-
-    }
-
-    private fun hideNavigationBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            WindowCompat.setDecorFitsSystemWindows(window, false)
-            WindowInsetsControllerCompat(window, window.decorView).let { controller ->
-                controller.hide(WindowInsetsCompat.Type.systemBars())
-                controller.systemBarsBehavior =
-                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-            }
-        } else {
-            hideSystemUIBeloR()
-        }
-
-    }
-
-    private fun hideSystemUIBeloR() {
-        val decorView: View = window.decorView
-        val uiOptions = decorView.systemUiVisibility
-        var newUiOptions = uiOptions
-        newUiOptions = newUiOptions or View.SYSTEM_UI_FLAG_LOW_PROFILE
-        newUiOptions = newUiOptions or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        newUiOptions = newUiOptions or View.SYSTEM_UI_FLAG_IMMERSIVE
-        newUiOptions = newUiOptions or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-        decorView.systemUiVisibility = newUiOptions
     }
 
     class CreatingDialog constructor(context: Context) : Dialog(context, R.style.ThemeDialog) {
@@ -181,7 +145,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         if (!mSuccessDialog.isShowing && !isFinishing) {
             Timber.d("showLoading mCreatingDialog")
             mSuccessDialog.show()
-            hideNavigationBar()
 
             lifecycleScope.launch(Dispatchers.IO) {
                 delay(2000)
@@ -199,8 +162,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         if (mSuccessDialog.isShowing && !isFinishing) {
             Timber.d("hideProgress mCreatingDialog")
             mSuccessDialog.dismiss()
-            hideNavigationBar()
-
         }
     }
 
@@ -209,8 +170,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         if (!mCreatingDialog.isShowing && !isFinishing) {
             Timber.d("showLoading mCreatingDialog")
             mCreatingDialog.show()
-            hideNavigationBar()
-
         }
     }
 
@@ -219,7 +178,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         if (mCreatingDialog.isShowing && !isFinishing) {
             Timber.d("hideProgress mCreatingDialog")
             mCreatingDialog.dismiss()
-            hideNavigationBar()
         }
     }
 
@@ -234,19 +192,97 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     fun shareApp() {
         try {
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.type = "text/plain"
-            shareIntent.putExtra(
-                Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name)
-            )
-            var shareMessage = "\nLet me recommend you this application\n\n"
+            val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name))
+            }
+            var shareMessage = "Let me recommend you this application\nDownload now:\n\n"
             shareMessage =
-                "${shareMessage}https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
+                shareMessage + "https://play.google.com/store/apps/details?id=" + packageName
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
-            shareIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(Intent.createChooser(shareIntent, "Choose one"))
-        } catch (e: Exception) {
+            startActivity(Intent.createChooser(shareIntent, "choose one"))
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
+        }
+    }
+
+    open fun initWindow() {
+        window.apply {
+            val background: Drawable = ColorDrawable(Color.parseColor("#FFFFFF"))
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = resources.getColor(android.R.color.black)
+            setBackgroundDrawable(background)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
+        }
+    }
+
+    private fun fullScreenCall() {
+        val decorView = window.decorView
+        val uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        decorView.systemUiVisibility = uiOptions
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            fullScreenImmersive(window)
+        }
+    }
+
+    private fun fullScreenImmersive(window: Window?) {
+        if (window != null) {
+            fullScreenImmersive(window.decorView)
+        }
+    }
+
+    private fun fullScreenImmersive(view: View) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val uiOptions =
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            view.systemUiVisibility = uiOptions
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val windowInsetsControllerOne: WindowInsetsControllerCompat? =
+            if (Build.VERSION.SDK_INT >= 30) {
+                ViewCompat.getWindowInsetsController(window.decorView)
+            } else {
+                WindowInsetsControllerCompat(window, mBinding.root)
+            }
+        if (windowInsetsControllerOne == null) {
+            return
+        }
+        windowInsetsControllerOne.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        windowInsetsControllerOne.hide(WindowInsetsCompat.Type.navigationBars())
+        windowInsetsControllerOne.hide(WindowInsetsCompat.Type.systemGestures())
+        window.decorView.setOnSystemUiVisibilityChangeListener { i: Int ->
+            if (i == 0) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val windowInsetsControllerTwo: WindowInsetsControllerCompat? =
+                        if (Build.VERSION.SDK_INT >= 30) {
+                            ViewCompat.getWindowInsetsController(window.decorView)
+                        } else {
+                            WindowInsetsControllerCompat(window, mBinding.root)
+                        }
+                    if (windowInsetsControllerTwo != null) {
+                        windowInsetsControllerTwo.hide(WindowInsetsCompat.Type.navigationBars())
+                        windowInsetsControllerTwo.hide(WindowInsetsCompat.Type.systemGestures())
+                    }
+                }, 1500)
+            }
         }
     }
 }

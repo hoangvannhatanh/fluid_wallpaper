@@ -54,28 +54,5 @@
             android:textColor="@color/color_80838A"
             android:textSize="@dimen/_12sdp" />
 
-        <RelativeLayout
-            android:id="@+id/relay_ads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_14sdp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_loading_preset_ad">
-
-            <FrameLayout
-                android:id="@+id/fr_ads"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:tag="binding_1"
-                android:visibility="visible">
-
-                <include
-                    android:id="@+id/layout_shimmer"
-                    layout="@layout/shimmer_ads_small" />
-            </FrameLayout>
-        </RelativeLayout>
-
-
     </LinearLayout>
 </layout>

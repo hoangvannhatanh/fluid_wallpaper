@@ -3,11 +3,9 @@ package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
-import com.ads.control.ads.ITGAd
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.ads.AdsManager
 
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemWallpaperBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
@@ -16,7 +14,6 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseRecyclerView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.goneView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.visibleView
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.ThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
 
 
@@ -45,26 +42,8 @@ class WallpaperAdapter(
 
                 if (item.typePresetModel == TypePresetModel.ADS) {
                     binding.lBgr.goneView()
-                    binding.relayAds.visibleView()
-                    if (AdsManager.nativeAdWallpaper != null) {
-                        binding.frAds.visibleView()
-
-                        try {
-                            ITGAd.getInstance().populateNativeAdView(
-                                context as ThemesActivity,
-                                AdsManager.nativeAdWallpaper,
-                                binding.frAds,
-                                binding.layoutShimmer.shimmerNativeLarge
-                            )
-                        } catch (_: Exception) {
-
-                        }
-                    } else {
-                        binding.frAds.goneView()
-                    }
                 } else {
                     binding.lBgr.visibleView()
-                    binding.relayAds.goneView()
 
                     if (item.typePresetModel == TypePresetModel.CUSTOM) {
                         Glide.with(ctx).load(item.pathImageCustom).into(binding.imagePreset)
