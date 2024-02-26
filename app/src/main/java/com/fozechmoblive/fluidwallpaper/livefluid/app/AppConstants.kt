@@ -19,5 +19,6 @@ object AppConstants {
 //    region
     const val LANGUAGE_FIRST_DEFAULT_LOCALE = "LANGUAGE_FIRST_DEFAULT_LOCALE"
     const val PREFERENCE_SELECTED_LANGUAGE = "PREFERENCE_SELECTED_LANGUAGE"
+    const val IS_FIRST_TIME_INTRO = "is_first_time_intro"
 //    end_region
 }

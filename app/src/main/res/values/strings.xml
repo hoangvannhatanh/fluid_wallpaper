@@ -185,5 +185,11 @@
     <string name="portuguese" translatable="false">Portuguese</string>
     <string name="indonesian" translatable="false">Indonesian</string>
     <string name="german" translatable="false">German</string>
+    <string name="description_one_introduce">Immerse yourself in the enchanting world of live wallpapers</string>
+    <string name="description_two_introduce">Unleash your creativity by customizing speed, color and intensity and more</string>
+    <string name="description_three_introduce">Changing your wallpaper has never been this easy and enjoyable</string>
+    <string name="title_one_introduce">Dive into a World of Dynamic Creativity</string>
+    <string name="title_two_introduce">Unleash Your Personalization Power</string>
+    <string name="title_three_introduce">Easy to Use, Hard to Resist</string>
 <!--    end_region-->
 </resources>

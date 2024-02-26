@@ -12,7 +12,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.extentions.getPref
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.onClick
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.onboarding.OnBoardingActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.intro.IntroduceActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -126,7 +126,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
             startActivity(
                 Intent(
                     this@LanguageActivity,
-                    OnBoardingActivity::class.java
+                    IntroduceActivity::class.java
                 )
             )
             finish()

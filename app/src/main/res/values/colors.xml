@@ -34,5 +34,11 @@
 <!--    region-->
     <color name="color_0E1822">#0E1822</color>
     <color name="color_3D3D3D">#3D3D3D</color>
+    <color name="color_16232F">#16232F</color>
+    <color name="color_686C70">#686C70</color>
+    <color name="color_6CDBEA">#6CDBEA</color>
+    <color name="color_7BD9B1">#7BD9B1</color>
+    <color name="color_70BAFF">#70BAFF</color>
+    <color name="color_918FF4">#918FF4</color>
 <!--    end_region-->
 </resources>

@@ -10,7 +10,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.create_done.Creat
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.CustomThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language.LanguageActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.main.MainActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.onboarding.OnBoardingActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.intro.IntroduceActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.setting.SettingActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.ThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity
@@ -55,7 +55,7 @@ object Routes {
 
 
     fun startOnBoardingActivity(fromActivity: Activity) =
-        Intent(fromActivity, OnBoardingActivity::class.java).apply {
+        Intent(fromActivity, IntroduceActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             fromActivity.startActivity(this)
