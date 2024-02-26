@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.ads.control.ads.ITGAd
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityOnboardingBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.GuideModel

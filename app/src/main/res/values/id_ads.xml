@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="adjust_token" translatable="false">1234</string>
-    <string name="facebook_app_id" translatable="false">1234</string>
-    <string name="facebook_client_token" translatable="false">1234</string>
-    <string name="event_token" translatable="false">1234</string>
-</resources>

@@ -4,9 +4,7 @@
     <string name="get_started">शुरू हो जाओ</string>
     <string name="next">अगला</string>
     <string name="txt_continue">जारी रखना</string>
-    <string name="txt_request_record_permission">\"रिकॉर्डिंग ऐप को काम करने के लिए आवश्यक अनुमति है\"</string>
     <string name="set_wallpaper">वॉलपेपर सेट करो</string>
-    <string name="txt_liquid_animated_wallpapers">तरल एनिमेटेड वॉलपेपर</string>
     <string name="text_action">कार्रवाई</string>
     <string name="text_stream">धारा</string>
     <string name="inverse_stream">उलटी धारा</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">कुछ 4</string>
     <string name="text_scale">पैमाना</string>
     <string name="txt_settings">समायोजन</string>
-    <string name="txt_more_app">और ज्यादा एप्लीकेशन</string>
     <string name="txt_share_with_friends">दोस्तों के साथ बांटें</string>
     <string name="txt_version">संस्करण %1$s</string>
     <string name="text_title_onboarding_1">तनाव दूर करें और आराम करें</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">छोडना</string>
     <string name="set_wallpaper_success">वॉलपेपर सफलता सेट करें</string>
 
-    <string name="Send">भेजना</string>
-    <string name="Oh_no">अरे नहीं!</string>
-    <string name="Please_leave_us_some_feedback">कृपया हमें कुछ प्रतिक्रिया छोड़ें</string>
-    <string name="We_like_you_too">हम भी आपको पसंद करते हैं!</string>
-    <string name="Thank_for_your_feedback">आपकी प्रतिक्रिया के लिए धन्यवाद.</string>
-    <string name="We_are_working">हम बेहतर उपयोगकर्ता अनुभव के लिए कड़ी मेहनत कर रहे हैं।</string>
-    <string name="We_greatly_appreciate">यदि आप हमें रेटिंग दे सकें तो हम आपकी बहुत सराहना करेंगे।</string>
-    <string name="Send_Email">ईमेल भेजें</string>
     <string name="please_feedback">कृपया अपनी प्रतिक्रिया दें!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">हम बेहतर उपयोगकर्ता अनुभव के लिए कड़ी मेहनत कर रहे हैं।</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">यदि आप हमें रेटिंग दे सकें तो हम आपकी बहुत सराहना करेंगे।</string>
-    <string name="The_best_we_can_get">सबसे अच्छा हम पा सकते हैं :)</string>
-    <string name="Writing_something">कुछ लिख रहा हूँ...</string>
-    <string name="may_be_later">शायद बाद में</string>
     <string name="rate">दर</string>
-    <string name="There_is_no">कोई नहीं है</string>
-    <string name="text_rate_us">हमें रेटिंग दें</string>
-    <string name="text_cancel">रद्द करना</string>
-    <string name="txt_all">सभी</string>
     <string name="txt_new">नया</string>
     <string name="txt_trending">रुझान</string>
-    <string name="txt_feature">विशेषता</string>
     <string name="txt_apply">आवेदन करना</string>
-    <string name="txt_customize">अनुकूलित करें</string>
 
-    <string name="Please_feedback">कृपया अपनी प्रतिक्रिया दें</string>
     <string name="not_supported">इस डिवाइस पर समर्थित नहीं है</string>
-    <string name="txt_vip">वीआईपी</string>
     <string name="preview">पूर्व दर्शन</string>
     <string name="txt_loading">लोड हो रहा है...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">कृपया एनीमेशन संसाधित करने के लिए हमारे द्वारा प्रतीक्षा करें! धन्यवाद</string>
     <string name="text_thank_you">हमारे मैजिक वॉलपेपर का उपयोग करने के लिए धन्यवाद</string>
     <string name="text_rate_content">यदि आपको यह ऐप पसंद है, तो कृपया स्टोर में हमारे ऐप को 5 स्टार रेटिंग दें!</string>
-    <string name="our_best_we_can_get">हम अपना सर्वश्रेष्ठ प्राप्त कर सकते हैं</string>
     <string name="text_rate_now">दर</string>
     <string name="thank_for_your_feedback">आपकी प्रतिक्रिया के लिए धन्यवाद.</string>
     <string name="txt_hot">गर्म</string>
-    <string name="my_design">मेरी डिजाइन</string>
     <string name="txt_title_empty">यहाँ कुछ भी नहीं है</string>
     <string name="txt_content_empty">नया प्रभाव बनाने के लिए \"यहां\" पर क्लिक करें</string>
     <string name="pick_effect">प्रभाव चुनें</string>
@@ -195,8 +169,6 @@
     <string name="create">बनाएं</string>
     <string name="saved">बचाया!</string>
     <string name="make_another">एक और बनाने</string>
-    <string name="other">अन्य</string>
-    <string name="text_share_image">चित्र साझा करें</string>
     <string name="create_effect_success">प्रभाव सफलता बनाएँ</string>
     <string name="error_file_exists">इस नाम की फ़ाइल पहले से मौजूद है!</string>
 

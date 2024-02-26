@@ -17,7 +17,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.ads.RequestConfiguration;
-;
 
 import com.fozechmoblive.fluidwallpaper.livefluid.R;
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;

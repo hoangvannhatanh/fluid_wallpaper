@@ -2,66 +2,80 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="6dp"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:background="@color/white"
-        android:paddingTop="6dp">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_item_language_un_select"
-            android:paddingVertical="8dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:paddingVertical="@dimen/_5sdp"
             app:layout_constraintTop_toTopOf="parent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_language"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:scaleType="centerCrop"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_vietnamese"
-                app:civ_border_color="@color/color_9E9E9E"
-                app:civ_border_width="1dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_title_language"
-                android:layout_width="0dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/loItem"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="6dp"
-                android:paddingRight="6dp"
-                android:text="Vietnamese"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_language"
-                app:layout_constraintEnd_toStartOf="@+id/checkbox_language"
-                app:layout_constraintStart_toEndOf="@+id/img_language"
-                app:layout_constraintTop_toTopOf="@+id/img_language" />
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checkbox_language"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:button="@drawable/bg_checkbox"
-                android:checked="true"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_title_language"
+                android:backgroundTint="@color/transparent"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_title_language" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:paddingHorizontal="@dimen/_15sdp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imLangLogo"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtLanguageTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_14sdp"
+                        android:fontFamily="@font/poppin_medium"
+                        android:gravity="start"
+                        android:textAlignment="textStart"
+                        android:text="@string/english"
+                        app:layout_constraintEnd_toStartOf="@+id/ivCheck"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imLangLogo"
+                        app:layout_constraintStart_toEndOf="@+id/imLangLogo"
+                        app:layout_constraintTop_toTopOf="@+id/imLangLogo" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivCheck"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:background="@drawable/ic_check_language_enable"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:id="@+id/divider"
+                app:layout_constraintTop_toBottomOf="@+id/loItem"
+                android:layout_width="match_parent"
+                android:background="@color/color_3D3D3D"
+                android:layout_height="@dimen/_1sdp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

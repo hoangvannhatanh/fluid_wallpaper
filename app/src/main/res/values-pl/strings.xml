@@ -4,9 +4,7 @@
     <string name="get_started">Zaczynaj</string>
     <string name="next">Następny</string>
     <string name="txt_continue">Kontynuować</string>
-    <string name="txt_request_record_permission">„Nagrywanie to pozwolenie wymagane do działania aplikacji”</string>
     <string name="set_wallpaper">Ustaw tapetę</string>
-    <string name="txt_liquid_animated_wallpapers">Płynne animowane tapety</string>
     <string name="text_action">Działanie</string>
     <string name="text_stream">Strumień</string>
     <string name="inverse_stream">Odwrócony strumień</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Coś 4</string>
     <string name="text_scale">Skala</string>
     <string name="txt_settings">Ustawienia</string>
-    <string name="txt_more_app">Więcej aplikacji</string>
     <string name="txt_share_with_friends">Podziel się z przyjaciółmi</string>
     <string name="txt_version">Wersja %1$s</string>
     <string name="text_title_onboarding_1">Uwolnij stres i zrelaksuj się</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Pominąć</string>
     <string name="set_wallpaper_success">Ustaw sukces tapety</string>
 
-    <string name="Send">Wysłać</string>
-    <string name="Oh_no">O nie!</string>
-    <string name="Please_leave_us_some_feedback">Proszę o pozostawienie nam opinii</string>
-    <string name="We_like_you_too">My też Cię lubimy!</string>
-    <string name="Thank_for_your_feedback">Dziękujemy za Twoją opinię.</string>
-    <string name="We_are_working">Ciężko pracujemy, aby zapewnić lepsze doświadczenia użytkownikom.</string>
-    <string name="We_greatly_appreciate">Będziemy bardzo wdzięczni, jeśli możesz nas ocenić.</string>
-    <string name="Send_Email">Wysłać email</string>
     <string name="please_feedback">Proszę o odzew!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Ciężko pracujemy, aby zapewnić lepsze doświadczenia użytkownikom.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Będziemy bardzo wdzięczni, jeśli możesz nas ocenić.</string>
-    <string name="The_best_we_can_get">Najlepsze co możemy dostać :)</string>
-    <string name="Writing_something">Pisanie czegoś…</string>
-    <string name="may_be_later">Może później</string>
     <string name="rate">Wskaźnik</string>
-    <string name="There_is_no">Nie ma</string>
-    <string name="text_rate_us">Oceń nas</string>
-    <string name="text_cancel">Anulować</string>
-    <string name="txt_all">Wszystko</string>
     <string name="txt_new">Nowy</string>
     <string name="txt_trending">Trendy</string>
-    <string name="txt_feature">Funkcja</string>
     <string name="txt_apply">Stosować</string>
-    <string name="txt_customize">Dostosuj</string>
 
-    <string name="Please_feedback">Proszę o odzew</string>
     <string name="not_supported">Nieobsługiwane na tym urządzeniu</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Zapowiedź</string>
     <string name="txt_loading">Ładowanie...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Poczekaj, aż przetworzymy animację! Dziękuję</string>
     <string name="text_thank_you">Dziękujemy za skorzystanie z naszej Magicznej Tapety</string>
     <string name="text_rate_content">Jeśli podoba Ci się ta aplikacja, oceń naszą aplikację na 5 gwiazdek w sklepie!</string>
-    <string name="our_best_we_can_get">Najlepsze co możemy dostać</string>
     <string name="text_rate_now">Wskaźnik</string>
     <string name="thank_for_your_feedback">Dziękujemy za Twoją opinię.</string>
     <string name="txt_hot">Gorący</string>
-    <string name="my_design">Mój projekt</string>
     <string name="txt_title_empty">Nic tu nie ma</string>
     <string name="txt_content_empty">Kliknij „tutaj”, aby utworzyć nowy efekt</string>
     <string name="pick_effect">Wybierz efekt</string>
@@ -195,8 +169,6 @@
     <string name="create">Tworzyć</string>
     <string name="saved">Zapisano!</string>
     <string name="make_another">Zrób kolejny</string>
-    <string name="other">Inny</string>
-    <string name="text_share_image">Udostępnij obraz</string>
     <string name="create_effect_success">Stwórz efekt sukcesu</string>
     <string name="error_file_exists">Plik o tej nazwie już istnieje!</string>
 

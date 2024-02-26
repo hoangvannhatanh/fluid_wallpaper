@@ -1,14 +1,12 @@
 <resources>
-    <string name="app_name" translatable="false">Fluid Magic: 3D Live Wallpaper</string>
+    <string name="app_name" translatable="false">Fluid Wallpaper</string>
     <string name="title_main" translatable="false">Fluid Wallpaper</string>
     <string name="language" translatable="false">Language</string>
     <string name="please_select_language">Please select language</string>
     <string name="get_started">Get Started</string>
     <string name="next">Next</string>
     <string name="txt_continue">Continue</string>
-    <string name="txt_request_record_permission">"    Recording is the permission required for the app to work"</string>
     <string name="set_wallpaper">Set Wallpaper</string>
-    <string name="txt_liquid_animated_wallpapers">Liquid animated wallpapers</string>
     <string name="text_action">Action</string>
     <string name="text_stream">Stream</string>
     <string name="inverse_stream">Inverse stream</string>
@@ -139,7 +137,6 @@
     <string name="text_something_4">Something 4</string>
     <string name="text_scale">Scale</string>
     <string name="txt_settings">Settings</string>
-    <string name="txt_more_app">More app</string>
     <string name="txt_share_with_friends">Share with friends</string>
     <string name="txt_version">Version %1$s</string>
     <string name="text_title_onboarding_1">Relieve Stress and Relax</string>
@@ -151,44 +148,21 @@
     <string name="text_skip">Skip</string>
     <string name="set_wallpaper_success">Set WallPaper Success</string>
 
-    <string name="Send">Send</string>
-    <string name="Oh_no">Oh, no!</string>
-    <string name="Please_leave_us_some_feedback">Please leave us some feedback</string>
-    <string name="We_like_you_too">We like you too!</string>
-    <string name="Thank_for_your_feedback">Thank for your feedback.</string>
-    <string name="We_are_working">We are working hard for a better user experience.</string>
-    <string name="We_greatly_appreciate">We’d greatly appreciate if you can rate us .</string>
-    <string name="Send_Email">Send Email</string>
     <string name="please_feedback">Please feedback!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">We are working hard for a better user experience.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">We’d greatly appreciate if you can rate us.</string>
-    <string name="The_best_we_can_get">The best we can get :)</string>
-    <string name="Writing_something">Writing something…</string>
-    <string name="may_be_later">Maybe later</string>
     <string name="rate">Rate</string>
-    <string name="There_is_no">There is no</string>
-    <string name="text_rate_us">Rate us</string>
-    <string name="text_cancel">Cancel</string>
-    <string name="txt_all">All</string>
     <string name="txt_new">New</string>
     <string name="txt_trending">Trending</string>
-    <string name="txt_feature">Feature</string>
     <string name="txt_apply">Apply</string>
-    <string name="txt_customize">Customize</string>
 
-    <string name="Please_feedback">Please feedback</string>
     <string name="not_supported">Not supported on this device</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Preview</string>
     <string name="txt_loading">Loading...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Please wait for us to process the animation! Thank you</string>
     <string name="text_thank_you">Thank you for using our Magic Wallpaper</string>
     <string name="text_rate_content">If you like this app, please rate our app 5 stars in store!</string>
-    <string name="our_best_we_can_get">Our best we can get</string>
     <string name="text_rate_now">Rate</string>
     <string name="thank_for_your_feedback">Thank for your feedback.</string>
     <string name="txt_hot">Hot</string>
-    <string name="my_design">My Design</string>
     <string name="txt_title_empty">Nothing here</string>
     <string name="txt_content_empty">Click “here” to make new Effect\n</string>
     <string name="pick_effect">Pick Effect</string>
@@ -197,12 +171,19 @@
     <string name="create">Create</string>
     <string name="saved">Saved!</string>
     <string name="make_another">Make another</string>
-    <string name="other">Other</string>
-    <string name="text_share_image">Share image</string>
     <string name="create_effect_success">Create Effect Success</string>
     <string name="error_file_exists">File with this name is already exists!</string>
     <string name="themes">Themes</string>
     <string name="customs_themes">Customs Themes</string>
 
-
+<!--    region-->
+    <string name="this_action_can_contain_ads">This action may contain advertising</string>
+    <string name="english" translatable="false">English</string>
+    <string name="hindi" translatable="false">Hindi</string>
+    <string name="spanish" translatable="false">Spanish</string>
+    <string name="french" translatable="false">French</string>
+    <string name="portuguese" translatable="false">Portuguese</string>
+    <string name="indonesian" translatable="false">Indonesian</string>
+    <string name="german" translatable="false">German</string>
+<!--    end_region-->
 </resources>

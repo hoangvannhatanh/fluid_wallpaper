@@ -4,9 +4,7 @@
     <string name="get_started">Begin</string>
     <string name="next">Volgende</string>
     <string name="txt_continue">Doorgaan</string>
-    <string name="txt_request_record_permission">\"Opnemen is de toestemming die nodig is om de app te laten werken\"</string>
     <string name="set_wallpaper">Stel in als achtergrond</string>
-    <string name="txt_liquid_animated_wallpapers">Vloeibare geanimeerde achtergronden</string>
     <string name="text_action">Actie</string>
     <string name="text_stream">Stroom</string>
     <string name="inverse_stream">Omgekeerde stroom</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Iets 4</string>
     <string name="text_scale">Schaal</string>
     <string name="txt_settings">Instellingen</string>
-    <string name="txt_more_app">Meer App</string>
     <string name="txt_share_with_friends">Delen met vrienden</string>
     <string name="txt_version">Versie %1$s</string>
     <string name="text_title_onboarding_1">Verlicht stress en ontspan</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Overslaan</string>
     <string name="set_wallpaper_success">Achtergrondsucces instellen</string>
 
-    <string name="Send">Versturen</string>
-    <string name="Oh_no">Oh nee!</string>
-    <string name="Please_leave_us_some_feedback">Laat ons alstublieft wat feedback achter</string>
-    <string name="We_like_you_too">Wij vinden jou ook leuk!</string>
-    <string name="Thank_for_your_feedback">Bedankt voor uw feedback.</string>
-    <string name="We_are_working">We werken hard aan een betere gebruikerservaring.</string>
-    <string name="We_greatly_appreciate">Wij stellen het zeer op prijs als u ons kunt beoordelen.</string>
-    <string name="Send_Email">E-mail verzenden</string>
     <string name="please_feedback">Geef alsjeblieft een reactie!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">We werken hard aan een betere gebruikerservaring.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Wij stellen het zeer op prijs als u ons kunt beoordelen.</string>
-    <string name="The_best_we_can_get">Het beste wat we kunnen krijgen :)</string>
-    <string name="Writing_something">Iets schrijven…</string>
-    <string name="may_be_later">Misschien later</string>
     <string name="rate">Tarief</string>
-    <string name="There_is_no">Er is geen</string>
-    <string name="text_rate_us">Beoordeel ons</string>
-    <string name="text_cancel">Annuleren</string>
-    <string name="txt_all">Alle</string>
     <string name="txt_new">Nieuw</string>
     <string name="txt_trending">Populair</string>
-    <string name="txt_feature">Functie</string>
     <string name="txt_apply">Toepassen</string>
-    <string name="txt_customize">Aanpassen</string>
 
-    <string name="Please_feedback">Geef alsjeblieft een reactie</string>
     <string name="not_supported">Niet ondersteund op dit apparaat</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Voorbeeld</string>
     <string name="txt_loading">Bezig met laden...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Wacht tot wij de animatie hebben verwerkt! Bedankt</string>
     <string name="text_thank_you">Bedankt voor het gebruiken van onze Magische Achtergrond</string>
     <string name="text_rate_content">Als je deze app leuk vindt, beoordeel onze app dan met 5 sterren in de winkel!</string>
-    <string name="our_best_we_can_get">Ons beste wat we kunnen krijgen</string>
     <string name="text_rate_now">Tarief</string>
     <string name="thank_for_your_feedback">Bedankt voor uw feedback.</string>
     <string name="txt_hot">Heet</string>
-    <string name="my_design">Mijn ontwerp</string>
     <string name="txt_title_empty">Niets hier</string>
     <string name="txt_content_empty">Klik “hier” om een ​​nieuw effect te maken</string>
     <string name="pick_effect">Kies effect</string>
@@ -195,8 +169,6 @@
     <string name="create">Creëren</string>
     <string name="saved">Opgeslagen!</string>
     <string name="make_another">Maak er nog een</string>
-    <string name="other">Ander</string>
-    <string name="text_share_image">Afbeelding delen</string>
     <string name="create_effect_success">Creëer effectsucces</string>
     <string name="error_file_exists">Bestand met deze naam bestaat al!</string>
 

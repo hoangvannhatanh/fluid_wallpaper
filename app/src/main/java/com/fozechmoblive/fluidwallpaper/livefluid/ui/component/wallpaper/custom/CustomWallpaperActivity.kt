@@ -7,10 +7,6 @@ import android.os.Looper
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.impl.Scheduler
-import com.ads.control.ads.ITGAd
-import com.ads.control.ads.ITGAdCallback
-import com.ads.control.ads.wrapper.ApAdError
-import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCustomWallpaperBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel

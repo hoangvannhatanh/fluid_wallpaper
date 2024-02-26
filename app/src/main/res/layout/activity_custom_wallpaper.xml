@@ -66,28 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/ll_banner" />
-
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ll_banner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <FrameLayout
-                android:id="@+id/fr_banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:tag="binding_1">
-
-                <include
-                    android:id="@+id/include"
-                    layout="@layout/layout_banner_control"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </FrameLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

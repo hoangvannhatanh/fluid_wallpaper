@@ -19,7 +19,6 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom.
 
 
 object Routes {
-
     fun startCustomThemesActivity(fromActivity: Activity) =
         Intent(fromActivity, CustomThemesActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -103,10 +102,4 @@ object Routes {
             fromActivity.startActivity(this)
 
         }
-
-    fun addTrackingMoveScreen(fromActivity: String, toActivity: String) {
-        ITGTrackingHelper.fromScreenToScreen(fromActivity, toActivity)
-    }
-
-
 }

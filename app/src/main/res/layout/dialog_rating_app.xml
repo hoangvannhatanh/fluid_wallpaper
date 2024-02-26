@@ -15,7 +15,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/bg_card_ads"
             android:orientation="vertical"
             android:padding="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"

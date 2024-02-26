@@ -4,9 +4,7 @@
     <string name="get_started">Iniziare</string>
     <string name="next">Prossimo</string>
     <string name="txt_continue">Continua</string>
-    <string name="txt_request_record_permission">\"La registrazione è l\'autorizzazione richiesta per il funzionamento dell\'app\"</string>
     <string name="set_wallpaper">Imposta sfondo</string>
-    <string name="txt_liquid_animated_wallpapers">Sfondi animati liquidi</string>
     <string name="text_action">Azione</string>
     <string name="text_stream">Flusso</string>
     <string name="inverse_stream">Flusso inverso</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Qualcosa 4</string>
     <string name="text_scale">Scala</string>
     <string name="txt_settings">Impostazioni</string>
-    <string name="txt_more_app">Più app</string>
     <string name="txt_share_with_friends">Condividere con gli amici</string>
     <string name="txt_version">Versione %1$s</string>
     <string name="text_title_onboarding_1">Allevia lo stress e rilassati</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Saltare</string>
     <string name="set_wallpaper_success">Imposta il successo dello sfondo</string>
 
-    <string name="Send">Inviare</string>
-    <string name="Oh_no">Oh no!</string>
-    <string name="Please_leave_us_some_feedback">Per favore lasciaci un feedback</string>
-    <string name="We_like_you_too">Anche tu ci piaci!</string>
-    <string name="Thank_for_your_feedback">Grazie per il tuo feedback</string>
-    <string name="We_are_working">Stiamo lavorando duramente per una migliore esperienza utente.</string>
-    <string name="We_greatly_appreciate">Apprezzeremmo molto se potessi valutarci.</string>
-    <string name="Send_Email">Invia una email</string>
     <string name="please_feedback">Per favore dai un riscontro!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Stiamo lavorando duramente per una migliore esperienza utente.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Apprezzeremmo molto se potessi valutarci.</string>
-    <string name="The_best_we_can_get">Il meglio che possiamo ottenere :)</string>
-    <string name="Writing_something">Scrivere qualcosa...</string>
-    <string name="may_be_later">Forse più tardi</string>
     <string name="rate">Valutare</string>
-    <string name="There_is_no">Non c\'è</string>
-    <string name="text_rate_us">Valutaci</string>
-    <string name="text_cancel">Annulla</string>
-    <string name="txt_all">Tutto</string>
     <string name="txt_new">Nuovo</string>
     <string name="txt_trending">Tendenza</string>
-    <string name="txt_feature">Caratteristica</string>
     <string name="txt_apply">Fare domanda a</string>
-    <string name="txt_customize">personalizzare</string>
 
-    <string name="Please_feedback">Per favore dai un riscontro</string>
     <string name="not_supported">Non supportato su questo dispositivo</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Anteprima</string>
     <string name="txt_loading">Caricamento...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Attendi che elaboriamo l\'animazione! Grazie</string>
     <string name="text_thank_you">Grazie per aver utilizzato il nostro sfondo magico</string>
     <string name="text_rate_content">Se ti piace questa app, valuta la nostra app con 5 stelle in negozio!</string>
-    <string name="our_best_we_can_get">Il massimo che possiamo ottenere</string>
     <string name="text_rate_now">Valutare</string>
     <string name="thank_for_your_feedback">Grazie per il tuo feedback</string>
     <string name="txt_hot">Caldo</string>
-    <string name="my_design">Il mio design</string>
     <string name="txt_title_empty">Niente qui</string>
     <string name="txt_content_empty">Fare clic su \"qui\" per creare un nuovo effetto</string>
     <string name="pick_effect">Scegli Effetto</string>
@@ -195,8 +169,6 @@
     <string name="create">Creare</string>
     <string name="saved">Salvato!</string>
     <string name="make_another">Fanne un\'altro</string>
-    <string name="other">Altro</string>
-    <string name="text_share_image">Condividi l\'immagine</string>
     <string name="create_effect_success">Crea effetto di successo</string>
     <string name="error_file_exists">Il file con questo nome esiste già!</string>
 

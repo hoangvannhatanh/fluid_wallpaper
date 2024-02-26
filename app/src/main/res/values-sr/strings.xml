@@ -4,9 +4,7 @@
     <string name="get_started">Почети</string>
     <string name="next">Следећи</string>
     <string name="txt_continue">Настави</string>
-    <string name="txt_request_record_permission">„Снимање је дозвола потребна да би апликација радила“</string>
     <string name="set_wallpaper">Подесите позадину</string>
-    <string name="txt_liquid_animated_wallpapers">Течне анимиране позадине</string>
     <string name="text_action">поступак</string>
     <string name="text_stream">Стреам</string>
     <string name="inverse_stream">Инверзни ток</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Нешто 4</string>
     <string name="text_scale">Скала</string>
     <string name="txt_settings">Подешавања</string>
-    <string name="txt_more_app">Више апликација</string>
     <string name="txt_share_with_friends">Подели са пријатељима</string>
     <string name="txt_version">Верзија %1$с</string>
     <string name="text_title_onboarding_1">Ослободите се стреса и опустите се</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Скип</string>
     <string name="set_wallpaper_success">Подесите успешност тапета</string>
 
-    <string name="Send">Пошаљи</string>
-    <string name="Oh_no">О, не!</string>
-    <string name="Please_leave_us_some_feedback">Оставите нам повратне информације</string>
-    <string name="We_like_you_too">И ти нам се свиђаш!</string>
-    <string name="Thank_for_your_feedback">Хвала на повратним информацијама.</string>
-    <string name="We_are_working">Напорно радимо на бољем корисничком искуству.</string>
-    <string name="We_greatly_appreciate">Били бисмо вам веома захвални ако можете да нас оцените.</string>
-    <string name="Send_Email">Шаљи имејл</string>
     <string name="please_feedback">Молимо повратне информације!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Напорно радимо на бољем корисничком искуству.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Били бисмо вам веома захвални ако можете да нас оцените.</string>
-    <string name="The_best_we_can_get">Најбоље што можемо да добијемо :)</string>
-    <string name="Writing_something">Пишући нешто…</string>
-    <string name="may_be_later">Можда касније</string>
     <string name="rate">Рате</string>
-    <string name="There_is_no">Не постоји</string>
-    <string name="text_rate_us">Оцените нас</string>
-    <string name="text_cancel">Поништити, отказати</string>
-    <string name="txt_all">Све</string>
     <string name="txt_new">Нова</string>
     <string name="txt_trending">У тренду</string>
-    <string name="txt_feature">одлика</string>
     <string name="txt_apply">Применити</string>
-    <string name="txt_customize">Прилагоди</string>
 
-    <string name="Please_feedback">Молимо повратне информације</string>
     <string name="not_supported">Није подржано на овом уређају</string>
-    <string name="txt_vip">ВИП</string>
     <string name="preview">Преглед</string>
     <string name="txt_loading">Учитавање...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Сачекајте да обрадимо анимацију! Хвала вам</string>
     <string name="text_thank_you">Хвала вам што користите нашу Магиц Валлпапер</string>
     <string name="text_rate_content">Ако вам се свиђа ова апликација, оцените нашу апликацију са 5 звездица у продавници!</string>
-    <string name="our_best_we_can_get">Наше најбоље што можемо да добијемо</string>
     <string name="text_rate_now">Рате</string>
     <string name="thank_for_your_feedback">Хвала на повратним информацијама.</string>
     <string name="txt_hot">Хот</string>
-    <string name="my_design">Мој дизајн</string>
     <string name="txt_title_empty">Ништа овде</string>
     <string name="txt_content_empty">Кликните „овде“ да бисте направили нови ефекат</string>
     <string name="pick_effect">Пицк Еффецт</string>
@@ -195,8 +169,6 @@
     <string name="create">Креирај</string>
     <string name="saved">Сачувано!</string>
     <string name="make_another">Направите другу</string>
-    <string name="other">Остало</string>
-    <string name="text_share_image">Делите слику</string>
     <string name="create_effect_success">Креирајте ефекат успеха</string>
     <string name="error_file_exists">Датотека са овим именом већ постоји!</string>
 

@@ -4,9 +4,7 @@
     <string name="get_started">Başlamak</string>
     <string name="next">Sonraki</string>
     <string name="txt_continue">Devam etmek</string>
-    <string name="txt_request_record_permission">\"Kayıt, uygulamanın çalışması için gereken izindir\"</string>
     <string name="set_wallpaper">Duvar kağıdı ayarla</string>
-    <string name="txt_liquid_animated_wallpapers">Sıvı animasyonlu duvar kağıtları</string>
     <string name="text_action">Aksiyon</string>
     <string name="text_stream">Aktarım</string>
     <string name="inverse_stream">Ters akış</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">bir şey 4</string>
     <string name="text_scale">Ölçek</string>
     <string name="txt_settings">Ayarlar</string>
-    <string name="txt_more_app">Daha fazla uygulama</string>
     <string name="txt_share_with_friends">Arkadaşlarınla ​​paylaş</string>
     <string name="txt_version">Sürüm %1$s</string>
     <string name="text_title_onboarding_1">Stresi Azaltın ve Rahatlayın</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Atlamak</string>
     <string name="set_wallpaper_success">Duvar Kağıdı Başarısını Ayarlayın</string>
 
-    <string name="Send">Göndermek</string>
-    <string name="Oh_no">Oh hayır!</string>
-    <string name="Please_leave_us_some_feedback">Lütfen bize geri bildirimde bulunun</string>
-    <string name="We_like_you_too">Biz de seni seviyoruz!</string>
-    <string name="Thank_for_your_feedback">Geri bildiriminiz için teşekkür ederiz.</string>
-    <string name="We_are_working">Daha iyi bir kullanıcı deneyimi için çok çalışıyoruz.</string>
-    <string name="We_greatly_appreciate">Bizi değerlendirebilirseniz çok seviniriz.</string>
-    <string name="Send_Email">Eposta gönder</string>
     <string name="please_feedback">Lütfen geri bildirimde bulunun!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Daha iyi bir kullanıcı deneyimi için çok çalışıyoruz.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Bizi değerlendirebilirseniz çok seviniriz.</string>
-    <string name="The_best_we_can_get">Alabileceğimizin en iyisi :)</string>
-    <string name="Writing_something">Bir şeyler yazmak…</string>
-    <string name="may_be_later">Belki sonra</string>
     <string name="rate">Oran</string>
-    <string name="There_is_no">hayır</string>
-    <string name="text_rate_us">Bizi değerlendirin</string>
-    <string name="text_cancel">İptal etmek</string>
-    <string name="txt_all">Tüm</string>
     <string name="txt_new">Yeni</string>
     <string name="txt_trending">Trend olan</string>
-    <string name="txt_feature">Özellik</string>
     <string name="txt_apply">Uygula</string>
-    <string name="txt_customize">Özelleştirmek</string>
 
-    <string name="Please_feedback">Lütfen geri bildirimde bulunun</string>
     <string name="not_supported">Bu cihazda desteklenmiyor</string>
-    <string name="txt_vip">vip</string>
     <string name="preview">Ön izleme</string>
     <string name="txt_loading">Yükleniyor...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Lütfen animasyonu işlememizi bekleyin! Teşekkür ederim</string>
     <string name="text_thank_you">Sihirli Duvar Kağıdımızı kullandığınız için teşekkür ederiz</string>
     <string name="text_rate_content">Bu uygulamayı beğendiyseniz, lütfen uygulamamızı mağazada 5 yıldızla derecelendirin!</string>
-    <string name="our_best_we_can_get">Alabileceğimizin en iyisi</string>
     <string name="text_rate_now">Oran</string>
     <string name="thank_for_your_feedback">Geri bildiriminiz için teşekkür ederiz.</string>
     <string name="txt_hot">Sıcak</string>
-    <string name="my_design">Benim tasarımım</string>
     <string name="txt_title_empty">Burada hiçbir şey</string>
     <string name="txt_content_empty">Yeni Efekt oluşturmak için “burayı” tıklayın</string>
     <string name="pick_effect">Seçim Efekti</string>
@@ -195,8 +169,6 @@
     <string name="create">Yaratmak</string>
     <string name="saved">Kaydedildi!</string>
     <string name="make_another">Başka bir tane yap</string>
-    <string name="other">Diğer</string>
-    <string name="text_share_image">Fotoğraf paylaşmak</string>
     <string name="create_effect_success">Efekt Başarısı Yaratın</string>
     <string name="error_file_exists">Bu isimde dosya zaten mevcut!</string>
 

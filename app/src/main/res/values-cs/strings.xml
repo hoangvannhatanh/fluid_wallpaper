@@ -4,9 +4,7 @@
     <string name="get_started">Začít</string>
     <string name="next">další</string>
     <string name="txt_continue">Pokračovat</string>
-    <string name="txt_request_record_permission">\"Nahrávání je oprávnění vyžadované pro fungování aplikace\"</string>
     <string name="set_wallpaper">Nastavit tapetu</string>
-    <string name="txt_liquid_animated_wallpapers">Tekuté animované tapety</string>
     <string name="text_action">Akce</string>
     <string name="text_stream">Proud</string>
     <string name="inverse_stream">Inverzní proud</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Něco 4</string>
     <string name="text_scale">Měřítko</string>
     <string name="txt_settings">Nastavení</string>
-    <string name="txt_more_app">Více aplikací</string>
     <string name="txt_share_with_friends">Sdílet s přáteli</string>
     <string name="txt_version">Verze %1$s</string>
     <string name="text_title_onboarding_1">Zbavte se stresu a relaxujte</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Přeskočit</string>
     <string name="set_wallpaper_success">Nastavit tapetu úspěch</string>
 
-    <string name="Send">Poslat</string>
-    <string name="Oh_no">Ach ne!</string>
-    <string name="Please_leave_us_some_feedback">Zanechte nám prosím zpětnou vazbu</string>
-    <string name="We_like_you_too">Taky tě máme rádi!</string>
-    <string name="Thank_for_your_feedback">Děkujeme za vaši zpětnou vazbu.</string>
-    <string name="We_are_working">Usilovně pracujeme na lepší uživatelské zkušenosti.</string>
-    <string name="We_greatly_appreciate">Budeme moc rádi, když nás ohodnotíte.</string>
-    <string name="Send_Email">Poslat e-mailem</string>
     <string name="please_feedback">Prosím o zpětnou vazbu!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Usilovně pracujeme na lepší uživatelské zkušenosti.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Budeme moc rádi, když nás ohodnotíte.</string>
-    <string name="The_best_we_can_get">To nejlepší co můžeme dostat :)</string>
-    <string name="Writing_something">Něco psát…</string>
-    <string name="may_be_later">Možná později</string>
     <string name="rate">Hodnotit</string>
-    <string name="There_is_no">Tady není žádný</string>
-    <string name="text_rate_us">Ohodnoťte nás</string>
-    <string name="text_cancel">zrušení</string>
-    <string name="txt_all">Všechno</string>
     <string name="txt_new">Nový</string>
     <string name="txt_trending">Trendy</string>
-    <string name="txt_feature">Vlastnosti</string>
     <string name="txt_apply">Aplikovat</string>
-    <string name="txt_customize">Přizpůsobit</string>
 
-    <string name="Please_feedback">Prosím o zpětnou vazbu</string>
     <string name="not_supported">Na tomto zařízení není podporováno</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Náhled</string>
     <string name="txt_loading">Načítání...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Počkejte prosím, než zpracujeme animaci! Děkuji</string>
     <string name="text_thank_you">Děkujeme, že používáte naši kouzelnou tapetu</string>
     <string name="text_rate_content">Pokud se vám tato aplikace líbí, ohodnoťte naši aplikaci 5 hvězdičkami v obchodě!</string>
-    <string name="our_best_we_can_get">To nejlepší, co můžeme dostat</string>
     <string name="text_rate_now">Hodnotit</string>
     <string name="thank_for_your_feedback">Děkujeme za vaši zpětnou vazbu.</string>
     <string name="txt_hot">Horký</string>
-    <string name="my_design">Můj design</string>
     <string name="txt_title_empty">Tady nic</string>
     <string name="txt_content_empty">Kliknutím na „zde“ vytvoříte nový efekt</string>
     <string name="pick_effect">Vyberte efekt</string>
@@ -195,8 +169,6 @@
     <string name="create">Vytvořit</string>
     <string name="saved">Uložené!</string>
     <string name="make_another">Udělejte další</string>
-    <string name="other">jiný</string>
-    <string name="text_share_image">Sdílet obrázek</string>
     <string name="create_effect_success">Vytvořte úspěch</string>
     <string name="error_file_exists">Soubor s tímto názvem již existuje!</string>
 

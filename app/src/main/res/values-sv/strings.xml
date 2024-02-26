@@ -4,9 +4,7 @@
     <string name="get_started">Komma igång</string>
     <string name="next">Nästa</string>
     <string name="txt_continue">Fortsätta</string>
-    <string name="txt_request_record_permission">\"Inspelning är den behörighet som krävs för att appen ska fungera\"</string>
     <string name="set_wallpaper">Ange bakgrund</string>
-    <string name="txt_liquid_animated_wallpapers">Flytande animerade bakgrundsbilder</string>
     <string name="text_action">Handling</string>
     <string name="text_stream">Ström</string>
     <string name="inverse_stream">Omvänd ström</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Något 4</string>
     <string name="text_scale">Skala</string>
     <string name="txt_settings">inställningar</string>
-    <string name="txt_more_app">Mer App</string>
     <string name="txt_share_with_friends">Dela med vänner</string>
     <string name="txt_version">Version %1$s</string>
     <string name="text_title_onboarding_1">Lindra stress och slappna av</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Hoppa</string>
     <string name="set_wallpaper_success">Ställ in WallPaper Success</string>
 
-    <string name="Send">Skicka</string>
-    <string name="Oh_no">Å nej!</string>
-    <string name="Please_leave_us_some_feedback">Lämna gärna feedback till oss</string>
-    <string name="We_like_you_too">Vi gillar dig också!</string>
-    <string name="Thank_for_your_feedback">Tack för din feedback.</string>
-    <string name="We_are_working">Vi jobbar hårt för en bättre användarupplevelse.</string>
-    <string name="We_greatly_appreciate">Vi skulle uppskatta om du kan betygsätta oss.</string>
-    <string name="Send_Email">Skicka epost</string>
     <string name="please_feedback">Vänligen feedback!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Vi jobbar hårt för en bättre användarupplevelse.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Vi skulle uppskatta om du kan betygsätta oss.</string>
-    <string name="The_best_we_can_get">Det bästa vi kan få :)</string>
-    <string name="Writing_something">Skriver något...</string>
-    <string name="may_be_later">Kanske senare</string>
     <string name="rate">Betygsätta</string>
-    <string name="There_is_no">Det finns inget</string>
-    <string name="text_rate_us">Gradera oss</string>
-    <string name="text_cancel">Annullera</string>
-    <string name="txt_all">Allt</string>
     <string name="txt_new">Ny</string>
     <string name="txt_trending">Trendigt</string>
-    <string name="txt_feature">Funktion</string>
     <string name="txt_apply">Tillämpa</string>
-    <string name="txt_customize">Anpassa</string>
 
-    <string name="Please_feedback">Vänligen återkoppla</string>
     <string name="not_supported">Stöds inte på den här enheten</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Förhandsvisning</string>
     <string name="txt_loading">Läser in...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Vänta på att vi ska bearbeta animeringen! Tack</string>
     <string name="text_thank_you">Tack för att du använder vår magiska bakgrund</string>
     <string name="text_rate_content">Om du gillar den här appen, vänligen betygsätt vår app 5 stjärnor i butik!</string>
-    <string name="our_best_we_can_get">Vårt bästa vi kan få</string>
     <string name="text_rate_now">Betygsätta</string>
     <string name="thank_for_your_feedback">Tack för din feedback.</string>
     <string name="txt_hot">Varm</string>
-    <string name="my_design">Min design</string>
     <string name="txt_title_empty">Inget här</string>
     <string name="txt_content_empty">Klicka \"här\" för att skapa en ny effekt</string>
     <string name="pick_effect">Välj effekt</string>
@@ -195,8 +169,6 @@
     <string name="create">Skapa</string>
     <string name="saved">Sparad!</string>
     <string name="make_another">Gör en annan</string>
-    <string name="other">Övrig</string>
-    <string name="text_share_image">Dela bild</string>
     <string name="create_effect_success">Skapa effektframgång</string>
     <string name="error_file_exists">Filen med detta namn finns redan!</string>
 

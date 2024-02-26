@@ -1,79 +1,76 @@
 package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language
 
-import android.app.Activity
-import android.view.View
-import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
-import androidx.databinding.ViewDataBinding
+import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.fozechmoblive.fluidwallpaper.livefluid.R
+import com.fozechmoblive.fluidwallpaper.livefluid.callback.CallBack
 
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemLanguageBinding
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseRecyclerView
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.hide
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setBackGroundDrawable
 
-class LanguageAdapter(
-    var activity: Activity, val onClickItemLanguage: (LanguageModel) -> Unit
-) : BaseRecyclerView<LanguageModel>() {
+class LanguageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private lateinit var data: MutableList<LanguageActivity.Language>
 
-    override fun getItemLayout() = R.layout.item_language
+    var currentPos: Int = 0
 
-    override fun submitData(newData: List<LanguageModel>) {
-        list.clear()
-        list.addAll(newData)
-        notifyDataSetChanged()
+    private var callBackLanguage: CallBack.CallBackLanguage? = null
+
+    fun callBackLanguage(callBackLanguage: CallBack.CallBackLanguage) {
+        this.callBackLanguage = callBackLanguage
     }
 
-    override fun setData(binding: ViewDataBinding, item: LanguageModel, layoutPosition: Int) {
-        if (binding is ItemLanguageBinding) {
-            context?.let { ctx ->
-                binding.imgLanguage.setImageDrawable(item.image?.let { ctx.getDrawable(it) })
-                binding.imgLanguage.borderColor = ContextCompat.getColor(ctx, R.color.color_9E9E9E)
-                binding.tvTitleLanguage.text = item.languageName
-                binding.checkboxLanguage.isChecked = item.isCheck
-
-                if (item.isCheck){
-                    binding.container.setBackgroundResource(R.drawable.border_item_language_select)
-                    binding.tvTitleLanguage.setTextColor(activity.resources.getColor(R.color.white))
-                }else{
-                    binding.container.setBackgroundResource(R.drawable.border_item_language_un_select)
-                    binding.tvTitleLanguage.setTextColor(activity.resources.getColor(R.color.black))
-                }
-            }
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding =
+            ItemLanguageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun addAll(mData: MutableList<LanguageActivity.Language>, currentPos: Int) {
+        this.data = mData
+        this.currentPos = currentPos
+    }
+
+    fun checkSelectView(pos: Int) {
+        val oldPos = currentPos
+        currentPos = pos
+        notifyItemChanged(pos)
+        notifyItemChanged(oldPos)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as ViewHolder).bindData(position)
+    }
 
     override fun getItemCount(): Int {
-        return list.size
+        return data.size
     }
 
-    override fun onResizeViews(binding: ViewDataBinding) {
-        super.onResizeViews(binding)
-        if (binding is ItemLanguageBinding) {
-            val lp = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            lp.setMargins(5, 10, 5, 10)
-            binding.root.layoutParams = lp
-        }
-    }
+    inner class ViewHolder(private val binding: ItemLanguageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindData(position: Int) {
+            binding.txtLanguageTitle.text = data[position].name
+            binding.imLangLogo.setBackgroundResource(data[position].img)
 
-    override fun onClickViews(binding: ViewDataBinding, obj: LanguageModel, layoutPosition: Int) {
-        super.onClickViews(binding, obj, layoutPosition)
-        if (binding is ItemLanguageBinding) {
-            binding.root.setOnClickListener { v: View? ->
-                onClickItemLanguage(obj)
+            var language = ""
+            if (currentPos == position) {
+                binding.ivCheck.setBackGroundDrawable(R.drawable.ic_check_language_enable)
+            } else {
+                binding.ivCheck.setBackGroundDrawable(R.drawable.ic_check_language_disable)
             }
-            binding.checkboxLanguage.setOnClickListener { v: View? ->
-                onClickItemLanguage(obj)
+
+            if (position == data.size - 1) {
+                binding.divider.hide()
+            }
+
+            binding.root.setOnClickListener {
+                language = data[position].name
+                callBackLanguage?.callBackLanguage(language, position)
             }
         }
     }
-
-    fun setSelectLanguage(model: LanguageModel) {
-        for (data in list) {
-            data.isCheck = data.languageName == model.languageName
-        }
-        notifyDataSetChanged()
-    }
-
 }

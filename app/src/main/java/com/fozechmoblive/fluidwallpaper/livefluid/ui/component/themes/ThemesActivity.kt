@@ -1,10 +1,6 @@
 package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes
 
 import androidx.recyclerview.widget.GridLayoutManager
-import com.ads.control.ads.ITGAd
-import com.ads.control.ads.ITGAdCallback
-import com.ads.control.ads.wrapper.ApAdError
-import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityThemesBinding
@@ -46,7 +42,6 @@ class ThemesActivity : BaseActivity<ActivityThemesBinding>() {
     }
 
     override fun initViews() {
-        prefs[AppConstants.KEY_SELECT_LANGUAGE] = true
         prefs[AppConstants.KEY_FIRST_ON_BOARDING] = true
 
         loadDataPreset()

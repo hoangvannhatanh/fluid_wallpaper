@@ -4,9 +4,7 @@
     <string name="get_started">البدء</string>
     <string name="next">التالي</string>
     <string name="txt_continue">يكمل</string>
-    <string name="txt_request_record_permission">\"التسجيل هو الإذن المطلوب لكي يعمل التطبيق\"</string>
     <string name="set_wallpaper">تعيين خلفية</string>
-    <string name="txt_liquid_animated_wallpapers">خلفيات الرسوم المتحركة السائلة</string>
     <string name="text_action">فعل</string>
     <string name="text_stream">تدفق</string>
     <string name="inverse_stream">تيار معكوس</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">شيء 4</string>
     <string name="text_scale">حجم</string>
     <string name="txt_settings">إعدادات</string>
-    <string name="txt_more_app">المزيد من التطبيق</string>
     <string name="txt_share_with_friends">شارك مع الاصدقاء</string>
     <string name="txt_version">الإصدار %1$s</string>
     <string name="text_title_onboarding_1">تخفيف التوتر والاسترخاء</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">يتخطى</string>
     <string name="set_wallpaper_success">تعيين نجاح ورق الحائط</string>
 
-    <string name="Send">يرسل</string>
-    <string name="Oh_no">أوه لا!</string>
-    <string name="Please_leave_us_some_feedback">يرجى ترك لنا بعض ردود الفعل</string>
-    <string name="We_like_you_too">نحن نحبك أيضًا!</string>
-    <string name="Thank_for_your_feedback">شكرا لملاحظاتك.</string>
-    <string name="We_are_working">نحن نعمل بجد من أجل تجربة مستخدم أفضل.</string>
-    <string name="We_greatly_appreciate">سنكون ممتنين للغاية إذا كان بإمكانك تقييمنا.</string>
-    <string name="Send_Email">ارسل بريد الكتروني</string>
     <string name="please_feedback">الرجاء تقديم تعليقات!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">نحن نعمل بجد من أجل تجربة مستخدم أفضل.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">سنكون ممتنين للغاية إذا كان بإمكانك تقييمنا.</string>
-    <string name="The_best_we_can_get">أفضل ما يمكن أن نحصل عليه :)</string>
-    <string name="Writing_something">كتابة شيء…</string>
-    <string name="may_be_later">ربما في وقت لاحق</string>
     <string name="rate">معدل</string>
-    <string name="There_is_no">لا يوجد</string>
-    <string name="text_rate_us">قيمنا</string>
-    <string name="text_cancel">يلغي</string>
-    <string name="txt_all">الجميع</string>
     <string name="txt_new">جديد</string>
     <string name="txt_trending">الشائع</string>
-    <string name="txt_feature">ميزة</string>
     <string name="txt_apply">يتقدم</string>
-    <string name="txt_customize">يعدل أو يكيف</string>
 
-    <string name="Please_feedback">الرجاء تقديم تعليقات</string>
     <string name="not_supported">ليست مدعمة علي هذا الجهاز</string>
-    <string name="txt_vip">كبار الشخصيات</string>
     <string name="preview">معاينة</string>
     <string name="txt_loading">تحميل...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">من فضلك انتظر حتى نقوم بمعالجة الرسوم المتحركة! شكرًا لك</string>
     <string name="text_thank_you">شكرًا لك على استخدام خلفياتنا السحرية</string>
     <string name="text_rate_content">إذا أعجبك هذا التطبيق، يرجى تقييم تطبيقنا بـ 5 نجوم في المتجر!</string>
-    <string name="our_best_we_can_get">أفضل ما يمكننا الحصول عليه</string>
     <string name="text_rate_now">معدل</string>
     <string name="thank_for_your_feedback">شكرا لملاحظاتك.</string>
     <string name="txt_hot">حار</string>
-    <string name="my_design">تصميمي</string>
     <string name="txt_title_empty">لا شيء هنا</string>
     <string name="txt_content_empty">انقر \"هنا\" لعمل تأثير جديد</string>
     <string name="pick_effect">اختر التأثير</string>
@@ -195,8 +169,6 @@
     <string name="create">يخلق</string>
     <string name="saved">أنقذ!</string>
     <string name="make_another">أصنع شيء أخر</string>
-    <string name="other">آخر</string>
-    <string name="text_share_image">مشاركة الصورة</string>
     <string name="create_effect_success">إنشاء تأثير ناجح</string>
     <string name="error_file_exists">الملف بهذا الاسم موجود بالفعل!</string>
 

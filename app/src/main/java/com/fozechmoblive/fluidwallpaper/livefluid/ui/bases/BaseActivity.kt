@@ -14,34 +14,28 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
-import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.ITGTrackingHelper
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
+import com.fozechmoblive.fluidwallpaper.livefluid.utils.LocaleHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.Locale
-
-private const val TAG = "BaseActivity"
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     lateinit var mBinding: VB
@@ -53,8 +47,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         prefs = EasyPreferences.defaultPrefs(this)
-
-        setLocal()
 
         requestWindow()
 
@@ -81,24 +73,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     open fun onClickViews() {}
 
     open fun observerData() {}
-
-    fun setLocal() {
-        val language: String? = prefs.getString(AppConstants.KEY_LANGUAGE, "")
-        if (language == "") {
-            val config = Configuration()
-            val locale = Locale.getDefault()
-            Locale.setDefault(locale)
-            config.locale = locale
-            resources.updateConfiguration(config, resources.displayMetrics)
-        } else {
-            if (language.equals("", ignoreCase = true)) return
-            val locale = Locale(language)
-            Locale.setDefault(locale)
-            val config = Configuration()
-            config.locale = locale
-            resources.updateConfiguration(config, resources.displayMetrics)
-        }
-    }
 
     class CreatingDialog constructor(context: Context) : Dialog(context, R.style.ThemeDialog) {
         init {
@@ -143,7 +117,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     fun showSuccessDialog() {
         if (!mSuccessDialog.isShowing && !isFinishing) {
-            Timber.d("showLoading mCreatingDialog")
             mSuccessDialog.show()
 
             lifecycleScope.launch(Dispatchers.IO) {
@@ -168,7 +141,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     fun showCreateLoading() {
         if (!mCreatingDialog.isShowing && !isFinishing) {
-            Timber.d("showLoading mCreatingDialog")
             mCreatingDialog.show()
         }
     }
@@ -176,7 +148,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     fun hideCreateLoading() {
         if (mCreatingDialog.isShowing && !isFinishing) {
-            Timber.d("hideProgress mCreatingDialog")
             mCreatingDialog.dismiss()
         }
     }
@@ -188,7 +159,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     private val mSuccessDialog: Dialog by lazy {
         CreatingSuccessDialog(this)
     }
-
 
     fun shareApp() {
         try {
@@ -205,6 +175,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
             e.printStackTrace()
         }
     }
+
 
     open fun initWindow() {
         window.apply {
@@ -244,17 +215,18 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     private fun fullScreenImmersive(view: View) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             val uiOptions =
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
             view.systemUiVisibility = uiOptions
         }
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.setLocale(base))
+    }
+
     override fun onResume() {
         super.onResume()
-
         val windowInsetsControllerOne: WindowInsetsControllerCompat? =
             if (Build.VERSION.SDK_INT >= 30) {
                 ViewCompat.getWindowInsetsController(window.decorView)
@@ -264,8 +236,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         if (windowInsetsControllerOne == null) {
             return
         }
-        windowInsetsControllerOne.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        windowInsetsControllerOne.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         windowInsetsControllerOne.hide(WindowInsetsCompat.Type.navigationBars())
         windowInsetsControllerOne.hide(WindowInsetsCompat.Type.systemGestures())
         window.decorView.setOnSystemUiVisibilityChangeListener { i: Int ->
@@ -281,7 +252,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
                         windowInsetsControllerTwo.hide(WindowInsetsCompat.Type.navigationBars())
                         windowInsetsControllerTwo.hide(WindowInsetsCompat.Type.systemGestures())
                     }
-                }, 1500)
+                }, 2000)
             }
         }
     }

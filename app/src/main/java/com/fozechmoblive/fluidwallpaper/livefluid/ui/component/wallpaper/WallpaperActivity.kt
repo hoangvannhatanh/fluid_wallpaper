@@ -18,9 +18,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.work.impl.Scheduler
-import com.ads.control.ads.ITGAd
-import com.ads.control.ads.ITGAdCallback
-import com.ads.control.ads.wrapper.ApAdError
 import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants

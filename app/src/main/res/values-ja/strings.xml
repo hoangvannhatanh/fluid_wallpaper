@@ -4,9 +4,7 @@
     <string name="get_started">始めましょう</string>
     <string name="next">次</string>
     <string name="txt_continue">続く</string>
-    <string name="txt_request_record_permission">「録音はアプリが動作するために必要な許可です」</string>
     <string name="set_wallpaper">壁紙を設定する</string>
-    <string name="txt_liquid_animated_wallpapers">液体アニメーション壁紙</string>
     <string name="text_action">アクション</string>
     <string name="text_stream">ストリーム</string>
     <string name="inverse_stream">逆ストリーム</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">何か4</string>
     <string name="text_scale">規模</string>
     <string name="txt_settings">設定</string>
-    <string name="txt_more_app">より多くのアプリ</string>
     <string name="txt_share_with_friends">友人たちと分ける</string>
     <string name="txt_version">バージョン %1$s</string>
     <string name="text_title_onboarding_1">ストレスを軽減してリラックス</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">スキップ</string>
     <string name="set_wallpaper_success">壁紙の設定が成功しました</string>
 
-    <string name="Send">送信</string>
-    <string name="Oh_no">なんてこった！</string>
-    <string name="Please_leave_us_some_feedback">フィードバックを残してください</string>
-    <string name="We_like_you_too">私たちもあなたのことが好きです！</string>
-    <string name="Thank_for_your_feedback">フィードバックをお寄せいただきありがとうございます。</string>
-    <string name="We_are_working">私たちはより良いユーザーエクスペリエンスを目指して取り組んでいます。</string>
-    <string name="We_greatly_appreciate">評価していただければ幸いです。</string>
-    <string name="Send_Email">メールを送る</string>
     <string name="please_feedback">フィードバックをお願いします！</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">私たちはより良いユーザーエクスペリエンスを目指して取り組んでいます。</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">評価していただければ幸いです。</string>
-    <string name="The_best_we_can_get">私たちが得ることができる最高のもの:)</string>
-    <string name="Writing_something">何かを書いています…</string>
-    <string name="may_be_later">たぶん後で</string>
     <string name="rate">レート</string>
-    <string name="There_is_no">ありません</string>
-    <string name="text_rate_us">私たちを評価してください</string>
-    <string name="text_cancel">キャンセル</string>
-    <string name="txt_all">全て</string>
     <string name="txt_new">新しい</string>
     <string name="txt_trending">トレンド</string>
-    <string name="txt_feature">特徴</string>
     <string name="txt_apply">適用する</string>
-    <string name="txt_customize">カスタマイズ</string>
 
-    <string name="Please_feedback">フィードバックしてください</string>
     <string name="not_supported">このデバイスではサポートされていません</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">プレビュー</string>
     <string name="txt_loading">読み込み中...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">アニメーションを処理するまでお待ちください。ありがとう</string>
     <string name="text_thank_you">魔法の壁紙をご利用いただきありがとうございます</string>
     <string name="text_rate_content">このアプリが気に入ったら、ストアでアプリに 5 つ星を評価してください。</string>
-    <string name="our_best_we_can_get">私たちが得ることができる最善のこと</string>
     <string name="text_rate_now">レート</string>
     <string name="thank_for_your_feedback">フィードバックをお寄せいただきありがとうございます。</string>
     <string name="txt_hot">熱い</string>
-    <string name="my_design">私のデザイン</string>
     <string name="txt_title_empty">ここには何もない</string>
     <string name="txt_content_empty">新しいエフェクトを作成するには「ここ」をクリックしてください</string>
     <string name="pick_effect">ピックエフェクト</string>
@@ -195,8 +169,6 @@
     <string name="create">作成する</string>
     <string name="saved">保存しました！</string>
     <string name="make_another">別のものを作る</string>
-    <string name="other">他の</string>
-    <string name="text_share_image">画像を共有する</string>
     <string name="create_effect_success">エフェクトの作成が成功しました</string>
     <string name="error_file_exists">この名前のファイルはすでに存在します。</string>
 

@@ -4,9 +4,7 @@
     <string name="get_started">Начать</string>
     <string name="next">Следующий</string>
     <string name="txt_continue">Продолжать</string>
-    <string name="txt_request_record_permission">«Запись — это разрешение, необходимое для работы приложения»</string>
     <string name="set_wallpaper">Установка обоев</string>
-    <string name="txt_liquid_animated_wallpapers">Жидкие анимированные обои</string>
     <string name="text_action">Действие</string>
     <string name="text_stream">Транслировать</string>
     <string name="inverse_stream">Обратный поток</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Что-то 4</string>
     <string name="text_scale">Шкала</string>
     <string name="txt_settings">Настройки</string>
-    <string name="txt_more_app">Больше приложений</string>
     <string name="txt_share_with_friends">Поделиться с друзьями</string>
     <string name="txt_version">Версия %1$s</string>
     <string name="text_title_onboarding_1">Снимите стресс и расслабьтесь</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Пропускать</string>
     <string name="set_wallpaper_success">Установить успех обоев</string>
 
-    <string name="Send">Отправлять</string>
-    <string name="Oh_no">О, нет!</string>
-    <string name="Please_leave_us_some_feedback">Пожалуйста, оставьте нам отзыв</string>
-    <string name="We_like_you_too">Ты нам тоже нравишься!</string>
-    <string name="Thank_for_your_feedback">Благодарим за ваш отзыв.</string>
-    <string name="We_are_working">Мы прилагаем все усилия для улучшения пользовательского опыта.</string>
-    <string name="We_greatly_appreciate">Мы будем очень признательны, если вы оцените нас.</string>
-    <string name="Send_Email">Отправить электронное письмо</string>
     <string name="please_feedback">Пожалуйста, оставьте отзыв!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Мы прилагаем все усилия для улучшения пользовательского опыта.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Мы будем очень признательны, если вы оцените нас.</string>
-    <string name="The_best_we_can_get">Лучшее, что мы можем получить :)</string>
-    <string name="Writing_something">Пишу что-нибудь…</string>
-    <string name="may_be_later">Может быть позже</string>
     <string name="rate">Ставка</string>
-    <string name="There_is_no">Здесь нет</string>
-    <string name="text_rate_us">Оцените нас</string>
-    <string name="text_cancel">Отмена</string>
-    <string name="txt_all">Все</string>
     <string name="txt_new">Новый</string>
     <string name="txt_trending">Тенденции</string>
-    <string name="txt_feature">Особенность</string>
     <string name="txt_apply">Применять</string>
-    <string name="txt_customize">Настроить</string>
 
-    <string name="Please_feedback">Пожалуйста, оставьте отзыв</string>
     <string name="not_supported">Не поддерживается на этом устройстве</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Предварительный просмотр</string>
     <string name="txt_loading">Загрузка...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Пожалуйста, подождите, пока мы обработаем анимацию! Спасибо</string>
     <string name="text_thank_you">Благодарим вас за использование наших Волшебных обоев</string>
     <string name="text_rate_content">Если вам нравится это приложение, пожалуйста, оцените наше приложение на 5 звезд в магазине!</string>
-    <string name="our_best_we_can_get">Наше лучшее, что мы можем получить</string>
     <string name="text_rate_now">Ставка</string>
     <string name="thank_for_your_feedback">Благодарим за ваш отзыв.</string>
     <string name="txt_hot">Горячий</string>
-    <string name="my_design">Мой дизайн</string>
     <string name="txt_title_empty">Здесь ничего</string>
     <string name="txt_content_empty">Нажмите «здесь», чтобы создать новый эффект</string>
     <string name="pick_effect">Выберите эффект</string>
@@ -195,8 +169,6 @@
     <string name="create">Создавать</string>
     <string name="saved">Спасено!</string>
     <string name="make_another">Сделайте еще один</string>
-    <string name="other">Другой</string>
-    <string name="text_share_image">Поделиться изображением</string>
     <string name="create_effect_success">Создать эффект успеха</string>
     <string name="error_file_exists">Файл с таким именем уже существует!</string>
 

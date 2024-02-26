@@ -1,125 +1,168 @@
 package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language
 
-import android.content.res.Configuration
+import android.content.Intent
+import android.content.res.Resources
+import android.os.Build
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
-import com.fozechmoblive.fluidwallpaper.livefluid.app.GlobalApp
+import com.fozechmoblive.fluidwallpaper.livefluid.callback.CallBack
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityLanguageBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.getPref
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.onClick
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.showToastById
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.get
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.set
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.onboarding.OnBoardingActivity
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Locale
 
 @AndroidEntryPoint
 class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
-    private var adapter: LanguageAdapter? = null
-    private var model: LanguageModel? = null
+    private var listLanguage: MutableList<Language> = ArrayList()
+    private lateinit var stringLanguage: String
+    private val languagesAdapter by lazy { LanguageAdapter() }
+    private var languageDefaultDevice = ""
 
     override fun getLayoutActivity() = R.layout.activity_language
 
     override fun initViews() {
         super.initViews()
-        adapter = LanguageAdapter(this, onClickItemLanguage = {
-            adapter?.setSelectLanguage(it)
-            model = it
-        })
-        mBinding.rclLanguage.adapter = adapter
+        listLanguage.apply {
+            add(Language(R.drawable.iv_english, getString(R.string.english), "en"))
+            add(Language(R.drawable.iv_hindi, getString(R.string.hindi), "hi"))
+            add(Language(R.drawable.iv_spanish, getString(R.string.spanish), "es"))
+            add(Language(R.drawable.iv_french, getString(R.string.french), "fr"))
+            add(Language(R.drawable.iv_portuguese, getString(R.string.portuguese), "pt"))
+        }
 
-        setLanguageDefault()
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                languageDefaultDevice =
+                    Resources.getSystem().configuration.locales.get(0).toString()
+                if (languageDefaultDevice.lowercase().contains("in_")) {
+                    languageDefaultDevice = getString(R.string.indonesian)
+                } else if (languageDefaultDevice.lowercase().contains("en_")) {
+                    languageDefaultDevice = getString(R.string.english)
+                } else if (languageDefaultDevice.lowercase().contains("es_")) {
+                    languageDefaultDevice = getString(R.string.spanish)
+                } else if (languageDefaultDevice.lowercase().contains("fr_")) {
+                    languageDefaultDevice = getString(R.string.french)
+                } else if (languageDefaultDevice.lowercase().contains("pt_")) {
+                    languageDefaultDevice = getString(R.string.portuguese)
+                } else if (languageDefaultDevice.lowercase().contains("hi_")) {
+                    languageDefaultDevice = getString(R.string.hindi)
+                } else if (languageDefaultDevice.lowercase().contains("de_")) {
+                    languageDefaultDevice = getString(R.string.german)
+                } else {
+                    languageDefaultDevice = getString(R.string.english)
+                    setPref(
+                        this@LanguageActivity,
+                        AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
+                        true
+                    )
+                }
+            } else {
+                languageDefaultDevice = getString(R.string.english)
+                setPref(
+                    this@LanguageActivity,
+                    AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
+                    true
+                )
+            }
+        } catch (_: Exception) {
+            languageDefaultDevice = getString(R.string.english)
+            setPref(
+                this@LanguageActivity,
+                AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
+                true
+            )
+        }
+
+        //set item first for name language app
+        for (i in listLanguage.indices) {
+            if (listLanguage[i].name == languageDefaultDevice) {
+                listLanguage.add(0, listLanguage[i])
+                listLanguage.removeAt(i + 1)
+            }
+        }
+
+        stringLanguage = getPref(
+            this@LanguageActivity,
+            AppConstants.PREFERENCE_SELECTED_LANGUAGE,
+            getString(R.string.english)
+        ).toString()
+
+        if (stringLanguage == languageDefaultDevice) {
+            setPref(
+                this@LanguageActivity,
+                AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
+                false
+            )
+        } else {
+            for (i in listLanguage.indices) {
+                if (listLanguage[i].name == stringLanguage) {
+                    listLanguage.add(1, listLanguage[i])
+                    listLanguage.removeAt(i + 1)
+                }
+            }
+        }
+
+        initRecyclerview()
     }
 
     override fun onClickViews() {
         super.onClickViews()
-        mBinding.ivDone.setOnClickListener {
-            if (model?.languageName != "") {
+        mBinding.ivTick.onClick(1000) {
+            setPref(
+                this@LanguageActivity,
+                AppConstants.PREFERENCE_SELECTED_LANGUAGE,
+                stringLanguage
+            )
+            setPref(
+                this@LanguageActivity,
+                AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
+                true
+            )
 
-                prefs[AppConstants.KEY_LANGUAGE] = model?.isoLanguage
-                setLocale()
-                Routes.startOnBoardingActivity(this)
+            startActivity(
+                Intent(
+                    this@LanguageActivity,
+                    OnBoardingActivity::class.java
+                )
+            )
+            finish()
+        }
 
-                finishAffinity()
-            } else {
-                showToastById(R.string.please_select_language)
+        languagesAdapter.callBackLanguage(object : CallBack.CallBackLanguage {
+            override fun callBackLanguage(language: String, position: Int) {
+                stringLanguage = language
+                languagesAdapter.checkSelectView(position)
             }
+        })
+    }
+
+    private fun initRecyclerview() {
+        try {
+            mBinding.recyclerView.apply {
+                layoutManager = LinearLayoutManager(
+                    this@LanguageActivity,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+                if (!getPref(
+                        this@LanguageActivity,
+                        AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
+                        false
+                    )
+                ) {
+                    languagesAdapter.addAll(listLanguage, 0)
+                } else {
+                    languagesAdapter.addAll(listLanguage, 1)
+                }
+                adapter = languagesAdapter
+            }
+        } catch (_: Exception) {
         }
     }
 
-
-    private fun setLocale() {
-        val language = prefs.getString(AppConstants.KEY_LANGUAGE, "en")
-
-        if (language == "") {
-            val config = Configuration()
-            val locale = Locale.getDefault()
-            Locale.setDefault(locale)
-            config.locale = locale
-            resources.updateConfiguration(config, resources.displayMetrics)
-        } else {
-            if (language.equals("", ignoreCase = true)) return
-            val locale = Locale(language)
-            Locale.setDefault(locale)
-            val config = Configuration()
-            config.locale = locale
-            resources.updateConfiguration(config, resources.displayMetrics)
-        }
-
-    }
-
-    private fun setLanguageDefault() {
-        val listLanguages: ArrayList<LanguageModel> = ArrayList()
-
-        val key: String? = prefs[AppConstants.KEY_LANGUAGE, "en"]
-
-        listLanguages.add(LanguageModel("English", "en", false, R.drawable.ic_english))
-        listLanguages.add(LanguageModel("Hindi", "hi", false, R.drawable.ic_hindi))
-        listLanguages.add(LanguageModel("Spanish", "es", false, R.drawable.ic_spanish))
-        listLanguages.add(LanguageModel("French", "fr", false, R.drawable.ic_france))
-        listLanguages.add(LanguageModel("Portuguese", "pt", false, R.drawable.ic_portugal))
-        listLanguages.add(LanguageModel("Korean", "ko", false, R.drawable.ic_korean))
-
-        listLanguages.add(LanguageModel("Arabic", "ar", false, R.drawable.ic_arabic))
-        listLanguages.add(LanguageModel("Croatian", "hr", false, R.drawable.ic_croatia))
-        listLanguages.add(LanguageModel("Czech", "cs", false, R.drawable.ic_czech_republic))
-        listLanguages.add(LanguageModel("Dutch", "nl", false, R.drawable.ic_dutch))
-        listLanguages.add(LanguageModel("Filipino", "fil", false, R.drawable.ic_filipino))
-        listLanguages.add(LanguageModel("German", "de", false, R.drawable.ic_german))
-        listLanguages.add(LanguageModel("Indonesian", "in", false, R.drawable.ic_indonesian))
-        listLanguages.add(LanguageModel("Italian", "it", false, R.drawable.ic_italian))
-        listLanguages.add(LanguageModel("Japanese", "ja", false, R.drawable.ic_japanese))
-        listLanguages.add(LanguageModel("Malay", "ms", false, R.drawable.ic_malay))
-        listLanguages.add(LanguageModel("Polish", "pl", false, R.drawable.ic_polish))
-        listLanguages.add(LanguageModel("Russian", "ru", false, R.drawable.ic_russian))
-        listLanguages.add(LanguageModel("Serbian", "sr", false, R.drawable.ic_serbian))
-        listLanguages.add(LanguageModel("Swedish", "sv", false, R.drawable.ic_swedish))
-        listLanguages.add(LanguageModel("Turkish", "tr", false, R.drawable.ic_turkish))
-        listLanguages.add(LanguageModel("Vietnamese", "vi", false, R.drawable.ic_vietnamese))
-        listLanguages.add(LanguageModel("China", "zh", false, R.drawable.ic_china))
-
-
-        if (GlobalApp.instance.getLanguage() != null && !listLanguages.contains(GlobalApp.instance.getLanguage())) {
-            listLanguages.remove(listLanguages[listLanguages.size - 1])
-            val modelLanguage = GlobalApp.instance.getLanguage()
-            if (modelLanguage != null) {
-                listLanguages.add(modelLanguage)
-            }
-
-        }
-
-        for (i in listLanguages.indices) {
-            if (key == listLanguages[i].isoLanguage) {
-                val data = listLanguages[i]
-                data.isCheck = true
-                listLanguages.remove(listLanguages[i])
-                listLanguages.add(data)
-                model = data
-                break
-            }
-        }
-
-        adapter?.submitData(listLanguages)
-        mBinding.rclLanguage.smoothScrollToPosition(listLanguages.size - 1)
-    }
+    data class Language(val img: Int, val name: String, val key: String)
 }

@@ -4,9 +4,7 @@
     <string name="get_started">Mulakan</string>
     <string name="next">Seterusnya</string>
     <string name="txt_continue">teruskan</string>
-    <string name="txt_request_record_permission">\" Rakaman ialah kebenaran yang diperlukan untuk apl berfungsi\"</string>
     <string name="set_wallpaper">Tetapkan Kertas Dinding</string>
-    <string name="txt_liquid_animated_wallpapers">Kertas dinding animasi cecair</string>
     <string name="text_action">Tindakan</string>
     <string name="text_stream">Strim</string>
     <string name="inverse_stream">Aliran songsang</string>
@@ -137,7 +135,6 @@
     <string name="text_something_4">Sesuatu 4</string>
     <string name="text_scale">Skala</string>
     <string name="txt_settings">tetapan</string>
-    <string name="txt_more_app">Lagi apl</string>
     <string name="txt_share_with_friends">Kongsi dengan kawan-kawan</string>
     <string name="txt_version">Versi %1$s</string>
     <string name="text_title_onboarding_1">Melegakan Tekanan dan Bersantai</string>
@@ -149,44 +146,21 @@
     <string name="text_skip">Langkau</string>
     <string name="set_wallpaper_success">Tetapkan Kejayaan Kertas Dinding</string>
 
-    <string name="Send">Hantar</string>
-    <string name="Oh_no">Oh tidak!</string>
-    <string name="Please_leave_us_some_feedback">Sila tinggalkan kami sedikit maklum balas</string>
-    <string name="We_like_you_too">Kami juga menyukai anda!</string>
-    <string name="Thank_for_your_feedback">Terima kasih atas maklum balas anda.</string>
-    <string name="We_are_working">Kami bekerja keras untuk pengalaman pengguna yang lebih baik.</string>
-    <string name="We_greatly_appreciate">Kami amat menghargai jika anda boleh menilai kami.</string>
-    <string name="Send_Email">Menghantar e-mel</string>
     <string name="please_feedback">Sila maklum balas!</string>
-    <string name="we_are_working_hard_for_a_better_user_experience">Kami bekerja keras untuk pengalaman pengguna yang lebih baik.</string>
-    <string name="we_d_greatly_appreciate_if_you_can_rate_us">Kami amat menghargai jika anda boleh menilai kami.</string>
-    <string name="The_best_we_can_get">Yang terbaik yang kita boleh dapat :)</string>
-    <string name="Writing_something">Menulis sesuatu…</string>
-    <string name="may_be_later">Mungkin kemudian</string>
     <string name="rate">Kadar</string>
-    <string name="There_is_no">Tidak ada</string>
-    <string name="text_rate_us">Nilaikan kami</string>
-    <string name="text_cancel">Batal</string>
-    <string name="txt_all">Semua</string>
     <string name="txt_new">Baru</string>
     <string name="txt_trending">Trending</string>
-    <string name="txt_feature">Ciri</string>
     <string name="txt_apply">Mohon</string>
-    <string name="txt_customize">Sesuaikan</string>
 
-    <string name="Please_feedback">Sila maklum balas</string>
     <string name="not_supported">Tidak disokong pada peranti ini</string>
-    <string name="txt_vip">VIP</string>
     <string name="preview">Pratonton</string>
     <string name="txt_loading">Memuatkan...</string>
     <string name="please_wait_for_us_to_process_the_animation_thank_you">Sila tunggu kami memproses animasi! Terima kasih</string>
     <string name="text_thank_you">Terima kasih kerana menggunakan Kertas Dinding Ajaib kami</string>
     <string name="text_rate_content">Jika anda menyukai aplikasi ini, sila nilaikan apl kami 5 bintang di kedai!</string>
-    <string name="our_best_we_can_get">Yang terbaik kita boleh dapat</string>
     <string name="text_rate_now">Kadar</string>
     <string name="thank_for_your_feedback">Terima kasih atas maklum balas anda.</string>
     <string name="txt_hot">panas</string>
-    <string name="my_design">Rekaan saya</string>
     <string name="txt_title_empty">Tiada apa di sini</string>
     <string name="txt_content_empty">Klik \"di sini\" untuk membuat Kesan baharu</string>
     <string name="pick_effect">Pilih Kesan</string>
@@ -195,8 +169,6 @@
     <string name="create">Buat</string>
     <string name="saved">Disimpan!</string>
     <string name="make_another">Buat yang lain</string>
-    <string name="other">Lain-lain</string>
-    <string name="text_share_image">Kongsi imej</string>
     <string name="create_effect_success">Cipta Kejayaan Kesan</string>
     <string name="error_file_exists">Fail dengan nama ini sudah wujud!</string>
 
