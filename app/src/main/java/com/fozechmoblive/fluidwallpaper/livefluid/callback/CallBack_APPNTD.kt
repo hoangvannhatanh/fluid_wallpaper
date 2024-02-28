@@ -4,4 +4,7 @@ class CallBack {
     interface CallBackLanguage {
         fun callBackLanguage(language: String, position: Int)
     }
+    interface CallBackLanguageTheme {
+        fun callBackLanguageTheme(language: String, position: Int)
+    }
 }

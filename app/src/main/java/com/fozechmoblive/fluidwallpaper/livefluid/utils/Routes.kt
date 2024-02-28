@@ -19,19 +19,6 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom.
 
 
 object Routes {
-    fun startCustomThemesActivity(fromActivity: Activity) =
-        Intent(fromActivity, CustomThemesActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
-            fromActivity.startActivity(this)
-        }
-    fun startThemesActivity(fromActivity: Activity) =
-        Intent(fromActivity, ThemesActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
-            fromActivity.startActivity(this)
-        }
-
     fun startMainActivity(fromActivity: Activity) =
         Intent(fromActivity, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -44,12 +31,6 @@ object Routes {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             bundle?.let { putExtras(it) }
-            fromActivity.startActivity(this)
-        }
-
-    fun startSettingActivity(fromActivity: Activity) =
-        Intent(fromActivity, SettingActivity::class.java).apply {
-            putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             fromActivity.startActivity(this)
         }
 

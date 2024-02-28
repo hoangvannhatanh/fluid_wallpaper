@@ -191,5 +191,8 @@
     <string name="title_one_introduce">Dive into a World of Dynamic Creativity</string>
     <string name="title_two_introduce">Unleash Your Personalization Power</string>
     <string name="title_three_introduce">Easy to Use, Hard to Resist</string>
+    <string name="see_all">See all</string>
+    <string name="new_update">New Update</string>
+    <string name="feature">Feature</string>
 <!--    end_region-->
 </resources>

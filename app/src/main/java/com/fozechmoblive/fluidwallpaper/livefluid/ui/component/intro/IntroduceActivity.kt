@@ -12,6 +12,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.intro.adapter.IntroAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.main.MainActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.ThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.DepthPageTransformer
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 
@@ -61,7 +62,7 @@ class IntroduceActivity : BaseActivity<ActivityIntroduceBinding>() {
                     startActivity(
                         Intent(
                             this@IntroduceActivity,
-                            MainActivity::class.java
+                            ThemesActivity::class.java
                         )
                     )
                     finish()
@@ -69,7 +70,7 @@ class IntroduceActivity : BaseActivity<ActivityIntroduceBinding>() {
                     startActivity(
                         Intent(
                             this@IntroduceActivity,
-                            MainActivity::class.java
+                            ThemesActivity::class.java
                         )
                     )
                     setPref(this@IntroduceActivity, AppConstants.IS_FIRST_TIME_INTRO, true)

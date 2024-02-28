@@ -13,7 +13,6 @@
     <color name="colorDisable">#bcbcbc</color>
     <color name="color_99343434">#99343434</color>
 
-    <color name="transparent">#00000000</color>
     <color name="color_051522">#051522</color>
     <color name="color_BF000000">#BF000000</color>
     <color name="color_596572">#596572</color>
@@ -32,6 +31,7 @@
     <color name="color_38BB6D">#38BB6D</color>
 
 <!--    region-->
+    <color name="transparent">#00000000</color>
     <color name="color_0E1822">#0E1822</color>
     <color name="color_3D3D3D">#3D3D3D</color>
     <color name="color_16232F">#16232F</color>
