@@ -20,7 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="@dimen/_12sdp" />
+            app:riv_corner_radius="@dimen/_8sdp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -25,9 +25,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
 import com.fozechmoblive.fluidwallpaper.livefluid.R
+import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.LocaleHelper
+import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -155,22 +157,6 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     private val mSuccessDialog: Dialog by lazy {
         CreatingSuccessDialog(this)
-    }
-
-    fun shareApp() {
-        try {
-            val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name))
-            }
-            var shareMessage = "Let me recommend you this application\nDownload now:\n\n"
-            shareMessage =
-                shareMessage + "https://play.google.com/store/apps/details?id=" + packageName
-            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
-            startActivity(Intent.createChooser(shareIntent, "choose one"))
-        } catch (e: java.lang.Exception) {
-            e.printStackTrace()
-        }
     }
 
 

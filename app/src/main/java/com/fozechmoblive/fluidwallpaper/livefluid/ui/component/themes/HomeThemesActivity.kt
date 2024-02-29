@@ -1,8 +1,18 @@
 package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes
 
+import android.app.Dialog
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,18 +22,30 @@ import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.callback.CallBack
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityThemesBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.databinding.DialogThanksYouBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.getPref
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.onClick
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.showActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language.LanguageSettingActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.policy.PolicyActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.see_all_theme.SeeAllThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeFeatureAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeNewUpdateAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeViewPagerAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.WallpaperAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.CommonData
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.set
+import com.fozechmoblive.fluidwallpaper.livefluid.utils.RatingDialog
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
+import com.google.android.play.core.review.ReviewInfo
+import com.google.android.play.core.review.ReviewManager
+import com.google.android.play.core.review.ReviewManagerFactory
+import com.google.android.play.core.tasks.Task
+import com.intuit.ssp.BuildConfig
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
 
@@ -31,6 +53,7 @@ import kotlin.math.abs
 @AndroidEntryPoint
 class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
     private var listPresetModelTotal = arrayListOf<PresetModel>()
+    private var listTrendingTheme = listOf<PresetModel>()
     private var listNewUpdateTheme = listOf<PresetModel>()
     private var listFeatureTheme = listOf<PresetModel>()
 
@@ -46,6 +69,7 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
         prefs[AppConstants.KEY_FIRST_ON_BOARDING] = true
         listPresetModelTotal.clear()
         listPresetModelTotal.addAll(CommonData.getListPreset())
+        listTrendingTheme = filterThemeWithTrending(CommonData.getListPreset())
         listNewUpdateTheme = filterThemeWithNewUpdate(CommonData.getListPreset())
         listFeatureTheme = filterThemeWithFeature(CommonData.getListPreset())
 
@@ -62,6 +86,11 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
             }
         })
         themeNewUpdateAdapter.callBackTheme(object : CallBack.CallBackTheme {
+            override fun callBackTheme(presetModel: PresetModel) {
+                moveToPresetActivity(presetModel)
+            }
+        })
+        themeFeatureAdapter.callBackTheme(object : CallBack.CallBackTheme {
             override fun callBackTheme(presetModel: PresetModel) {
                 moveToPresetActivity(presetModel)
             }
@@ -86,14 +115,47 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         }
 
-        binding.layoutContent.loLanguage.setOnClickListener {
+        binding.layoutContent.loLanguage.onClick(1000) {
             showActivity(this@HomeThemesActivity, LanguageSettingActivity::class.java)
             binding.drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
+        binding.layoutContent.loPolicy.onClick(1000) {
+            showActivity(this@HomeThemesActivity, PolicyActivity::class.java)
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
+        binding.layoutContent.loRate.onClick(1000) {
+            openRate()
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
+        binding.layoutContent.loShare.onClick(1000) {
+            shareApp()
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
+        binding.tvTrendingSeeAll.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(AppConstants.STYLE_THEME, "TRENDING")
+            showActivity(this@HomeThemesActivity, SeeAllThemeActivity::class.java, bundle)
+        }
+
+        binding.tvNewUpdateSeeAll.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(AppConstants.STYLE_THEME, "NEW_UPDATE")
+            showActivity(this@HomeThemesActivity, SeeAllThemeActivity::class.java, bundle)
+        }
+
+        binding.tvFeatureSeeAll.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString(AppConstants.STYLE_THEME, "FEATURE")
+            showActivity(this@HomeThemesActivity, SeeAllThemeActivity::class.java, bundle)
         }
     }
 
     private fun initViewPager() {
-        themeViewPagerAdapter.addAll(listPresetModelTotal)
+        themeViewPagerAdapter.addAll(listTrendingTheme)
         binding.viewPager2.apply {
             adapter = themeViewPagerAdapter
             clipToPadding = false
@@ -109,7 +171,7 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
             }
             setPageTransformer(compositePageTransformer)
         }
-        binding.viewPager2.currentItem = 5
+        binding.viewPager2.currentItem = 3
     }
 
     private fun setRecyclerViewNewUpdate() {
@@ -146,6 +208,10 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
         Routes.startPresetLiveActivity(this, presetModel)
     }
 
+    private fun filterThemeWithTrending(listTheme: List<PresetModel>): List<PresetModel> {
+        return listTheme.filter { it.typePresetModel == TypePresetModel.TRENDING }
+    }
+
     private fun filterThemeWithNewUpdate(listTheme: List<PresetModel>): List<PresetModel> {
         return listTheme.filter { it.typePresetModel == TypePresetModel.NEW }
     }
@@ -159,8 +225,92 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
         binding.drawerLayout.closeDrawer(GravityCompat.START)
     }
 
+    private fun openRate() {
+        val dialogRating = RatingDialog(this)
+        dialogRating.init(object : RatingDialog.OnPress {
+            override fun send() {
+                hideNavigation(dialogRating)
+                dialogRating.dismiss()
+                setPref(this@HomeThemesActivity, AppConstants.RATED, true)
+                binding.layoutContent.loRate.isVisible = !getPref(this@HomeThemesActivity, AppConstants.RATED, false)
+
+                showPopupThankYou()
+            }
+
+            override fun rating() {
+                val manager: ReviewManager = ReviewManagerFactory.create(this@HomeThemesActivity)
+                val request: Task<ReviewInfo> = manager.requestReviewFlow()
+                request.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val reviewInfo: ReviewInfo = task.result
+                        val flow: Task<Void> =
+                            manager.launchReviewFlow(this@HomeThemesActivity, reviewInfo)
+                        flow.addOnCompleteListener {
+                            setPref(this@HomeThemesActivity, AppConstants.RATED, true)
+                            binding.layoutContent.loRate.isVisible = !getPref(this@HomeThemesActivity, AppConstants.RATED, false)
+                            hideNavigation(dialogRating)
+                            dialogRating.dismiss()
+                        }
+                    }
+                }
+            }
+
+            override fun cancel() {
+            }
+
+            override fun later() {
+                hideNavigation(dialogRating)
+                dialogRating.dismiss()
+            }
+
+        })
+        dialogRating.setCancelable(false)
+        hideNavigation(dialogRating)
+        dialogRating.show()
+    }
+
+    private fun showPopupThankYou() {
+        val dialogPopupThanksYou = Dialog(this@HomeThemesActivity)
+        hideNavigation(dialogPopupThanksYou)
+        val thanksYouBinding = DialogThanksYouBinding.inflate(LayoutInflater.from(this@HomeThemesActivity))
+        dialogPopupThanksYou.setContentView(thanksYouBinding.root)
+        val window = dialogPopupThanksYou.window
+        window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val windowAttributes = window?.attributes
+        windowAttributes?.gravity = Gravity.CENTER
+
+        thanksYouBinding.tvOk.setOnClickListener {
+            dialogPopupThanksYou.dismiss()
+            hideNavigation(dialogPopupThanksYou)
+
+        }
+        dialogPopupThanksYou.setCancelable(true)
+        dialogPopupThanksYou.show()
+    }
+
+    private fun shareApp() {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
+        val shareMessage =
+            "${getString(R.string.app_name)} \n https://play.google.com/store/apps/details?id=${packageName}"
+
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_to)))
+    }
+
+    private fun hideNavigation(dialog: Dialog) {
+        dialog.window?.decorView?.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+    }
+
     override fun onResume() {
         super.onResume()
+        binding.layoutContent.loRate.isVisible = !getPref(this@HomeThemesActivity, AppConstants.RATED, false)
 //        wallpaperAdapter.setCheckNewItem(prefs.getString(AppConstants.KEY_NAME_EFFECT, "") ?: "")
     }
 }

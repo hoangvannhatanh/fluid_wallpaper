@@ -200,5 +200,15 @@
     <string name="share">Share</string>
     <string name="open_navigation_drawer">Open navigation drawer</string>
     <string name="close_navigation_drawer">Close navigation drawer</string>
-<!--    end_region-->
+    <string name="version">Version</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="do_you_like">Do you like</string>
+    <string name="give_us_a_quick_rating_so_we">Give us a quick rating so we know if you like it?</string>
+    <string name="no_later">No later</string>
+    <string name="rate_us">Rate us</string>
+    <string name="share_to">Share to</string>
+    <string name="txt_thank_you">Thank you!</string>
+    <string name="_ok">OK</string>
+    <string name="your_feedback_is_very_helpful_to_us">Your feedback is very helpful to us!</string>
+    <!--    end_region-->
 </resources>

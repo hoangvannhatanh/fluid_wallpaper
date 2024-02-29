@@ -22,7 +22,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>() {
             finish()
         }
         binding.layoutShare.click {
-            shareApp()
+
         }
 
         binding.layoutMoreApp.setOnClickListener {
