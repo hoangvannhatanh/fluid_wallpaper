@@ -12,7 +12,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.extentions.hide
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setBackGroundDrawable
 
 class LanguageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private lateinit var data: MutableList<LanguageActivity.Language>
+    private lateinit var data: MutableList<Language>
 
     var currentPos: Int = 0
 
@@ -29,7 +29,7 @@ class LanguageAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addAll(mData: MutableList<LanguageActivity.Language>, currentPos: Int) {
+    fun addAll(mData: MutableList<Language>, currentPos: Int) {
         this.data = mData
         this.currentPos = currentPos
     }

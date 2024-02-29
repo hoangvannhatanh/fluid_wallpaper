@@ -18,7 +18,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.work.impl.Scheduler
-import com.fozechmoblive.fluidwallpaper.livefluid.BuildConfig
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants.KEY_IS_CUSTOM
@@ -162,8 +161,8 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
 
         settingsController =
             SettingsController()
-        mBinding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
-        mGLSurfaceView = mBinding.surfaceView
+        binding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
+        mGLSurfaceView = binding.surfaceView
         nativeInterface = NativeInterface()
         nativeInterface?.setAssetManager(assets)
         orientationSensor =
@@ -187,48 +186,48 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
     private fun showSettings() {
         QualitySetting.init()
         settingsController!!.initControls(this@WallpaperActivity, config)
-        mBinding.settingsView.visibleView()
-        mBinding.imageSetting.goneView()
-        mBinding.imageClose.visibleView()
-        mBinding.imageShare.goneView()
-        mBinding.imageBack.goneView()
-        mBinding.textSetWallpaper.visibleView()
-        mBinding.textSetWallpaperBottom.goneView()
+        binding.settingsView.visibleView()
+        binding.imageSetting.goneView()
+        binding.imageClose.visibleView()
+        binding.imageShare.goneView()
+        binding.imageBack.goneView()
+        binding.textSetWallpaper.visibleView()
+        binding.textSetWallpaperBottom.goneView()
 
     }
 
     override fun onClickViews() {
         super.onClickViews()
-        mBinding.imageBack.setOnClickListener {
+        binding.imageBack.setOnClickListener {
             finish()
         }
-        mBinding.imageSetting.setOnClickListener {
+        binding.imageSetting.setOnClickListener {
             showSettings()
         }
-        mBinding.imageClose.setOnClickListener {
-            mBinding.imageSetting.visibleView()
-            mBinding.imageShare.goneView()
-            mBinding.settingsView.goneView()
-            mBinding.imageClose.goneView()
-            mBinding.imageBack.visibleView()
-            mBinding.textSetWallpaper.goneView()
-            mBinding.textSetWallpaperBottom.visibleView()
+        binding.imageClose.setOnClickListener {
+            binding.imageSetting.visibleView()
+            binding.imageShare.goneView()
+            binding.settingsView.goneView()
+            binding.imageClose.goneView()
+            binding.imageBack.visibleView()
+            binding.textSetWallpaper.goneView()
+            binding.textSetWallpaperBottom.visibleView()
 
         }
 
-        mBinding.textSetWallpaperBottom.click {
+        binding.textSetWallpaperBottom.click {
             if (isCustom) {
                 showDialogCreatePreset()
             } else
                 applyWallpaper()
         }
-        mBinding.textSetWallpaper.click {
+        binding.textSetWallpaper.click {
             if (isCustom) {
                 showDialogCreatePreset()
             } else
                 applyWallpaper()
         }
-        mBinding.imageShare.click {
+        binding.imageShare.click {
 //            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
 //                when (PackageManager.PERMISSION_GRANTED) {
 //                    ContextCompat.checkSelfPermission(
@@ -399,9 +398,9 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
             isCustom = intent.getBooleanExtra(KEY_IS_CUSTOM, false)
 
             if (isCustom) {
-                mBinding.imageShare.goneView()
-                mBinding.textSetWallpaper.text = getString(R.string.next)
-                mBinding.textSetWallpaperBottom.text = getString(R.string.next)
+                binding.imageShare.goneView()
+                binding.textSetWallpaper.text = getString(R.string.next)
+                binding.textSetWallpaperBottom.text = getString(R.string.next)
             }
         }
 

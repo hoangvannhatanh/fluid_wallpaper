@@ -18,14 +18,14 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>() {
     override fun onClickViews() {
         super.onClickViews()
 
-        mBinding.imvBackSettings.setOnClickListener {
+        binding.imvBackSettings.setOnClickListener {
             finish()
         }
-        mBinding.layoutShare.click {
+        binding.layoutShare.click {
             shareApp()
         }
 
-        mBinding.layoutMoreApp.setOnClickListener {
+        binding.layoutMoreApp.setOnClickListener {
             if (!SharePrefUtils.getBoolean(AppConstants.IS_RATED, false)) {
                 showRateDialog(this, false)
             } else {
@@ -38,7 +38,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>() {
     @SuppressLint("StringFormatInvalid")
     override fun initViews() {
         super.initViews()
-        mBinding.textVersion.text =
+        binding.textVersion.text =
             resources.getString(R.string.txt_version, BuildConfig.VERSION_NAME)
     }
 }

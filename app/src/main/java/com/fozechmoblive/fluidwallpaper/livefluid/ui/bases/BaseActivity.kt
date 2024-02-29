@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -27,7 +26,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 
-import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.LocaleHelper
 import kotlinx.coroutines.Dispatchers
@@ -35,10 +33,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.util.Locale
 
 abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
-    lateinit var mBinding: VB
+    lateinit var binding: VB
     lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,8 +48,8 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         requestWindow()
 
         val layoutView = getLayoutActivity()
-        mBinding = DataBindingUtil.setContentView(this, layoutView)
-        mBinding.lifecycleOwner = this
+        binding = DataBindingUtil.setContentView(this, layoutView)
+        binding.lifecycleOwner = this
 
         initViews()
         onResizeViews()
@@ -231,7 +228,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= 30) {
                 ViewCompat.getWindowInsetsController(window.decorView)
             } else {
-                WindowInsetsControllerCompat(window, mBinding.root)
+                WindowInsetsControllerCompat(window, binding.root)
             }
         if (windowInsetsControllerOne == null) {
             return
@@ -246,7 +243,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
                         if (Build.VERSION.SDK_INT >= 30) {
                             ViewCompat.getWindowInsetsController(window.decorView)
                         } else {
-                            WindowInsetsControllerCompat(window, mBinding.root)
+                            WindowInsetsControllerCompat(window, binding.root)
                         }
                     if (windowInsetsControllerTwo != null) {
                         windowInsetsControllerTwo.hide(WindowInsetsCompat.Type.navigationBars())

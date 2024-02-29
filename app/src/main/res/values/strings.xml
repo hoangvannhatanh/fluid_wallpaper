@@ -194,5 +194,11 @@
     <string name="see_all">See all</string>
     <string name="new_update">New Update</string>
     <string name="feature">Feature</string>
+    <string name="languages">Languages</string>
+    <string name="policy">Policy</string>
+    <string name="rate_this_app">Rate this app</string>
+    <string name="share">Share</string>
+    <string name="open_navigation_drawer">Open navigation drawer</string>
+    <string name="close_navigation_drawer">Close navigation drawer</string>
 <!--    end_region-->
 </resources>

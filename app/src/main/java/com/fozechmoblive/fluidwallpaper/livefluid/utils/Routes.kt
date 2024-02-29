@@ -7,12 +7,9 @@ import android.os.Bundle
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.create_done.CreateDoneActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.CustomThemesActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language.LanguageActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language.LanguageStartActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.main.MainActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.intro.IntroduceActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.setting.SettingActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.ThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperLiveViewActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom.CustomWallpaperActivity
@@ -44,7 +41,7 @@ object Routes {
         }
 
     fun startLanguageActivity(fromActivity: Activity, bundle: Bundle?) =
-        Intent(fromActivity, LanguageActivity::class.java).apply {
+        Intent(fromActivity, LanguageStartActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             bundle?.let { putExtras(it) }

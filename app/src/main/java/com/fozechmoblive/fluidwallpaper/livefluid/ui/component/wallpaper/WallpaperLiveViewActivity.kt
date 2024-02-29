@@ -76,8 +76,8 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
         lifecycleScope.launch(Dispatchers.IO) {
             settingsController =
                 com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.SettingsController()
-            mBinding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
-            mGLSurfaceView = mBinding.surfaceView
+            binding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
+            mGLSurfaceView = binding.surfaceView
             nativeInterface = NativeInterface()
             nativeInterface?.setAssetManager(assets)
             orientationSensor =
@@ -108,18 +108,18 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
 
     override fun onClickViews() {
         super.onClickViews()
-        mBinding.imageBack.setOnClickListener {
+        binding.imageBack.setOnClickListener {
             finish()
         }
 
-        mBinding.tvLiveGotoSettings.click {
+        binding.tvLiveGotoSettings.click {
              moveToPresetActivity()
         }
 
-        mBinding.imageSetting.click {
+        binding.imageSetting.click {
            moveToPresetActivity()
         }
-        mBinding.imageShare.setOnClickListener {
+        binding.imageShare.setOnClickListener {
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
                 when (PackageManager.PERMISSION_GRANTED) {
                     ContextCompat.checkSelfPermission(

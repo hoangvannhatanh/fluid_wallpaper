@@ -44,7 +44,7 @@ class CustomThemesActivity : BaseActivity<ActivityCustomThemesBinding>() {
     override fun onClickViews() {
         super.onClickViews()
 
-        mBinding.apply {
+        binding.apply {
 
             imvBack.click {
                 finish()
@@ -67,7 +67,7 @@ class CustomThemesActivity : BaseActivity<ActivityCustomThemesBinding>() {
         listPresetModelTotal.addAll(CommonData.getListPresetCustom(this@CustomThemesActivity))
         addNativeToList(listPresetModelTotal)
 
-        mBinding.rcvMainPreset.apply {
+        binding.rcvMainPreset.apply {
             layoutManager =
                 GridLayoutManager(
                     this@CustomThemesActivity,
@@ -91,11 +91,11 @@ class CustomThemesActivity : BaseActivity<ActivityCustomThemesBinding>() {
         wallpaperAdapter.filterTypePosition(TypePresetModel.CUSTOM)
 
         if (listPresetModelTotal.isEmpty()) {
-            mBinding.layoutEmpty.visibleView()
-            mBinding.ivAdd.visibleView()
+            binding.layoutEmpty.visibleView()
+            binding.ivAdd.visibleView()
         } else {
-            mBinding.layoutEmpty.goneView()
-            mBinding.ivAdd.goneView()
+            binding.layoutEmpty.goneView()
+            binding.ivAdd.goneView()
         }
 
     }

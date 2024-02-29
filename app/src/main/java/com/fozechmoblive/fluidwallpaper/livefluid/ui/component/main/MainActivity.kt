@@ -9,8 +9,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.CustomThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.setting.SettingActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.ThemesActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onClickViews() {
         super.onClickViews()
 
-        mBinding.apply {
+        binding.apply {
             btnThemes.click {
                 startThemesActivity(this@MainActivity)
             }
@@ -41,7 +40,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun startThemesActivity(fromActivity: Activity) =
-        Intent(fromActivity, ThemesActivity::class.java).apply {
+        Intent(fromActivity, HomeThemesActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             fromActivity.startActivity(this)

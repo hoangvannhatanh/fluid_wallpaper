@@ -35,7 +35,7 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
     override fun initViews() {
         super.initViews()
         loadDataPreset()
-        mBinding.listWallpaperView.rcvCustom.apply {
+        binding.listWallpaperView.rcvCustom.apply {
             layoutManager = LinearLayoutManager(
                 this@CustomWallpaperActivity,
                 LinearLayoutManager.HORIZONTAL,
@@ -45,8 +45,8 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
         }
 
 
-        mBinding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
-        mGLSurfaceView = mBinding.surfaceView
+        binding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
+        mGLSurfaceView = binding.surfaceView
         nativeInterface = NativeInterface()
         nativeInterface?.setAssetManager(assets)
         orientationSensor =
@@ -100,12 +100,12 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
         listPresetModelTotal.clear()
         listPresetModelTotal.addAll(CommonData.getListPreset())
         presetModel = listPresetModelTotal[0]
-        mBinding.txtTitle.text = presetModel?.name
+        binding.txtTitle.text = presetModel?.name
         loadConfigPreset()
 
         wallpaperAdapter =
             WallpaperCustomAdapter(choosePosition = 0, onClickItemSound = { title, position ->
-                mBinding.txtTitle.text = title
+                binding.txtTitle.text = title
                 presetModel = listPresetModelTotal[position]
 
 
@@ -119,11 +119,11 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
     override fun onClickViews() {
         super.onClickViews()
 
-        mBinding.imageBack.setOnClickListener {
+        binding.imageBack.setOnClickListener {
             finish()
         }
 
-        mBinding.listWallpaperView.txtNext.setOnClickListener {
+        binding.listWallpaperView.txtNext.setOnClickListener {
             moveToPresetActivity()
         }
 

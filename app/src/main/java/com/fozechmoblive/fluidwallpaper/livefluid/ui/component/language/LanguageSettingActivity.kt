@@ -7,22 +7,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.callback.CallBack
-import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityLanguageBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityLanguageSettingBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.getPref
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.onClick
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.showActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.intro.IntroduceActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
-    private var listLanguage: MutableList<Language> = ArrayList()
+class LanguageSettingActivity : BaseActivity<ActivityLanguageSettingBinding>() {
+    private var listLanguage: MutableList<Language> = mutableListOf()
     private lateinit var stringLanguage: String
     private val languagesAdapter by lazy { LanguageAdapter() }
     private var languageDefaultDevice = ""
 
-    override fun getLayoutActivity() = R.layout.activity_language
+    override fun getLayoutActivity() = R.layout.activity_language_setting
 
     override fun initViews() {
         super.initViews()
@@ -55,7 +56,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
                 } else {
                     languageDefaultDevice = getString(R.string.english)
                     setPref(
-                        this@LanguageActivity,
+                        this@LanguageSettingActivity,
                         AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
                         true
                     )
@@ -63,7 +64,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
             } else {
                 languageDefaultDevice = getString(R.string.english)
                 setPref(
-                    this@LanguageActivity,
+                    this@LanguageSettingActivity,
                     AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
                     true
                 )
@@ -71,7 +72,7 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
         } catch (_: Exception) {
             languageDefaultDevice = getString(R.string.english)
             setPref(
-                this@LanguageActivity,
+                this@LanguageSettingActivity,
                 AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
                 true
             )
@@ -86,14 +87,14 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
         }
 
         stringLanguage = getPref(
-            this@LanguageActivity,
+            this@LanguageSettingActivity,
             AppConstants.PREFERENCE_SELECTED_LANGUAGE,
             getString(R.string.english)
         ).toString()
 
         if (stringLanguage == languageDefaultDevice) {
             setPref(
-                this@LanguageActivity,
+                this@LanguageSettingActivity,
                 AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
                 false
             )
@@ -111,25 +112,23 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
 
     override fun onClickViews() {
         super.onClickViews()
-        mBinding.ivTick.onClick(1000) {
+        binding.ivTick.onClick(1000) {
             setPref(
-                this@LanguageActivity,
+                this@LanguageSettingActivity,
                 AppConstants.PREFERENCE_SELECTED_LANGUAGE,
                 stringLanguage
             )
             setPref(
-                this@LanguageActivity,
+                this@LanguageSettingActivity,
                 AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
                 true
             )
 
-            startActivity(
-                Intent(
-                    this@LanguageActivity,
-                    IntroduceActivity::class.java
-                )
-            )
-            finish()
+            showActivity(this@LanguageSettingActivity, HomeThemesActivity::class.java)
+            finishAffinity()
+        }
+        binding.ivBack.onClick(1000) {
+            onBackPressed()
         }
 
         languagesAdapter.callBackLanguage(object : CallBack.CallBackLanguage {
@@ -142,14 +141,14 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
 
     private fun initRecyclerview() {
         try {
-            mBinding.recyclerView.apply {
+            binding.recyclerView.apply {
                 layoutManager = LinearLayoutManager(
-                    this@LanguageActivity,
+                    this@LanguageSettingActivity,
                     LinearLayoutManager.VERTICAL,
                     false
                 )
                 if (!getPref(
-                        this@LanguageActivity,
+                        this@LanguageSettingActivity,
                         AppConstants.LANGUAGE_FIRST_DEFAULT_LOCALE,
                         false
                     )
@@ -163,6 +162,4 @@ class LanguageActivity : BaseActivity<ActivityLanguageBinding>() {
         } catch (_: Exception) {
         }
     }
-
-    data class Language(val img: Int, val name: String, val key: String)
 }

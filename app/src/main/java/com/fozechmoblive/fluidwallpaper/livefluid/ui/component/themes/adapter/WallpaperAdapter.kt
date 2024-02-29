@@ -110,8 +110,8 @@ class WallpaperAdapter(
                 submitData(addItemAds(mListData.filter { it.typePresetModel == TypePresetModel.TRENDING }))
             }
 
-            TypePresetModel.HOT -> {
-                submitData(addItemAds(mListData.filter { it.typePresetModel == TypePresetModel.HOT }))
+            TypePresetModel.FEATURE -> {
+                submitData(addItemAds(mListData.filter { it.typePresetModel == TypePresetModel.FEATURE }))
             }
 
             TypePresetModel.ALL -> {

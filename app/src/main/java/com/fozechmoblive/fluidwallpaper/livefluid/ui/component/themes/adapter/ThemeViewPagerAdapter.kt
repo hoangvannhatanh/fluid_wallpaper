@@ -16,10 +16,10 @@ class ThemeViewPagerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var listTheme: MutableList<PresetModel>
     var currentPos: Int = 0
 
-    private var callBackLanguageTheme: CallBack.CallBackLanguageTheme? = null
+    private var callBackTheme: CallBack.CallBackTheme? = null
 
-    fun callBackLanguageTheme(callBackLanguageTheme: CallBack.CallBackLanguageTheme) {
-        this.callBackLanguageTheme = callBackLanguageTheme
+    fun callBackTheme(callBackTheme: CallBack.CallBackTheme) {
+        this.callBackTheme = callBackTheme
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -56,7 +56,7 @@ class ThemeViewPagerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             ).into(binding.imageSlide)
 
             binding.root.setOnClickListener {
-//                callBackLanguageTheme?.callBackLanguageTheme(language, position)
+                callBackTheme?.callBackTheme(listTheme[position])
             }
         }
     }

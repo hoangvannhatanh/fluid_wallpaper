@@ -11,7 +11,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemThemeNewUpdate
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemThemeViewPagerBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 
-class ThemeNewUpdateAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ThemeFeatureAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var listTheme: List<PresetModel>
 
     var currentPos: Int = 0

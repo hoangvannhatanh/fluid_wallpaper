@@ -45,26 +45,26 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
             presetModel =
                 intent.getParcelableExtra<PresetModel>(AppConstants.KEY_PRESET_MODEL) as PresetModel
 
-            Glide.with(this).load(presetModel?.pathImageCustom).into(mBinding.imvPreset)
+            Glide.with(this).load(presetModel?.pathImageCustom).into(binding.imvPreset)
         }
     }
 
     override fun onClickViews() {
         super.onClickViews()
 
-        mBinding.imvBack.setOnClickListener {
+        binding.imvBack.setOnClickListener {
             finish()
         }
 
-        mBinding.imvGotoHome.setOnClickListener {
+        binding.imvGotoHome.setOnClickListener {
             Routes.startMainActivity(this)
         }
 
-        mBinding.txtMakeAnother.setOnClickListener {
+        binding.txtMakeAnother.setOnClickListener {
             Routes.startMainActivity(this)
         }
 
-        mBinding.txtSetWallpaper.setOnClickListener {
+        binding.txtSetWallpaper.setOnClickListener {
             applyWallpaper()
         }
 
