@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,44 +19,36 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/image_back"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/round_button_toolbar"
-                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_14sdp"
                 android:src="@drawable/ic_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <ImageView
+                android:id="@+id/imageSetting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:drawablePadding="@dimen/_12sdp"
-                android:fontFamily="@font/be_vietnam_pro_semi_bold"
-                android:gravity="center"
-                android:paddingHorizontal="@dimen/_16sdp"
-                android:paddingVertical="@dimen/_8sdp"
-                android:text="@string/preview"
-                android:textColor="@color/white"
-                android:textSize="16sp"
+                android:padding="@dimen/_14sdp"
+                android:src="@drawable/ic_config_setting"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
 
             <ImageView
                 android:id="@+id/image_share"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="@dimen/_14sdp"
                 android:background="@drawable/round_button_toolbar"
                 android:padding="4dp"
                 android:src="@drawable/ic_share"
@@ -69,60 +57,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/image_close"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/round_button_toolbar"
-                android:padding="8dp"
-                android:src="@drawable/ic_close"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/btnSetThemes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_30sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:background="@drawable/background_rate_gradient"
+            android:fontFamily="@font/poppin_medium"
             android:gravity="center"
-            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="@string/set_themes"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <ImageView
-                android:id="@+id/imageSetting"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/round_button_toolbar"
-                android:src="@drawable/ic_config_setting"
-                app:tint="@color/white" />
-
-            <TextView
-                android:id="@+id/tv_live_goto_settings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:background="@drawable/bg_setting_live_wallpaper"
-                android:drawablePadding="@dimen/_12sdp"
-                android:fontFamily="@font/be_vietnam_pro_semi_bold"
-                android:gravity="center"
-                android:paddingHorizontal="@dimen/_16sdp"
-                android:paddingVertical="@dimen/_8sdp"
-                android:text="@string/set_wallpaper"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

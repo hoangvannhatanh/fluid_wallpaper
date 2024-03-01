@@ -3,11 +3,14 @@ package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.ActivityManager
+import android.content.ComponentName
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.opengl.GLSurfaceView
 import android.os.Build
 import android.os.Looper
 import android.support.v4.media.session.PlaybackStateCompat
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -20,10 +23,12 @@ import com.magicfluids.NativeInterface
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityWallpaperLiveViewBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
+import com.fozechmoblive.fluidwallpaper.livefluid.services.WallpaperService
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.dialog.DialogLoading
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.GLES20Renderer
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.SettingsStorage
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
 import kotlinx.coroutines.Dispatchers
@@ -53,29 +58,86 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
         }
     }
 
-
     @Volatile
     var activePause = false
 
     override fun getLayoutActivity(): Int = R.layout.activity_wallpaper_live_view
+
     override fun initViews() {
         super.initViews()
-        showDialogLoading()
         loadConfigPreset()
         loadDataSettingController()
     }
 
-    private fun showDialogLoading() {
-        DialogLoading(this@WallpaperLiveViewActivity, onFinishedLoading = {
+    override fun onClickViews() {
+        super.onClickViews()
+        binding.imageBack.setOnClickListener {
+            finish()
+        }
 
-        }).show()
+        binding.btnSetThemes.click {
+            applyWallpaper()
+        }
+
+        binding.imageSetting.click {
+            moveToPresetActivity()
+        }
+
+        binding.imageShare.setOnClickListener {
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
+                when (PackageManager.PERMISSION_GRANTED) {
+                    ContextCompat.checkSelfPermission(
+                        this, Manifest.permission.READ_MEDIA_IMAGES
+                    ) -> {
+                        shareImage()
+                    }
+
+                    else -> {
+                        // You can directly ask for the permission.
+                        // The registered ActivityResultCallback gets the result of this request.
+                        requestPermissionLauncher.launch(
+                            Manifest.permission.READ_MEDIA_IMAGES
+                        )
+                    }
+                }
+            } else {
+                shareImage()
+            }
+
+        }
+
+    }
+
+    private fun applyWallpaper() {
+        applyCurrentSettingsToLwp()
+        setLiveWallpaper()
+        onSettingsChanged()
+    }
+
+    private fun setLiveWallpaper() {
+        try {
+            val componentName = ComponentName(
+                packageName, WallpaperService::class.java.name
+            )
+            val intent = Intent("android.service.wallpaper.CHANGE_LIVE_WALLPAPER")
+            intent.putExtra(
+                "android.service.wallpaper.extra.LIVE_WALLPAPER_COMPONENT", componentName
+            )
+            startActivity(intent)
+        } catch (unused: Exception) {
+            Toast.makeText(this, "error:" + getText(R.string.not_supported), Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
+    private fun applyCurrentSettingsToLwp() {
+        applySettingsToLwp(true, -1)
     }
 
     @SuppressLint("RestrictedApi")
     private fun loadDataSettingController() {
         lifecycleScope.launch(Dispatchers.IO) {
-            settingsController =
-                com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.SettingsController()
+            settingsController = com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.SettingsController()
             binding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
             mGLSurfaceView = binding.surfaceView
             nativeInterface = NativeInterface()
@@ -106,44 +168,6 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
         }
     }
 
-    override fun onClickViews() {
-        super.onClickViews()
-        binding.imageBack.setOnClickListener {
-            finish()
-        }
-
-        binding.tvLiveGotoSettings.click {
-             moveToPresetActivity()
-        }
-
-        binding.imageSetting.click {
-           moveToPresetActivity()
-        }
-        binding.imageShare.setOnClickListener {
-            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
-                when (PackageManager.PERMISSION_GRANTED) {
-                    ContextCompat.checkSelfPermission(
-                        this, Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) -> {
-                        shareImage()
-                    }
-
-                    else -> {
-                        // You can directly ask for the permission.
-                        // The registered ActivityResultCallback gets the result of this request.
-                        requestPermissionLauncher.launch(
-                            Manifest.permission.READ_EXTERNAL_STORAGE
-                        )
-                    }
-                }
-            } else {
-                shareImage()
-            }
-
-        }
-
-    }
-
     private fun moveToPresetActivity() {
         Routes.startPresetActivity(this, presetModel!!, false)
     }
@@ -164,10 +188,8 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
     }
 
     private fun loadConfigPreset() {
-
         if (intent.hasExtra(AppConstants.KEY_PRESET_MODEL)) {
-            presetModel =
-                intent.getParcelableExtra<PresetModel>(AppConstants.KEY_PRESET_MODEL) as PresetModel
+            presetModel = intent.getParcelableExtra<PresetModel>(AppConstants.KEY_PRESET_MODEL) as PresetModel
             if (presetModel?.typePresetModel == TypePresetModel.CUSTOM) {
                 com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.SettingsStorage.loadConfigPresetCustom(presetModel?.pathFluidCustom, Config.Current)
             } else
@@ -196,7 +218,6 @@ class WallpaperLiveViewActivity : BaseActivity<ActivityWallpaperLiveViewBinding>
             mGLSurfaceView?.onResume()
             nativeInterface?.onResume()
         }, 200)
-
     }
 
 }

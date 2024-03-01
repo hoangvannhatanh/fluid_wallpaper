@@ -55,7 +55,6 @@ import java.io.IOException
 
 
 class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
-
     private var presetModel: PresetModel? = null
     private lateinit var orientationSensor: OrientationSensor
     private var mGLSurfaceView: GLSurfaceView? = null
@@ -67,8 +66,6 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
     private var presetNameCustom: String = ""
     private var dialogSetName: DialogSetName? = null
     var config = Config()
-
-
     private val serviceDestroyedReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action == AppConstants.ACTION_DESTROY_WALLPAPER_SERVICE) {
@@ -98,32 +95,8 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
         }
     }
 
-
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            shareImage()
-        } else {
-            // Explain to the user that the feature is unavailable because the
-            // feature requires a permission that the user has denied. At the
-            // same time, respect the user's decision. Don't link to system
-            // settings in an effort to convince the user to change their
-            // decision.
-        }
-    }
-
-    @Volatile
-    var activePause = false
-
-    private fun shareImage() {
-        showCreateLoading()
-        lifecycleScope.launch(Dispatchers.IO) {
-            renderer?.orderScreenshot()
-        }
-    }
-
     override fun getLayoutActivity(): Int = R.layout.activity_wallpaper
+
     override fun initViews() {
         super.initViews()
 
@@ -156,6 +129,31 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
     }
 
 
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            shareImage()
+        } else {
+            // Explain to the user that the feature is unavailable because the
+            // feature requires a permission that the user has denied. At the
+            // same time, respect the user's decision. Don't link to system
+            // settings in an effort to convince the user to change their
+            // decision.
+        }
+    }
+
+    @Volatile
+    var activePause = false
+
+    private fun shareImage() {
+        showCreateLoading()
+        lifecycleScope.launch(Dispatchers.IO) {
+            renderer?.orderScreenshot()
+        }
+    }
+
+
     @SuppressLint("RestrictedApi")
     private fun loadDataSettingController() {
 
@@ -185,68 +183,21 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
 
     private fun showSettings() {
         QualitySetting.init()
-        settingsController!!.initControls(this@WallpaperActivity, config)
+        settingsController?.initControls(this@WallpaperActivity, config)
         binding.settingsView.visibleView()
-        binding.imageSetting.goneView()
-        binding.imageClose.visibleView()
-        binding.imageShare.goneView()
-        binding.imageBack.goneView()
-        binding.textSetWallpaper.visibleView()
-        binding.textSetWallpaperBottom.goneView()
-
     }
 
     override fun onClickViews() {
         super.onClickViews()
         binding.imageBack.setOnClickListener {
-            finish()
-        }
-        binding.imageSetting.setOnClickListener {
-            showSettings()
-        }
-        binding.imageClose.setOnClickListener {
-            binding.imageSetting.visibleView()
-            binding.imageShare.goneView()
-            binding.settingsView.goneView()
-            binding.imageClose.goneView()
-            binding.imageBack.visibleView()
-            binding.textSetWallpaper.goneView()
-            binding.textSetWallpaperBottom.visibleView()
-
+            onBackPressed()
         }
 
-        binding.textSetWallpaperBottom.click {
+        binding.ivTick.click {
             if (isCustom) {
                 showDialogCreatePreset()
             } else
                 applyWallpaper()
-        }
-        binding.textSetWallpaper.click {
-            if (isCustom) {
-                showDialogCreatePreset()
-            } else
-                applyWallpaper()
-        }
-        binding.imageShare.click {
-//            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
-//                when (PackageManager.PERMISSION_GRANTED) {
-//                    ContextCompat.checkSelfPermission(
-//                        this, Manifest.permission.READ_EXTERNAL_STORAGE
-//                    ) -> {
-//                        shareImage()
-//                    }
-//
-//                    else -> {
-//                        // You can directly ask for the permission.
-//                        // The registered ActivityResultCallback gets the result of this request.
-//                        requestPermissionLauncher.launch(
-//                            Manifest.permission.READ_EXTERNAL_STORAGE
-//                        )
-//                    }
-//                }
-//            } else {
-//                shareImage()
-//            }
         }
     }
 
@@ -398,9 +349,8 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
             isCustom = intent.getBooleanExtra(KEY_IS_CUSTOM, false)
 
             if (isCustom) {
-                binding.imageShare.goneView()
-                binding.textSetWallpaper.text = getString(R.string.next)
-                binding.textSetWallpaperBottom.text = getString(R.string.next)
+//                binding.textSetWallpaper.text = getString(R.string.next)
+//                binding.textSetWallpaperBottom.text = getString(R.string.next)
             }
         }
 
