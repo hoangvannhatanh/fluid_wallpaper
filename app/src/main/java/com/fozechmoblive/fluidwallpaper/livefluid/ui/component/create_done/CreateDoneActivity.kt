@@ -13,9 +13,9 @@ import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCreateDone
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.showActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.HomeThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.set
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
+import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
 import com.magicfluids.Config
 
 class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
@@ -48,6 +48,8 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
 
             Glide.with(this).load(presetModel?.pathImageCustom).into(binding.imvPreset)
         }
+
+        loadConfigPreset()
     }
 
     override fun onClickViews() {
@@ -61,6 +63,19 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
         binding.txtSetWallpaper.setOnClickListener {
             applyWallpaper()
         }
+    }
+
+    private fun loadConfigPreset() {
+        if (intent.hasExtra(AppConstants.KEY_PRESET_MODEL)) {
+            presetModel = intent.getParcelableExtra<PresetModel>(AppConstants.KEY_PRESET_MODEL) as PresetModel
+            if (presetModel?.typePresetModel == TypePresetModel.CUSTOM) {
+                com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.SettingsStorage.loadConfigPresetCustom(presetModel?.pathFluidCustom, Config.Current)
+            } else
+                com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.SettingsStorage.loadConfigFromInternalPreset(presetModel?.name, assets, Config.Current)
+        } else {
+//            nativeInterface?.randomizeConfig(Config.Current)
+        }
+
     }
 
     private fun applyWallpaper() {

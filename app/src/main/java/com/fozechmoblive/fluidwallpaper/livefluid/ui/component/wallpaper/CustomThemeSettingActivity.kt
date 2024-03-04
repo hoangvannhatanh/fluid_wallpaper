@@ -139,17 +139,12 @@ class CustomThemeSettingActivity : BaseActivity<ActivityCustomThemeSettingBindin
     @SuppressLint("RestrictedApi")
     private fun loadDataSettingController() {
 
-        settingsController =
-            SettingsController()
+        settingsController = SettingsController()
         binding.surfaceView.preserveEGLContextOnPause = wantToPreserveEGLContext()
         mGLSurfaceView = binding.surfaceView
         nativeInterface = NativeInterface()
         nativeInterface?.setAssetManager(assets)
-        orientationSensor =
-            OrientationSensor(
-                this@CustomThemeSettingActivity,
-                application
-            )
+        orientationSensor = OrientationSensor(this@CustomThemeSettingActivity, application)
         mGLSurfaceView?.setEGLContextClientVersion(2)
         val gLSurfaceView = mGLSurfaceView
         val gLES20Renderer = GLES20Renderer(

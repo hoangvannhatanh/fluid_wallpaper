@@ -1,4 +1,4 @@
-package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes
+package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.my_theme
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.fozechmoblive.fluidwallpaper.livefluid.R
@@ -6,7 +6,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityMyThemeBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.WallpaperAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.WallpaperAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.CommonData
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel

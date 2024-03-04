@@ -12,7 +12,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseRecyclerView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.goneView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.visibleView
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.WallpaperDiffUtil
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.WallpaperDiffUtil
 
 
 class WallpaperCustomAdapter(var choosePosition :Int, val onClickItemSound: (String, Int) -> Unit

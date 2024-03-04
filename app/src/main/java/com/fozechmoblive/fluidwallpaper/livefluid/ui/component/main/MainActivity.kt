@@ -7,9 +7,9 @@ import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityMainBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.MyThemeActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.my_theme.MyThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.setting.SettingActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.HomeThemesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

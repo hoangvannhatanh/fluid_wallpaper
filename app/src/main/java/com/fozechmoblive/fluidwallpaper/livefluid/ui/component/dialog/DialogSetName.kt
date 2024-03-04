@@ -17,7 +17,6 @@ class DialogSetName(val context: Activity, val onCreatePreset: (String) -> Unit)
     }
     override fun onClickViews() {
         super.onClickViews()
-
         mBinding.tvCreate.setOnClickListener {
             if (mBinding.edtFileName.text.toString().isNotEmpty()){
                 onCreatePreset.invoke(mBinding.edtFileName.text.toString())

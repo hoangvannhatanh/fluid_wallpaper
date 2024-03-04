@@ -11,7 +11,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.extentions.onClick
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.intro.adapter.IntroAdapter
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.HomeThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.DepthPageTransformer
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 

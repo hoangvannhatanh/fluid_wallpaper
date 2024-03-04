@@ -1,4 +1,4 @@
-package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter
+package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter
 
 import android.view.View
 import androidx.databinding.ViewDataBinding

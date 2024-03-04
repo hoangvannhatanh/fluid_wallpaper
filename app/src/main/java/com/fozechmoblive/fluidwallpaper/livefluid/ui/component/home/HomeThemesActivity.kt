@@ -1,4 +1,4 @@
-package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes
+package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home
 
 import android.app.Dialog
 import android.content.Intent
@@ -27,20 +27,19 @@ import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.showActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.MyThemeActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.my_theme.MyThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language.LanguageSettingActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.policy.PolicyActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.see_all_theme.SeeAllThemeActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeFeatureAdapter
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeNewUpdateAdapter
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeViewPagerAdapter
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.WallpaperAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeFeatureAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeNewUpdateAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeViewPagerAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.WallpaperAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperLiveViewActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom_theme.CustomThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.CommonData
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.set
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.RatingDialog
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
 import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager

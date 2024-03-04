@@ -1,19 +1,19 @@
-package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter
+package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.fozechmoblive.fluidwallpaper.livefluid.callback.CallBack
-import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemThemeNewUpdateBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemThemeViewPagerBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
+import java.util.*
 
-class ThemeNewUpdateAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ThemeViewPagerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var listTheme: List<PresetModel>
-
     var currentPos: Int = 0
 
     private var callBackTheme: CallBack.CallBackTheme? = null
@@ -23,7 +23,7 @@ class ThemeNewUpdateAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemThemeNewUpdateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemThemeViewPagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -48,7 +48,7 @@ class ThemeNewUpdateAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return listTheme.size
     }
 
-    inner class ViewHolder(private val binding: ItemThemeNewUpdateBinding) :
+    inner class ViewHolder(private val binding: ItemThemeViewPagerBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindData(position: Int) {
             Glide.with(binding.root.context).load(listTheme[position].imagePreset).diskCacheStrategy(

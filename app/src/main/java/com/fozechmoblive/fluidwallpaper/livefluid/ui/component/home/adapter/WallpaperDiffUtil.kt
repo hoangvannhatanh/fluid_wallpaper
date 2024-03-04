@@ -1,4 +1,4 @@
-package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter
+package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel

@@ -1,4 +1,4 @@
-package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter
+package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,10 +8,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.fozechmoblive.fluidwallpaper.livefluid.callback.CallBack
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemThemeNewUpdateBinding
-import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemThemeViewPagerBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 
-class ThemeFeatureAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ThemeNewUpdateAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var listTheme: List<PresetModel>
 
     var currentPos: Int = 0

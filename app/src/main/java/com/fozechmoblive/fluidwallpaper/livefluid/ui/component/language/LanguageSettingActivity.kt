@@ -1,6 +1,5 @@
 package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language
 
-import android.content.Intent
 import android.content.res.Resources
 import android.os.Build
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.extentions.onClick
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.showActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.HomeThemesActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
