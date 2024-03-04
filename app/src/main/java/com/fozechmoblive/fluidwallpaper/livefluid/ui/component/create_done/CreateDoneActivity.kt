@@ -10,8 +10,10 @@ import com.bumptech.glide.Glide
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCreateDoneBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.extentions.showActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.set
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import com.magicfluids.Config
@@ -42,8 +44,7 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
         registerReceiver(serviceDestroyedReceiver, intentFilter)
 
         if (intent.hasExtra(AppConstants.KEY_PRESET_MODEL)) {
-            presetModel =
-                intent.getParcelableExtra<PresetModel>(AppConstants.KEY_PRESET_MODEL) as PresetModel
+            presetModel = intent.getParcelableExtra<PresetModel>(AppConstants.KEY_PRESET_MODEL) as PresetModel
 
             Glide.with(this).load(presetModel?.pathImageCustom).into(binding.imvPreset)
         }
@@ -52,23 +53,14 @@ class CreateDoneActivity : BaseActivity<ActivityCreateDoneBinding>() {
     override fun onClickViews() {
         super.onClickViews()
 
-        binding.imvBack.setOnClickListener {
-            finish()
-        }
-
         binding.imvGotoHome.setOnClickListener {
-            Routes.startMainActivity(this)
-        }
-
-        binding.txtMakeAnother.setOnClickListener {
-            Routes.startMainActivity(this)
+            showActivity(this@CreateDoneActivity, HomeThemesActivity::class.java)
+            finishAffinity()
         }
 
         binding.txtSetWallpaper.setOnClickListener {
             applyWallpaper()
         }
-
-
     }
 
     private fun applyWallpaper() {

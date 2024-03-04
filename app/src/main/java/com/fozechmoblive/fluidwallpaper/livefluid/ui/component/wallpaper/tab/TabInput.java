@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.fozechmoblive.fluidwallpaper.livefluid.R;
 import com.magicfluids.Config;
 ;
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity;
 
 
 
@@ -39,7 +39,7 @@ public class TabInput extends TabSet.TabPage {
         super.notifyConfigValueChanged(i);
     }
 
-    public TabInput(Config config, WallpaperActivity wallpaperActivity) {
+    public TabInput(Config config, CustomThemeSettingActivity wallpaperActivity) {
         super(config, wallpaperActivity);
     }
 

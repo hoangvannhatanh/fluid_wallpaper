@@ -22,13 +22,12 @@ import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants.KEY_IS_CUSTOM
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants.KEY_NAME_EFFECT
-import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityWallpaperBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCustomThemeSettingBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.models.Status
 import com.fozechmoblive.fluidwallpaper.livefluid.services.WallpaperService
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.goneView
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.showRateDialog
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.showToastByString
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.visibleView
@@ -54,7 +53,8 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 
-class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
+class CustomThemeSettingActivity : BaseActivity<ActivityCustomThemeSettingBinding>() {
+
     private var presetModel: PresetModel? = null
     private lateinit var orientationSensor: OrientationSensor
     private var mGLSurfaceView: GLSurfaceView? = null
@@ -69,25 +69,8 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
     private val serviceDestroyedReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action == AppConstants.ACTION_DESTROY_WALLPAPER_SERVICE) {
-
-                if (!SharePrefUtils.getBoolean(
-                        AppConstants.IS_RATED,
-                        false
-                    ) && !SharePrefUtils.getBoolean(AppConstants.IS_FIRST_RATED, false)
-                ) {
-                    if (true) {
-                        showRateDialog(this@WallpaperActivity, false)
-                        SharePrefUtils.putBoolean(AppConstants.IS_FIRST_RATED, true)
-
-                    } else {
-                        showSuccessDialog()
-
-                    }
-                } else {
-                    showSuccessDialog()
-                }
-
-                if (presetModel?.name?.isNotEmpty()!!) {
+                showSuccessDialog()
+                if (presetModel?.name?.isNotEmpty() == true) {
                     prefs[KEY_NAME_EFFECT] = presetModel?.name
                 }
                 sendLocalBroadcast()
@@ -95,11 +78,10 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
         }
     }
 
-    override fun getLayoutActivity(): Int = R.layout.activity_wallpaper
+    override fun getLayoutActivity(): Int = R.layout.activity_custom_theme_setting
 
     override fun initViews() {
         super.initViews()
-
         loadDataSettingController()
         registerReceiver(serviceDestroyedReceiver, intentFilter)
 
@@ -165,13 +147,13 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
         nativeInterface?.setAssetManager(assets)
         orientationSensor =
             OrientationSensor(
-                this@WallpaperActivity,
+                this@CustomThemeSettingActivity,
                 application
             )
         mGLSurfaceView?.setEGLContextClientVersion(2)
         val gLSurfaceView = mGLSurfaceView
         val gLES20Renderer = GLES20Renderer(
-            this@WallpaperActivity, this@WallpaperActivity, nativeInterface!!, orientationSensor
+            this@CustomThemeSettingActivity, this@CustomThemeSettingActivity, nativeInterface!!, orientationSensor
         )
         renderer = gLES20Renderer
         gLSurfaceView!!.setRenderer(gLES20Renderer)
@@ -183,7 +165,7 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
 
     private fun showSettings() {
         QualitySetting.init()
-        settingsController?.initControls(this@WallpaperActivity, config)
+        settingsController?.initControls(this@CustomThemeSettingActivity, config)
         binding.settingsView.visibleView()
     }
 
@@ -202,18 +184,11 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
     }
 
     private fun showDialogCreatePreset() {
-
-        dialogSetName = DialogSetName(this@WallpaperActivity, onCreatePreset = {
-
-            val directory = File(
-                this.externalCacheDir,
-                "Fluids_Custom"
-            )
-
+        dialogSetName = DialogSetName(this@CustomThemeSettingActivity, onCreatePreset = {
+            val directory = File(this.externalCacheDir, "Fluids_Custom")
             if (File(directory.path + "/" + it).exists()) {
                 showToastByString(getString(R.string.error_file_exists))
             } else {
-
                 dialogSetName?.dismiss()
                 presetNameCustom = it
                 applySettingsToLwp(true, -1)
@@ -222,8 +197,6 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
                     renderer?.orderScreenshot()
                 }
             }
-
-
         })
         config.getBoolVal(ConfigID.FLASH_ENABLED).Value = true
         onSettingsChanged()
@@ -289,11 +262,10 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
                 pathImageCustom = exportDirectory.path + "/" + presetNameCustom + "/" + presetNameCustom + ".png"
             )
 
-            Routes.startCreateDoneActivity(this@WallpaperActivity, presetModelCustom)
+            Routes.startCreateDoneActivity(this@CustomThemeSettingActivity, presetModelCustom)
 
         } catch (e: IOException) {
             e.printStackTrace()
-            // Xử lý lỗi nếu có
         }
     }
 
@@ -301,7 +273,6 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
     private fun applyWallpaper() {
         applyCurrentSettingsToLwp()
         setLiveWallpaper()
-
         onSettingsChanged()
     }
 
@@ -310,8 +281,8 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
 
     }
 
-    private fun applySettingsToLwp(z: Boolean, i: Int) {
-        if (z) {
+    private fun applySettingsToLwp(boolean: Boolean, i: Int) {
+        if (boolean) {
             Config.LWPCurrent.copyValuesFrom(config)
         } else {
             SettingsStorage.loadConfigFromInternalPreset(
@@ -319,7 +290,6 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
                 assets,
                 config
             )
-
         }
         SettingsStorage.saveSessionConfig(
             this, Config.LWPCurrent, SettingsStorage.SETTINGS_LWP_NAME
@@ -383,8 +353,7 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
             )
             startActivity(intent)
         } catch (unused: Exception) {
-            Toast.makeText(this, "error:" + getText(R.string.not_supported), Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(this, "error:" + getText(R.string.not_supported), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -405,9 +374,7 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(serviceDestroyedReceiver)
-
     }
-
 
     private fun sendLocalBroadcast() {
         prefs[KEY_NAME_EFFECT] = presetModel?.name
@@ -415,5 +382,4 @@ class WallpaperActivity : BaseActivity<ActivityWallpaperBinding>() {
         intent.putExtra(AppConstants.KEY_CHANGE_DATA, true)
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
     }
-
 }

@@ -16,8 +16,8 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"

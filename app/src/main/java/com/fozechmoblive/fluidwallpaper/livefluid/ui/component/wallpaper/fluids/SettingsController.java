@@ -2,7 +2,7 @@ package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids
 
 ;
 import com.fozechmoblive.fluidwallpaper.livefluid.R;
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity;
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.tab.TabColors;
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.tab.TabEffects;
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.tab.TabFluid;
@@ -15,7 +15,7 @@ import com.magicfluids.Config;
 public class SettingsController {
     private TabSet mainTabWidget;
 
-    public void initControls(WallpaperActivity wallpaperActivity, Config config) {
+    public void initControls(CustomThemeSettingActivity wallpaperActivity, Config config) {
         ColorPalette.init();
         if (mainTabWidget == null) {
             this.mainTabWidget = new TabSet(wallpaperActivity.findViewById(R.id.tabHost));

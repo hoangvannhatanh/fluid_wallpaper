@@ -119,9 +119,6 @@ public class WallpaperService extends GLWallpaperServiceRBG {
                 Intent intent = new Intent(AppConstants.ACTION_DESTROY_WALLPAPER_SERVICE);
                 sendBroadcast(intent);
             }
-
-            logE("GLEngine onDestroy. NTV ID: " + this.ntv.getID());
-//            Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.set_wallpaper_success), Toast.LENGTH_LONG).show();
             this.ntv.onDestroy();
             this.orientationSensor.unregister();
         }

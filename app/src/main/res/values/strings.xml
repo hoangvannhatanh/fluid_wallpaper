@@ -211,5 +211,8 @@
     <string name="_ok">OK</string>
     <string name="your_feedback_is_very_helpful_to_us">Your feedback is very helpful to us!</string>
     <string name="set_themes">Set themes</string>
+    <string name="custom_theme">Custom Theme</string>
+    <string name="my_theme">My theme</string>
+    <string name="name_theme">Name theme</string>
     <!--    end_region-->
 </resources>

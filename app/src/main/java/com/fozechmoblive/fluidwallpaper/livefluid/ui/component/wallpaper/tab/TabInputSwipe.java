@@ -6,7 +6,7 @@ import android.view.View;
 import com.google.android.gms.ads.RequestConfiguration;
 ;
 import com.fozechmoblive.fluidwallpaper.livefluid.R;
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity;
 import com.magicfluids.Config;
 import com.magicfluids.ConfigID;
 
@@ -38,7 +38,7 @@ public class TabInputSwipe extends TabSet.TabPage {
         super.refreshState();
     }
 
-    public TabInputSwipe(Config config, WallpaperActivity wallpaperActivity) {
+    public TabInputSwipe(Config config, CustomThemeSettingActivity wallpaperActivity) {
         super(config, wallpaperActivity);
     }
 

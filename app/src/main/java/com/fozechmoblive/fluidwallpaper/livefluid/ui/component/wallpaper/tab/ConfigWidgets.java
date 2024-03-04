@@ -7,7 +7,7 @@ import android.widget.SeekBar;
 import androidx.core.view.ViewCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity;
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.viewpager.CustomPagerAdapter;
 import com.magicfluids.Config;
 
@@ -32,7 +32,7 @@ public class ConfigWidgets {
         SeekBar seekBarView;
 
 
-        public ConfigSeekBar(SeekBar seekBar, final Config.FloatVal floatVal, WallpaperActivity wallpaperActivity, TabSet.TabPage tabPage) {
+        public ConfigSeekBar(SeekBar seekBar, final Config.FloatVal floatVal, CustomThemeSettingActivity wallpaperActivity, TabSet.TabPage tabPage) {
             super(tabPage);
             this.configValue = floatVal;
             this.seekBarView = seekBar;
@@ -65,7 +65,7 @@ public class ConfigWidgets {
         SeekBar seekBarView;
 
 
-        public ConfigSeekBarInt(SeekBar seekBar, final Config.IntVal intVal, int i, WallpaperActivity wallpaperActivity, TabSet.TabPage tabPage) {
+        public ConfigSeekBarInt(SeekBar seekBar, final Config.IntVal intVal, int i, CustomThemeSettingActivity wallpaperActivity, TabSet.TabPage tabPage) {
             super(tabPage);
             this.configValue = intVal;
             this.seekBarView = seekBar;
@@ -108,7 +108,7 @@ public class ConfigWidgets {
         Config.IntVal configValue;
 
 
-        public ConfigColorButton(Button button, Config.IntVal intVal, WallpaperActivity wallpaperActivity, final TabSet.TabPage tabPage) {
+        public ConfigColorButton(Button button, Config.IntVal intVal, CustomThemeSettingActivity wallpaperActivity, final TabSet.TabPage tabPage) {
             super(tabPage);
             this.configValue = intVal;
             this.buttonView = button;
@@ -127,7 +127,7 @@ public class ConfigWidgets {
         ViewPager spinnerView;
 
 
-        public ConfigSpinner(ViewPager spinner, final Config.IntVal intVal, String[] strArr, WallpaperActivity wallpaperActivity, TabSet.TabPage tabPage) {
+        public ConfigSpinner(ViewPager spinner, final Config.IntVal intVal, String[] strArr, CustomThemeSettingActivity wallpaperActivity, TabSet.TabPage tabPage) {
             super(tabPage);
             this.configValue = intVal;
             this.spinnerView = spinner;
@@ -188,7 +188,7 @@ public class ConfigWidgets {
         CompoundButton switchView;
 
 
-        public ConfigSwitch(CompoundButton compoundButton, final Config.BoolVal boolVal, WallpaperActivity wallpaperActivity, TabSet.TabPage tabPage) {
+        public ConfigSwitch(CompoundButton compoundButton, final Config.BoolVal boolVal, CustomThemeSettingActivity wallpaperActivity, TabSet.TabPage tabPage) {
             super(tabPage);
             this.configValue = boolVal;
             this.switchView = compoundButton;

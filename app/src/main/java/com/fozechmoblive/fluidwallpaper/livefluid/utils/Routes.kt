@@ -10,9 +10,9 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.create_done.Creat
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language.LanguageStartActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.main.MainActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.intro.IntroduceActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperLiveViewActivity
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom.CustomWallpaperActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom_theme.CustomThemeActivity
 
 
 object Routes {
@@ -37,7 +37,6 @@ object Routes {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             fromActivity.startActivity(this)
-
         }
 
     fun startLanguageActivity(fromActivity: Activity, bundle: Bundle?) =
@@ -46,12 +45,10 @@ object Routes {
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             bundle?.let { putExtras(it) }
             fromActivity.startActivity(this)
-
         }
 
-
     fun startPresetActivity(fromActivity: Activity, presetModel: PresetModel, isCustom: Boolean) =
-        Intent(fromActivity, WallpaperActivity::class.java).apply {
+        Intent(fromActivity, CustomThemeSettingActivity::class.java).apply {
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             putExtra(AppConstants.KEY_PRESET_MODEL, presetModel)
             putExtra(AppConstants.KEY_IS_CUSTOM, isCustom)
@@ -63,14 +60,6 @@ object Routes {
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             putExtra(AppConstants.KEY_PRESET_MODEL, presetModel)
             fromActivity.startActivity(this)
-
-        }
-
-    fun startCustomWallpaperActivity(fromActivity: Activity) =
-        Intent(fromActivity, CustomWallpaperActivity::class.java).apply {
-            putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
-            fromActivity.startActivity(this)
-
         }
 
     fun startCreateDoneActivity(fromActivity: Activity, presetModel: PresetModel) =
@@ -78,6 +67,5 @@ object Routes {
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             putExtra(AppConstants.KEY_PRESET_MODEL, presetModel)
             fromActivity.startActivity(this)
-
         }
 }

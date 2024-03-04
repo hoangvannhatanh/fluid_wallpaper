@@ -19,7 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.gms.ads.RequestConfiguration;
 
 import com.fozechmoblive.fluidwallpaper.livefluid.R;
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity;
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.viewpager.ViewPagerArrowIndicator;
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.ColorConstants;
 import com.magicfluids.Config;
@@ -87,7 +87,7 @@ public class TabSet implements TabHost.OnTabChangeListener {
 
 
     public static abstract class TabPage {
-        WallpaperActivity activity;
+        CustomThemeSettingActivity activity;
         protected Config.IntVal colorPickerCurrentValue;
         Config config;
         LinearLayout rootView;
@@ -112,7 +112,7 @@ public class TabSet implements TabHost.OnTabChangeListener {
 
         public abstract String getName();
 
-        public TabPage(Config config, WallpaperActivity wallpaperActivity) {
+        public TabPage(Config config, CustomThemeSettingActivity wallpaperActivity) {
             this.config = config;
             this.activity = wallpaperActivity;
         }

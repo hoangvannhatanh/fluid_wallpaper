@@ -9,8 +9,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
@@ -21,7 +19,7 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.callback.CallBack
-import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityThemesBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityHomeThemesBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.DialogThanksYouBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.getPref
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.onClick
@@ -29,6 +27,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.extentions.setPref
 import com.fozechmoblive.fluidwallpaper.livefluid.extentions.showActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.MyThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.language.LanguageSettingActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.policy.PolicyActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.see_all_theme.SeeAllThemeActivity
@@ -36,6 +35,8 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.Th
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeNewUpdateAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.ThemeViewPagerAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.adapter.WallpaperAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperLiveViewActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom_theme.CustomThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.CommonData
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences.set
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.RatingDialog
@@ -45,13 +46,12 @@ import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManager
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.google.android.play.core.tasks.Task
-import com.intuit.ssp.BuildConfig
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
 
 
 @AndroidEntryPoint
-class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
+class HomeThemesActivity : BaseActivity<ActivityHomeThemesBinding>() {
     private var listPresetModelTotal = arrayListOf<PresetModel>()
     private var listTrendingTheme = listOf<PresetModel>()
     private var listNewUpdateTheme = listOf<PresetModel>()
@@ -62,7 +62,7 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
     private val themeNewUpdateAdapter by lazy { ThemeNewUpdateAdapter() }
     private val themeFeatureAdapter by lazy { ThemeFeatureAdapter() }
 
-    override fun getLayoutActivity(): Int = R.layout.activity_themes
+    override fun getLayoutActivity(): Int = R.layout.activity_home_themes
 
     override fun initViews() {
         super.initViews()
@@ -152,6 +152,28 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
             bundle.putString(AppConstants.STYLE_THEME, "FEATURE")
             showActivity(this@HomeThemesActivity, SeeAllThemeActivity::class.java, bundle)
         }
+
+        binding.ivCreateTheme.setOnClickListener {
+            Intent(this@HomeThemesActivity, CustomThemeActivity::class.java).apply {
+                putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, this@HomeThemesActivity::class.java.simpleName)
+                startActivity(this)
+            }
+        }
+
+        binding.loCustomTheme.setOnClickListener {
+            Intent(this@HomeThemesActivity, CustomThemeActivity::class.java).apply {
+                putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, this@HomeThemesActivity::class.java.simpleName)
+                startActivity(this)
+            }
+        }
+
+        binding.loMyTheme.setOnClickListener {
+            Intent(this@HomeThemesActivity, MyThemeActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, this@HomeThemesActivity::class.java.simpleName)
+                this@HomeThemesActivity.startActivity(this)
+            }
+        }
     }
 
     private fun initViewPager() {
@@ -205,7 +227,11 @@ class HomeThemesActivity : BaseActivity<ActivityThemesBinding>() {
     }
 
     private fun moveToPresetActivity(presetModel: PresetModel) {
-        Routes.startPresetLiveActivity(this, presetModel)
+        Intent(this@HomeThemesActivity, WallpaperLiveViewActivity::class.java).apply {
+            putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, this@HomeThemesActivity::class.java.simpleName)
+            putExtra(AppConstants.KEY_PRESET_MODEL, presetModel)
+            startActivity(this)
+        }
     }
 
     private fun filterThemeWithTrending(listTheme: List<PresetModel>): List<PresetModel> {

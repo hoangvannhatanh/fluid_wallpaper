@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 ;
 import com.fozechmoblive.fluidwallpaper.livefluid.R;
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity;
 import com.magicfluids.Config;
 import com.magicfluids.ConfigID;
 
@@ -50,7 +50,7 @@ public class TabColors extends TabSet.TabPage {
         super.notifyConfigValueChanged(i);
     }
 
-    public TabColors(Config config, WallpaperActivity wallpaperActivity) {
+    public TabColors(Config config, CustomThemeSettingActivity wallpaperActivity) {
         super(config, wallpaperActivity);
         this.NUM_COLORS = 6;
         this.NUM_COLORS_BACKGR = 3;

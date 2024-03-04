@@ -5,7 +5,7 @@ import android.view.View;
 
 ;
 import com.fozechmoblive.fluidwallpaper.livefluid.R;
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity;
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity;
 import com.magicfluids.Config;
 import com.magicfluids.ConfigID;
 
@@ -36,7 +36,7 @@ public class TabFluid extends TabSet.TabPage {
         super.refreshState();
     }
 
-    public TabFluid(Config config, WallpaperActivity wallpaperActivity) {
+    public TabFluid(Config config, CustomThemeSettingActivity wallpaperActivity) {
         super(config, wallpaperActivity);
     }
 

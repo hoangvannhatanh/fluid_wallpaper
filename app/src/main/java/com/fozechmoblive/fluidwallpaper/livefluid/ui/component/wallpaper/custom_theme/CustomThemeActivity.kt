@@ -1,4 +1,4 @@
-package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom
+package com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom_theme
 
 import android.annotation.SuppressLint
 import android.app.ActivityManager
@@ -8,7 +8,7 @@ import android.support.v4.media.session.PlaybackStateCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.impl.Scheduler
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCustomWallpaperBinding
+import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityCustomThemesBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.GLES20Renderer
@@ -17,7 +17,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.utils.Routes
 import com.magicfluids.Config
 import com.magicfluids.NativeInterface
 
-class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
+class CustomThemeActivity : BaseActivity<ActivityCustomThemesBinding>() {
 
     private lateinit var wallpaperAdapter: WallpaperCustomAdapter
     private var listPresetModelTotal = arrayListOf<PresetModel>()
@@ -28,7 +28,7 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
 
     private var presetModel: PresetModel? = null
 
-    override fun getLayoutActivity(): Int = R.layout.activity_custom_wallpaper
+    override fun getLayoutActivity(): Int = R.layout.activity_custom_themes
 
 
     @SuppressLint("RestrictedApi")
@@ -37,7 +37,7 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
         loadDataPreset()
         binding.listWallpaperView.rcvCustom.apply {
             layoutManager = LinearLayoutManager(
-                this@CustomWallpaperActivity,
+                this@CustomThemeActivity,
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
@@ -51,18 +51,18 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
         nativeInterface?.setAssetManager(assets)
         orientationSensor =
             com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.OrientationSensor(
-                this@CustomWallpaperActivity,
+                this@CustomThemeActivity,
                 application
             )
         mGLSurfaceView?.setEGLContextClientVersion(2)
         val gLSurfaceView = mGLSurfaceView
         val gLES20Renderer = GLES20Renderer(
-            this@CustomWallpaperActivity, null, nativeInterface!!, orientationSensor
+            this@CustomThemeActivity, null, nativeInterface!!, orientationSensor
         )
 
         renderer = gLES20Renderer
-        gLSurfaceView!!.setRenderer(gLES20Renderer)
-        renderer!!.setInitialScreenSize(300, Scheduler.MAX_GREEDY_SCHEDULER_LIMIT)
+        gLSurfaceView?.setRenderer(gLES20Renderer)
+        renderer?.setInitialScreenSize(300, Scheduler.MAX_GREEDY_SCHEDULER_LIMIT)
         nativeInterface?.onCreate(300, Scheduler.MAX_GREEDY_SCHEDULER_LIMIT, false)
 
         updateConfig()
@@ -100,34 +100,27 @@ class CustomWallpaperActivity : BaseActivity<ActivityCustomWallpaperBinding>() {
         listPresetModelTotal.clear()
         listPresetModelTotal.addAll(CommonData.getListPreset())
         presetModel = listPresetModelTotal[0]
-        binding.txtTitle.text = presetModel?.name
         loadConfigPreset()
 
-        wallpaperAdapter =
-            WallpaperCustomAdapter(choosePosition = 0, onClickItemSound = { title, position ->
-                binding.txtTitle.text = title
+        wallpaperAdapter = WallpaperCustomAdapter(choosePosition = 0, onClickItemSound = { title, position ->
                 presetModel = listPresetModelTotal[position]
-
-
                 loadConfigPreset()
                 updateConfig()
             })
+
         wallpaperAdapter.submitData(listPresetModelTotal)
         wallpaperAdapter.setMList(listPresetModelTotal)
     }
 
     override fun onClickViews() {
         super.onClickViews()
-
         binding.imageBack.setOnClickListener {
             finish()
         }
 
-        binding.listWallpaperView.txtNext.setOnClickListener {
+        binding.ivTick.setOnClickListener {
             moveToPresetActivity()
         }
-
-
     }
 
     private fun moveToPresetActivity() {

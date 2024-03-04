@@ -7,7 +7,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.app.AppConstants
 import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ActivityMainBinding
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.BaseActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.click
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.CustomThemesActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.custom_themes.MyThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.setting.SettingActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.themes.HomeThemesActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,8 +45,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             fromActivity.startActivity(this)
         }
+
     private fun startCustomThemesActivity(fromActivity: Activity) =
-        Intent(fromActivity, CustomThemesActivity::class.java).apply {
+        Intent(fromActivity, MyThemeActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             fromActivity.startActivity(this)

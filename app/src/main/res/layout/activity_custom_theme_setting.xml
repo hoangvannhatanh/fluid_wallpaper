@@ -16,9 +16,7 @@
         <com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.FluidsSurfaceView
             android:id="@+id/surface_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            android:layout_height="match_parent" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -15,7 +15,7 @@ import android.widget.Toast
 import androidx.core.view.ViewCompat
 import com.fozechmoblive.fluidwallpaper.livefluid.R
 import com.magicfluids.NativeInterface
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperActivity
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.CustomThemeSettingActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperLiveViewActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -29,7 +29,7 @@ import javax.microedition.khronos.opengles.GL10
 
 class GLES20Renderer(
     private val activityShare: Activity? = null,
-    mainActivity: WallpaperActivity?,
+    mainActivity: CustomThemeSettingActivity?,
     nativeInterface: NativeInterface,
     orientationSensor: com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.fluids.OrientationSensor
 ) : GLSurfaceView.Renderer {
@@ -110,7 +110,7 @@ class GLES20Renderer(
             activity.runOnUiThread(Runnable
             // java.lang.Runnable
             {
-                if (activity is WallpaperActivity) {
+                if (activity is CustomThemeSettingActivity) {
                     activity.onScreenshotSaved(finalUri)
                 }
             })
@@ -128,7 +128,7 @@ class GLES20Renderer(
 //        shareBitmap(bitmap)
         activityShare?.let {
             GlobalScope.launch(Dispatchers.Main){
-                if (it is WallpaperActivity){
+                if (it is CustomThemeSettingActivity){
                     it.saveConfigValuesToExportFolder(bitmap)
                     it.hideCreateLoading()
                 }
@@ -139,11 +139,8 @@ class GLES20Renderer(
         }
     }
 
-
-
     private fun shareBitmap(bitmap: Bitmap) {
         try {
-
             activityShare?.let { activity ->
                 // Tạo một Intent để chia sẻ
                 val shareIntent = Intent(Intent.ACTION_SEND)
@@ -230,7 +227,7 @@ class GLES20Renderer(
         lastNanoTime = nanoTime
         if (avgTimeNumSamples == 25) {
             activity?.let {
-                if (activity is WallpaperActivity) {
+                if (activity is CustomThemeSettingActivity) {
                     activity.updateFrameTime((avgTimeSamplesSum.toFloat() / 25.0f / 1000000.0f).toString() + " Max: " + maxTime.toFloat() / 1000000.0f)
                 }
             }
@@ -247,7 +244,7 @@ class GLES20Renderer(
         val presetActivity: Activity? = activity
         nativeInterface.updateApp(
             ignoreNextFrameTime,
-            presetActivity != null && if (presetActivity is WallpaperActivity) presetActivity.isActivePaused() else false,
+            presetActivity != null && if (presetActivity is CustomThemeSettingActivity) presetActivity.isActivePaused() else false,
             orientationSensor.AccelerationX,
             orientationSensor.AccelerationY,
             orientationSensor.Orientation
