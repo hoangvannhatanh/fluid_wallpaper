@@ -21,7 +21,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         def formattedDate = new Date().format('MM.dd.yyyy')
-        archivesBaseName = "Fluids_Magic_Wallpaper_v${versionName}_v${versionCode}_${formattedDate}"
+        archivesBaseName = "Fluid_Wallpaper_v${versionName}_v${versionCode}_${formattedDate}"
     }
     bundle {
 
