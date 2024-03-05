@@ -17,8 +17,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.bases.ext.visibleView
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
 
 
-class WallpaperAdapter(
-    var presetName: String, val onClickItemSound: (PresetModel, Int) -> Unit
+class WallpaperAdapter(var presetName: String, val onClickItemSound: (PresetModel, Int) -> Unit
 ) : BaseRecyclerView<PresetModel>() {
     private val mListData = ArrayList<PresetModel>()
 
@@ -56,10 +55,8 @@ class WallpaperAdapter(
 
                     binding.textNamePreset.text = item.name
                     if (list[layoutPosition].name == presetName) {
-                        binding.checkItemSelected.visibleView()
                         binding.imvApplySelected.visibleView()
                     } else {
-                        binding.checkItemSelected.goneView()
                         binding.imvApplySelected.goneView()
                     }
                 }

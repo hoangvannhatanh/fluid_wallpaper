@@ -9,6 +9,7 @@ object AppConstants {
     val KEY_NAME_EFFECT: String = "key_name_effect"
     const val KEY_PRESET_MODEL: String = "KEY_PRESET_MODEL"
     const val KEY_IS_CUSTOM: String = "KEY_IS_CUSTOM"
+    const val KEY_IS_EDIT_MODE: String = "KEY_IS_EDIT_MODE"
 
     internal const val KEY_TRACKING_SCREEN_FROM = "key_tracking_screen_from"
 

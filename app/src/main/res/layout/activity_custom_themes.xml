@@ -34,6 +34,7 @@
                 android:foreground="?actionBarItemBackground"
                 android:padding="@dimen/_14sdp"
                 android:src="@drawable/ic_back"
+                app:tint="@color/color_6CDBEA"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -27,7 +27,9 @@
                 android:id="@+id/image_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:foreground="?actionBarItemBackground"
                 android:padding="@dimen/_14sdp"
+                app:tint="@color/color_6CDBEA"
                 android:src="@drawable/ic_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,13 +38,14 @@
             <ImageView
                 android:id="@+id/imageSetting"
                 android:layout_width="wrap_content"
+                android:foreground="?actionBarItemBackground"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_14sdp"
                 android:src="@drawable/ic_config_setting"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white" />
+                app:tint="@color/color_6CDBEA" />
 
             <ImageView
                 android:id="@+id/image_share"
@@ -68,6 +71,7 @@
             android:background="@drawable/background_rate_gradient"
             android:fontFamily="@font/poppin_medium"
             android:gravity="center"
+            android:foreground="?actionBarItemBackground"
             android:layout_marginBottom="@dimen/_20sdp"
             android:text="@string/set_themes"
             android:textColor="@color/white"

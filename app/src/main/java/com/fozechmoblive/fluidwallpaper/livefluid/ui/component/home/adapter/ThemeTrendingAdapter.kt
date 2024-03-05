@@ -12,7 +12,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.databinding.ItemThemeViewPager
 import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 import java.util.*
 
-class ThemeViewPagerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ThemeTrendingAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var listTheme: List<PresetModel>
     var currentPos: Int = 0
 

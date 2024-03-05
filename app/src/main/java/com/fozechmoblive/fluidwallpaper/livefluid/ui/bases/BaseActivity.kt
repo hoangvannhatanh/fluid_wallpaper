@@ -2,7 +2,6 @@ package com.fozechmoblive.fluidwallpaper.livefluid.ui.bases
 
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.LinearGradient
@@ -25,11 +24,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
 import com.fozechmoblive.fluidwallpaper.livefluid.R
-import com.fozechmoblive.fluidwallpaper.livefluid.models.PresetModel
 
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.EasyPreferences
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.LocaleHelper
-import com.fozechmoblive.fluidwallpaper.livefluid.utils.TypePresetModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -73,7 +70,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
 
     open fun observerData() {}
 
-    class CreatingDialog constructor(context: Context) : Dialog(context, R.style.ThemeDialog) {
+    class LoadingDialog constructor(context: Context) : Dialog(context, R.style.ThemeDialog) {
         init {
             setCancelable(false)
             requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -105,7 +102,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
                 0f,
                 findViewById<TextView>(R.id.text_set_success).paint.measureText(context?.getString(R.string.text_title_onboarding_1)),
                 20f,
-                intArrayOf(Color.parseColor("#EE0979"), Color.parseColor("#FF6A00")),
+                intArrayOf(Color.parseColor("#0E1822"), Color.parseColor("#686C70")),
                 floatArrayOf(0f, 1f),
                 Shader.TileMode.CLAMP
             )
@@ -152,7 +149,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     }
 
     private val mCreatingDialog: Dialog by lazy {
-        CreatingDialog(this)
+        LoadingDialog(this)
     }
 
     private val mSuccessDialog: Dialog by lazy {

@@ -33,7 +33,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.policy.PolicyActi
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.see_all_theme.SeeAllThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeFeatureAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeNewUpdateAdapter
-import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeViewPagerAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeTrendingAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.WallpaperAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperLiveViewActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom_theme.CustomThemeActivity
@@ -57,7 +57,7 @@ class HomeThemesActivity : BaseActivity<ActivityHomeThemesBinding>() {
     private var listFeatureTheme = listOf<PresetModel>()
 
     private lateinit var wallpaperAdapter: WallpaperAdapter
-    private val themeViewPagerAdapter by lazy { ThemeViewPagerAdapter() }
+    private val themeTrendingAdapter by lazy { ThemeTrendingAdapter() }
     private val themeNewUpdateAdapter by lazy { ThemeNewUpdateAdapter() }
     private val themeFeatureAdapter by lazy { ThemeFeatureAdapter() }
 
@@ -72,14 +72,20 @@ class HomeThemesActivity : BaseActivity<ActivityHomeThemesBinding>() {
         listNewUpdateTheme = filterThemeWithNewUpdate(CommonData.getListPreset())
         listFeatureTheme = filterThemeWithFeature(CommonData.getListPreset())
 
-        initViewPager()
+        setRecyclerViewTrending()
         setRecyclerViewNewUpdate()
         setRecyclerViewFeature()
+
+//        binding.recyclerViewTrending.setPageTransformer { page, position ->
+//            val absPosition = Math.abs(position)
+//            page.scaleY = 1f - absPosition / 2f
+//            page.scaleX = 1f - absPosition / 2f
+//        }
     }
 
     override fun onClickViews() {
         super.onClickViews()
-        themeViewPagerAdapter.callBackTheme(object : CallBack.CallBackTheme {
+        themeTrendingAdapter.callBackTheme(object : CallBack.CallBackTheme {
             override fun callBackTheme(presetModel: PresetModel) {
                 moveToPresetActivity(presetModel)
             }
@@ -175,24 +181,19 @@ class HomeThemesActivity : BaseActivity<ActivityHomeThemesBinding>() {
         }
     }
 
-    private fun initViewPager() {
-        themeViewPagerAdapter.addAll(listTrendingTheme)
-        binding.viewPager2.apply {
-            adapter = themeViewPagerAdapter
-            clipToPadding = false
-            clipChildren = false
-            offscreenPageLimit = 5
-            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-
-            val compositePageTransformer = CompositePageTransformer()
-            compositePageTransformer.addTransformer(MarginPageTransformer(20))
-            compositePageTransformer.addTransformer { page, position ->
-                val r: Float = 1 - abs(position)
-                page.scaleY = 0.65f + r * 0.15f
+    private fun setRecyclerViewTrending() {
+        try {
+            binding.recyclerViewTrending.apply {
+                layoutManager = LinearLayoutManager(
+                    this@HomeThemesActivity,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+                themeNewUpdateAdapter.addAll(listTrendingTheme)
+                adapter = themeNewUpdateAdapter
             }
-            setPageTransformer(compositePageTransformer)
+        } catch (_: Exception) {
         }
-        binding.viewPager2.currentItem = 3
     }
 
     private fun setRecyclerViewNewUpdate() {
@@ -203,8 +204,8 @@ class HomeThemesActivity : BaseActivity<ActivityHomeThemesBinding>() {
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-                themeNewUpdateAdapter.addAll(listNewUpdateTheme)
-                adapter = themeNewUpdateAdapter
+                themeTrendingAdapter.addAll(listNewUpdateTheme)
+                adapter = themeTrendingAdapter
             }
         } catch (_: Exception) {
         }

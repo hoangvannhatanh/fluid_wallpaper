@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_dialog_set_name"
         android:orientation="vertical"
-        android:paddingVertical="@dimen/_20sdp">
+        android:paddingVertical="@dimen/_25sdp">
 
         <TextView
             android:id="@+id/tv_loading"
@@ -21,7 +21,7 @@
             android:layout_marginHorizontal="@dimen/_14sdp"
             android:fontFamily="@font/poppin_semibold"
             android:gravity="center"
-            android:text="@string/set_name_for_your_effect"
+            android:text="@string/set_name_for"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp" />
 
@@ -33,7 +33,7 @@
             android:gravity="center"
             android:text="@string/let_s_create_the_cute_names_for_your_effect"
             android:textColor="@color/color_80838A"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_11sdp" />
 
         <EditText
             android:id="@+id/edt_file_name"
@@ -47,8 +47,9 @@
             android:inputType="text"
             android:maxLength="30"
             android:paddingHorizontal="@dimen/_14sdp"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_12sdp"
             android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
             android:textColorHint="@color/color_80838A"
             android:textCursorDrawable="@drawable/color_cursor" />
 
@@ -58,8 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:background="@drawable/bg_button_create"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:background="@drawable/background_rate_gradient"
             android:fontFamily="@font/poppin_semibold"
             android:gravity="center"
             android:paddingVertical="@dimen/_7sdp"

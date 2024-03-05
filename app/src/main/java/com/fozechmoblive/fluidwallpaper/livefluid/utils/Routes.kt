@@ -47,11 +47,12 @@ object Routes {
             fromActivity.startActivity(this)
         }
 
-    fun startPresetActivity(fromActivity: Activity, presetModel: PresetModel, isCustom: Boolean) =
+    fun startPresetActivity(fromActivity: Activity, presetModel: PresetModel, isCustom: Boolean, isEditMode: Boolean) =
         Intent(fromActivity, CustomThemeSettingActivity::class.java).apply {
             putExtra(AppConstants.KEY_TRACKING_SCREEN_FROM, fromActivity::class.java.simpleName)
             putExtra(AppConstants.KEY_PRESET_MODEL, presetModel)
             putExtra(AppConstants.KEY_IS_CUSTOM, isCustom)
+            putExtra(AppConstants.KEY_IS_EDIT_MODE, isEditMode)
             fromActivity.startActivity(this)
         }
 

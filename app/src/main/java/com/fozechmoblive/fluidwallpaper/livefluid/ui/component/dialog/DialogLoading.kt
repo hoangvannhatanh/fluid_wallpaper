@@ -40,8 +40,8 @@ class DialogLoading(val context: WallpaperLiveViewActivity, val onFinishedLoadin
 
         val textShader: Shader = LinearGradient(
             0f, 0f, width, mBinding.tvLoading.paint.textSize, intArrayOf(
-                ContextCompat.getColor(context, R.color.start_color),
-                ContextCompat.getColor(context, R.color.end_color)
+                ContextCompat.getColor(context, R.color.color_0E1822),
+                ContextCompat.getColor(context, R.color.color_686C70)
             ), null, Shader.TileMode.CLAMP
         )
         mBinding.tvLoading.paint.shader = textShader

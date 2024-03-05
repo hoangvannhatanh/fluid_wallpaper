@@ -83,6 +83,7 @@
                             android:id="@+id/loCustomTheme"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:foreground="?actionBarItemBackground"
                             android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_weight="1"
                             android:background="@drawable/background_custom_theme"
@@ -116,6 +117,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/loMyTheme"
+                            android:foreground="?actionBarItemBackground"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
@@ -196,26 +198,26 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/ivFire" />
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/viewPager2"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewTrending"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_200sdp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/_14sdp"
-                        android:layout_marginTop="@dimen/_minus10sdp"
-                        android:paddingHorizontal="@dimen/_100sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTrending" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvTrending"/>
 
                     <ImageView
                         android:id="@+id/ivNewUpdate"
                         android:layout_width="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="@dimen/_14sdp"
                         android:src="@drawable/ic_star_home"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
+                        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTrending" />
 
                     <TextView
                         android:id="@+id/tvNewUpdate"
@@ -325,6 +327,7 @@
                 android:layout_width="@dimen/_47sdp"
                 android:layout_height="@dimen/_47sdp"
                 android:layout_marginEnd="@dimen/_25sdp"
+                android:foreground="?actionBarItemBackground"
                 android:layout_marginBottom="@dimen/_35sdp"
                 android:src="@drawable/ic_create_theme"
                 app:layout_constraintBottom_toBottomOf="parent"

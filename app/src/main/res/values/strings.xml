@@ -167,7 +167,7 @@
     <string name="txt_content_empty">Click “here” to make new Effect\n</string>
     <string name="pick_effect">Pick Effect</string>
     <string name="set_name_for_your_effect">Set name for your Effect</string>
-    <string name="let_s_create_the_cute_names_for_your_effect">Let\'s Create the cute names for your effect</string>
+    <string name="let_s_create_the_cute_names_for_your_effect">Let\'s create the cute names for your effect</string>
     <string name="create">Create</string>
     <string name="saved">Saved!</string>
     <string name="make_another">Make another</string>
@@ -210,9 +210,14 @@
     <string name="txt_thank_you">Thank you!</string>
     <string name="_ok">OK</string>
     <string name="your_feedback_is_very_helpful_to_us">Your feedback is very helpful to us!</string>
-    <string name="set_themes">Set themes</string>
+    <string name="set_themes">Set theme</string>
     <string name="custom_theme">Custom Theme</string>
     <string name="my_theme">My theme</string>
     <string name="name_theme">Name theme</string>
+    <string name="create_effect">Create Effect Success!</string>
+    <string name="set_name_for">Set Name For Your Effect</string>
+    <string name="edit_moded">Edit mode</string>
+    <string name="basic">Basic</string>
+    <string name="advanced">Advanced</string>
     <!--    end_region-->
 </resources>

@@ -13,6 +13,12 @@
         android:background="@color/color_0E1822"
         tools:context=".ui.component.my_theme.MyThemeActivity">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/background_home" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loTitle"
             android:layout_width="match_parent"
@@ -27,6 +33,7 @@
                 android:foreground="?attr/selectableItemBackground"
                 android:padding="@dimen/_14sdp"
                 android:src="@drawable/ic_back"
+                app:tint="@color/color_6CDBEA"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,8 +61,6 @@
             android:paddingTop="@dimen/_4sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/loTitle"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="16dp"
             tools:listitem="@layout/item_wallpaper" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

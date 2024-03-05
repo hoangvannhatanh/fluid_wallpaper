@@ -31,14 +31,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_14sdp"
+                android:foreground="?actionBarItemBackground"
                 android:src="@drawable/ic_close"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/color_6CDBEA" />
 
             <ImageView
                 android:id="@+id/ivTick"
                 android:layout_width="wrap_content"
+                android:foreground="?actionBarItemBackground"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_14sdp"
                 android:src="@drawable/ic_tick"

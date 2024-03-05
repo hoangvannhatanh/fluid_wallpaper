@@ -17,8 +17,9 @@
             android:id="@+id/imv_goto_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_14sdp"
             android:layout_marginTop="@dimen/_20sdp"
+            android:foreground="?actionBarItemBackground"
+            android:padding="@dimen/_14sdp"
             android:src="@drawable/ic_goto_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,22 +28,24 @@
             android:id="@+id/imv_preset"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            app:layout_constraintHeight_percent="0.7"
+            android:layout_marginBottom="@dimen/_25sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/bg_main"
             app:layout_constraintBottom_toTopOf="@id/ll_set_wallpaper"
             app:layout_constraintTop_toBottomOf="@+id/imv_goto_home"
-            app:riv_corner_radius="@dimen/_15sdp" />
+            app:riv_corner_radius="@dimen/_12sdp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_done"
             android:gravity="center"
+            android:paddingVertical="@dimen/_20sdp"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/_15sdp"
+            android:layout_marginHorizontal="@dimen/_50sdp"
             android:paddingBottom="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="@id/imv_preset"
             app:layout_constraintEnd_toEndOf="@id/imv_preset"
@@ -50,20 +53,21 @@
             app:layout_constraintTop_toTopOf="@id/imv_preset">
 
             <ImageView
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:padding="14dp"
-                android:src="@drawable/ic_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_success"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppin_regular"
-                android:text="@string/create_effect_success"
-                android:textColor="@color/colorTitle"
-                android:textSize="14sp"
+                android:fontFamily="@font/poppin_semibold"
+                android:text="@string/create_effect"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_17sdp"
+                android:textAlignment="center"
+                android:textSize="@dimen/_11ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/imv_back"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,9 +79,8 @@
             android:id="@+id/ll_set_wallpaper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_tab_setting"
             android:paddingTop="@dimen/_15sdp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/imv_preset">
 
             <TextView
                 android:id="@+id/txt_set_wallpaper"
@@ -86,15 +89,16 @@
                 android:layout_marginHorizontal="@dimen/_14sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_15sdp"
-                android:background="@drawable/background_apply"
-                android:fontFamily="@font/poppin_medium"
+                android:background="@drawable/background_rate_gradient"
+                android:fontFamily="@font/poppin_bold"
+                android:foreground="?actionBarItemBackground"
                 android:gravity="center"
-                android:paddingVertical="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/set_wallpaper"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12ssp"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
