@@ -14,525 +14,11 @@ object CommonData {
 
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_68,
-                "Dancing Dna 2",
+                R.drawable.ntd_theme_1,
+                "NTD THEME 1",
                 Status.FREE,
                 false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_69,
-                "Exotic Energy 2",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_70,
-                "Exotic Energy 3",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_73,
-                "Exotic Energy 6",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_82,
-                "Fire Flies 8",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_79,
-                "Fire Flies 5",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_76,
-                "Fire Flies 2",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_92,
-                "Floating Flames 9",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_89,
-                "Floating Flames 6",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_86,
-                "Floating Flames 3",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_102,
-                "Lake of Lava 8",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_99,
-                "Lake of Lava 5",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_97,
-                "Lake of Lava 3",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip2,
-                "Liquid Spectra",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_105,
-                "Magic Trail by Toni 4",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_56,
-                "Particle Party",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_16,
-                "Wobbly World",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_61,
-                "Floating Flames",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip8,
-                "Transcend Ripples",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_59,
-                "Magic Trail",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_63,
-                "Subtle Setting",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_67,
-                "Swirly Sparkles",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_6,
-                "Gleeful Glimmers",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_62,
-                "Glimming Glow",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_54,
-                "Trippy Tint",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_55,
-                "Girls Game",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_57,
-                "Busy Brilliance",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_58,
-                "Grainy Greatness",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_25,
-                "Disturbing Details",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_38,
-                "Random Remarkability",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_39,
-                "Gravity Game",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_40,
-                "Wonderful Whirls",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_41,
-                "Fading Forms",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_42,
-                "Wavy Winter",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_43,
-                "Bloody Blue",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_44,
-                "Lake of Lava",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_45,
-                "Steady Sea",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_46,
-                "Freaky Fun",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_72,
-                "Exotic Energy 5",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_75,
-                "Fantastic Filaments 3",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_78,
-                "Fire Flies 4",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_81,
-                "Fire Flies 7",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_84,
-                "Fire Flies 10",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_88,
-                "Floating Flames 5",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_91,
-                "Floating Flames 8",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_96,
-                "Lake of Lava 2",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_101,
-                "Lake of Lava 7",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_104,
-                "Magic Trail by Toni 3",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_34,
-                "Dancing in the Dark",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_35,
-                "Blinking Beauty",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_36,
-                "Earthly Elements",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_37,
-                "Crazy Colors",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_48,
-                "Gentle Glow",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_49,
-                "Transient Thoughts",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_50,
-                "Glorious Galaxies",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_51,
-                "Something Strange",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_52,
-                "Cloudy Composition",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_53,
-                "Glowing Glare",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.FEATURE
+                typePresetModel = TypePresetModel.TRENDING
             )
         )
 
@@ -1024,6 +510,561 @@ object CommonData {
             )
         )
 
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.ntd_theme_2,
+                "NTD THEME 2",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_68,
+                "Dancing Dna 2",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_69,
+                "Exotic Energy 2",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_70,
+                "Exotic Energy 3",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_73,
+                "Exotic Energy 6",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_82,
+                "Fire Flies 8",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_79,
+                "Fire Flies 5",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_76,
+                "Fire Flies 2",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_92,
+                "Floating Flames 9",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_89,
+                "Floating Flames 6",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_86,
+                "Floating Flames 3",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_102,
+                "Lake of Lava 8",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_99,
+                "Lake of Lava 5",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_97,
+                "Lake of Lava 3",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_vip2,
+                "Liquid Spectra",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_105,
+                "Magic Trail by Toni 4",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_56,
+                "Particle Party",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_16,
+                "Wobbly World",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_61,
+                "Floating Flames",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_vip8,
+                "Transcend Ripples",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_59,
+                "Magic Trail",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_63,
+                "Subtle Setting",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_67,
+                "Swirly Sparkles",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_6,
+                "Gleeful Glimmers",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_62,
+                "Glimming Glow",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_54,
+                "Trippy Tint",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_55,
+                "Girls Game",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_57,
+                "Busy Brilliance",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_58,
+                "Grainy Greatness",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_25,
+                "Disturbing Details",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_38,
+                "Random Remarkability",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_39,
+                "Gravity Game",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_40,
+                "Wonderful Whirls",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_41,
+                "Fading Forms",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_42,
+                "Wavy Winter",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_43,
+                "Bloody Blue",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_44,
+                "Lake of Lava",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_45,
+                "Steady Sea",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_46,
+                "Freaky Fun",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.NEW
+            )
+        )
+
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.ntd_theme_4,
+                "NTD THEME 4",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.ntd_theme_5,
+                "NTD THEME 5",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.ntd_theme_3,
+                "NTD THEME 3",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_72,
+                "Exotic Energy 5",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_78,
+                "Fire Flies 4",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_81,
+                "Fire Flies 7",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_84,
+                "Fire Flies 10",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_88,
+                "Floating Flames 5",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_91,
+                "Floating Flames 8",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_96,
+                "Lake of Lava 2",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_101,
+                "Lake of Lava 7",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_104,
+                "Magic Trail by Toni 3",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_34,
+                "Dancing in the Dark",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_35,
+                "Blinking Beauty",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_36,
+                "Earthly Elements",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_37,
+                "Crazy Colors",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_48,
+                "Gentle Glow",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_49,
+                "Transient Thoughts",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_50,
+                "Glorious Galaxies",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_51,
+                "Something Strange",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_52,
+                "Cloudy Composition",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_53,
+                "Glowing Glare",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+
         return listPresetModel
     }
 
@@ -1062,6 +1103,6 @@ object CommonData {
 }
 
 enum class TypePresetModel {
-    TRENDING, NEW, FEATURE, ALL, CUSTOM, ADS
+    TRENDING, NEW, FEATURE, ALL, CUSTOM
 }
 

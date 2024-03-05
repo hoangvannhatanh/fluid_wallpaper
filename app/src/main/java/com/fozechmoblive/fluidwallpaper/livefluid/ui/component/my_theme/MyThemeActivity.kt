@@ -18,19 +18,6 @@ class MyThemeActivity : BaseActivity<ActivityMyThemeBinding>() {
     private lateinit var wallpaperAdapter: WallpaperAdapter
     override fun getLayoutActivity(): Int = R.layout.activity_my_theme
 
-    override fun onResume() {
-        super.onResume()
-        val listNew = arrayListOf<PresetModel>()
-        listNew.clear()
-        listNew.addAll(CommonData.getListPresetCustom(this@MyThemeActivity))
-        if (listNew.size > listMyTheme.filter { it.typePresetModel != TypePresetModel.ADS }.size) {
-            loadDataPreset()
-        }
-
-        wallpaperAdapter.setCheckNewItem(prefs.getString(AppConstants.KEY_NAME_EFFECT, "") ?: "")
-
-    }
-
     override fun initViews() {
         super.initViews()
         loadDataPreset()
@@ -58,13 +45,7 @@ class MyThemeActivity : BaseActivity<ActivityMyThemeBinding>() {
                     3,
                     GridLayoutManager.VERTICAL,
                     false
-                ).apply {
-                    spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                        override fun getSpanSize(position: Int): Int {
-                            return if (listMyTheme[position].typePresetModel == TypePresetModel.ADS) 3 else 1 //put your condition here
-                        }
-                    }
-                }
+                )
             setHasFixedSize(true)
             adapter = wallpaperAdapter
         }
@@ -78,6 +59,11 @@ class MyThemeActivity : BaseActivity<ActivityMyThemeBinding>() {
 
     private fun moveToPresetActivity(presetModel: PresetModel) {
         Routes.startPresetLiveActivity(this, presetModel)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        wallpaperAdapter.setCheckNewItem(prefs.getString(AppConstants.KEY_NAME_EFFECT, "") ?: "")
     }
 
 }

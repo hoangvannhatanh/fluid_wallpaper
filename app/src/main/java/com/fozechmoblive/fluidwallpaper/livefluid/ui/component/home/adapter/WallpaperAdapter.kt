@@ -39,26 +39,20 @@ class WallpaperAdapter(var presetName: String, val onClickItemSound: (PresetMode
         if (binding is ItemWallpaperBinding) {
             context?.let { ctx ->
 
-                if (item.typePresetModel == TypePresetModel.ADS) {
-                    binding.lBgr.goneView()
+                if (item.typePresetModel == TypePresetModel.CUSTOM) {
+                    Glide.with(ctx).load(item.pathImageCustom).into(binding.imagePreset)
                 } else {
-                    binding.lBgr.visibleView()
-
-                    if (item.typePresetModel == TypePresetModel.CUSTOM) {
-                        Glide.with(ctx).load(item.pathImageCustom).into(binding.imagePreset)
-                    } else {
-                        Glide.with(ctx).load(item.imagePreset).diskCacheStrategy(
-                            DiskCacheStrategy.DATA
-                        ).into(binding.imagePreset)
-                    }
+                    Glide.with(ctx).load(item.imagePreset).diskCacheStrategy(
+                        DiskCacheStrategy.DATA
+                    ).into(binding.imagePreset)
+                }
 
 
-                    binding.textNamePreset.text = item.name
-                    if (list[layoutPosition].name == presetName) {
-                        binding.imvApplySelected.visibleView()
-                    } else {
-                        binding.imvApplySelected.goneView()
-                    }
+                binding.textNamePreset.text = item.name
+                if (list[layoutPosition].name == presetName) {
+                    binding.imvApplySelected.visibleView()
+                } else {
+                    binding.imvApplySelected.goneView()
                 }
 
             }
@@ -78,9 +72,7 @@ class WallpaperAdapter(var presetName: String, val onClickItemSound: (PresetMode
         super.onClickViews(binding, obj, layoutPosition)
         if (binding is ItemWallpaperBinding) {
             binding.root.click { v: View? ->
-                if (obj.typePresetModel != TypePresetModel.ADS) {
-                    onClickItemSound(obj, layoutPosition)
-                }
+                onClickItemSound(obj, layoutPosition)
             }
 
         }
@@ -96,51 +88,24 @@ class WallpaperAdapter(var presetName: String, val onClickItemSound: (PresetMode
         when (type) {
 
             TypePresetModel.CUSTOM -> {
-                submitData(addItemAds(mListData.filter { it.typePresetModel == TypePresetModel.CUSTOM }))
+                submitData(mListData.filter { it.typePresetModel == TypePresetModel.CUSTOM })
             }
 
             TypePresetModel.NEW -> {
-                submitData(addItemAds(mListData.filter { it.typePresetModel == TypePresetModel.NEW }))
+                submitData(mListData.filter { it.typePresetModel == TypePresetModel.NEW })
             }
 
             TypePresetModel.TRENDING -> {
-                submitData(addItemAds(mListData.filter { it.typePresetModel == TypePresetModel.TRENDING }))
+                submitData(mListData.filter { it.typePresetModel == TypePresetModel.TRENDING })
             }
 
             TypePresetModel.FEATURE -> {
-                submitData(addItemAds(mListData.filter { it.typePresetModel == TypePresetModel.FEATURE }))
+                submitData(mListData.filter { it.typePresetModel == TypePresetModel.FEATURE })
             }
 
             TypePresetModel.ALL -> {
                 submitData(mListData)
             }
-
-            TypePresetModel.ADS -> {
-
-            }
         }
     }
-
-    private fun addItemAds(listData: List<PresetModel>): List<PresetModel> {
-
-        val itemsToAdd = ArrayList<PresetModel>()
-
-        for (i in listData.indices) {
-            itemsToAdd.add(listData[i])
-            if ((i + 1) % 9 == 0) {
-                val newItem = PresetModel(
-                    R.drawable.bg_preset_vip1,
-                    "Ads",
-                    Status.FREE,
-                    false,
-                    typePresetModel = TypePresetModel.ADS
-                )
-                itemsToAdd.add(newItem)
-            }
-        }
-        return itemsToAdd
-
-    }
-
-
 }
