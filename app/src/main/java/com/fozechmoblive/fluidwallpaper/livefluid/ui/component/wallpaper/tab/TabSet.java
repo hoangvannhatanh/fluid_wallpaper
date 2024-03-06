@@ -164,7 +164,7 @@ public class TabSet implements TabHost.OnTabChangeListener {
 
 
         public View addText(String str, boolean z, int i, Section section) {
-            Typeface typeface = ResourcesCompat.getFont(rootView.getContext(), R.font.be_vietnam_pro_regular);
+            Typeface typeface = ResourcesCompat.getFont(rootView.getContext(), R.font.poppin_medium);
             TextView textView = new TextView(this.activity);
             textView.setText(str);
             textView.setPadding(8, 16, 8, 16);
@@ -544,7 +544,7 @@ public class TabSet implements TabHost.OnTabChangeListener {
 
     public void finalizeSetup() {
         this.tabHost.getTabWidget().setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-        Typeface typeface = ResourcesCompat.getFont(tabHost.getContext(), R.font.be_vietnam_pro_medium);
+        Typeface typeface = ResourcesCompat.getFont(tabHost.getContext(), R.font.poppin_medium);
         for (int i = 0; i < this.tabs.size(); i++) {
             View childTabViewAt = this.tabHost.getTabWidget().getChildTabViewAt(i);
             childTabViewAt.setPadding(5, 5, 5, 5);

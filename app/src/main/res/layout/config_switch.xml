@@ -3,39 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    android:background="@drawable/bg_config"
+    android:background="@color/color_0E1822"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingHorizontal="@dimen/_10sdp"
-    android:paddingVertical="@dimen/_7sdp">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.7"
-        android:textAllCaps="true"
-        android:textColor="@color/white" />
+    android:layout_marginTop="@dimen/_10sdp"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_marginStart="@dimen/_20sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
         android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:textAllCaps="true"
+            android:textColor="@color/white" />
 
-        <ToggleButton
-            android:id="@+id/switchButton"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:background="@drawable/toggle_on_off"
-            android:showText="true"
-            android:switchPadding="0dp"
-            android:text=""
-            android:textOff=""
-            android:textOn=""
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <ToggleButton
+                android:id="@+id/switchButton"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:background="@drawable/toggle_on_off"
+                android:showText="true"
+                android:switchPadding="0dp"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:background="@color/color_2D3944" />
 </LinearLayout>

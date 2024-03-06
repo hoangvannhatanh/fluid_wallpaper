@@ -55,6 +55,8 @@ import java.io.IOException
 
 class CustomThemeSettingActivity : BaseActivity<ActivityCustomThemeSettingBinding>() {
 
+    override fun getLayoutActivity(): Int = R.layout.activity_custom_theme_setting
+
     private var presetModel: PresetModel? = null
     private lateinit var orientationSensor: OrientationSensor
     private var mGLSurfaceView: GLSurfaceView? = null
@@ -77,8 +79,6 @@ class CustomThemeSettingActivity : BaseActivity<ActivityCustomThemeSettingBindin
             }
         }
     }
-
-    override fun getLayoutActivity(): Int = R.layout.activity_custom_theme_setting
 
     override fun initViews() {
         super.initViews()

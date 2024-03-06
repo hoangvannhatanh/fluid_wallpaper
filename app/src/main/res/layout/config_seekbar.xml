@@ -2,28 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
     android:gravity="center_vertical"
-    android:paddingVertical="@dimen/_7sdp"
-    android:paddingHorizontal="@dimen/_10sdp"
-    android:background="@drawable/bg_config"
-    android:orientation="horizontal">
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@color/color_0E1822"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:textColor="@color/white"
-        android:textAllCaps="true" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_weight="0.5"
-        android:progressBackgroundTint="@color/color_4DFFFFFF"
-        android:progressTint="@color/white"
-        android:thumbTint="@color/white" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="@color/white"
+            android:textAllCaps="true" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.5"
+            android:progressBackgroundTint="@color/color_454F59"
+            android:progressTint="@color/color_918FF4"
+            android:thumbTint="@color/color_BD86FF" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:background="@color/color_2D3944" />
 </LinearLayout>
