@@ -35,6 +35,7 @@ import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.Them
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeNewUpdateAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.ThemeTrendingAdapter
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.home.adapter.WallpaperAdapter
+import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.setting.SettingActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.WallpaperLiveViewActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.ui.component.wallpaper.custom_theme.CustomThemeActivity
 import com.fozechmoblive.fluidwallpaper.livefluid.utils.CommonData
@@ -102,43 +103,44 @@ class HomeThemesActivity : BaseActivity<ActivityHomeThemesBinding>() {
         })
 
         binding.ivDrawer.setOnClickListener {
-            binding.drawerLayout.openDrawer(
-                GravityCompat.START
-            )
+//            binding.drawerLayout.openDrawer(
+//                GravityCompat.START
+//            )
+            showActivity(this@HomeThemesActivity, SettingActivity::class.java)
         }
-        binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
-            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
-
-            override fun onDrawerOpened(drawerView: View) {}
-
-            override fun onDrawerClosed(drawerView: View) {}
-
-            override fun onDrawerStateChanged(newState: Int) {}
-        })
-
-        binding.layoutContent.ivClose.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }
-
-        binding.layoutContent.loLanguage.onClick(1000) {
-            showActivity(this@HomeThemesActivity, LanguageSettingActivity::class.java)
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }
-
-        binding.layoutContent.loPolicy.onClick(1000) {
-            showActivity(this@HomeThemesActivity, PolicyActivity::class.java)
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }
-
-        binding.layoutContent.loRate.onClick(1000) {
-            openRate()
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }
-
-        binding.layoutContent.loShare.onClick(1000) {
-            shareApp()
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        }
+//        binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
+//            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
+//
+//            override fun onDrawerOpened(drawerView: View) {}
+//
+//            override fun onDrawerClosed(drawerView: View) {}
+//
+//            override fun onDrawerStateChanged(newState: Int) {}
+//        })
+//
+//        binding.layoutContent.ivClose.setOnClickListener {
+//            binding.drawerLayout.closeDrawer(GravityCompat.START)
+//        }
+//
+//        binding.layoutContent.loLanguage.onClick(1000) {
+//            showActivity(this@HomeThemesActivity, LanguageSettingActivity::class.java)
+//            binding.drawerLayout.closeDrawer(GravityCompat.START)
+//        }
+//
+//        binding.layoutContent.loPolicy.onClick(1000) {
+//            showActivity(this@HomeThemesActivity, PolicyActivity::class.java)
+//            binding.drawerLayout.closeDrawer(GravityCompat.START)
+//        }
+//
+//        binding.layoutContent.loRate.onClick(1000) {
+//            openRate()
+//            binding.drawerLayout.closeDrawer(GravityCompat.START)
+//        }
+//
+//        binding.layoutContent.loShare.onClick(1000) {
+//            shareApp()
+//            binding.drawerLayout.closeDrawer(GravityCompat.START)
+//        }
 
         binding.tvTrendingSeeAll.setOnClickListener {
             val bundle = Bundle()
@@ -248,95 +250,12 @@ class HomeThemesActivity : BaseActivity<ActivityHomeThemesBinding>() {
 
     override fun onStop() {
         super.onStop()
-        binding.drawerLayout.closeDrawer(GravityCompat.START)
-    }
-
-    private fun openRate() {
-        val dialogRating = RatingDialog(this)
-        dialogRating.init(object : RatingDialog.OnPress {
-            override fun send() {
-                hideNavigation(dialogRating)
-                dialogRating.dismiss()
-                setPref(this@HomeThemesActivity, AppConstants.RATED, true)
-                binding.layoutContent.loRate.isVisible = !getPref(this@HomeThemesActivity, AppConstants.RATED, false)
-
-                showPopupThankYou()
-            }
-
-            override fun rating() {
-                val manager: ReviewManager = ReviewManagerFactory.create(this@HomeThemesActivity)
-                val request: Task<ReviewInfo> = manager.requestReviewFlow()
-                request.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val reviewInfo: ReviewInfo = task.result
-                        val flow: Task<Void> =
-                            manager.launchReviewFlow(this@HomeThemesActivity, reviewInfo)
-                        flow.addOnCompleteListener {
-                            setPref(this@HomeThemesActivity, AppConstants.RATED, true)
-                            binding.layoutContent.loRate.isVisible = !getPref(this@HomeThemesActivity, AppConstants.RATED, false)
-                            hideNavigation(dialogRating)
-                            dialogRating.dismiss()
-                        }
-                    }
-                }
-            }
-
-            override fun cancel() {
-            }
-
-            override fun later() {
-                hideNavigation(dialogRating)
-                dialogRating.dismiss()
-            }
-
-        })
-        dialogRating.setCancelable(false)
-        hideNavigation(dialogRating)
-        dialogRating.show()
-    }
-
-    private fun showPopupThankYou() {
-        val dialogPopupThanksYou = Dialog(this@HomeThemesActivity)
-        hideNavigation(dialogPopupThanksYou)
-        val thanksYouBinding = DialogThanksYouBinding.inflate(LayoutInflater.from(this@HomeThemesActivity))
-        dialogPopupThanksYou.setContentView(thanksYouBinding.root)
-        val window = dialogPopupThanksYou.window
-        window?.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
-        )
-        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val windowAttributes = window?.attributes
-        windowAttributes?.gravity = Gravity.CENTER
-
-        thanksYouBinding.tvOk.setOnClickListener {
-            dialogPopupThanksYou.dismiss()
-            hideNavigation(dialogPopupThanksYou)
-
-        }
-        dialogPopupThanksYou.setCancelable(true)
-        dialogPopupThanksYou.show()
-    }
-
-    private fun shareApp() {
-        val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
-        val shareMessage =
-            "${getString(R.string.app_name)} \n https://play.google.com/store/apps/details?id=${packageName}"
-
-        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
-        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_to)))
-    }
-
-    private fun hideNavigation(dialog: Dialog) {
-        dialog.window?.decorView?.systemUiVisibility =
-            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//        binding.drawerLayout.closeDrawer(GravityCompat.START)
     }
 
     override fun onResume() {
         super.onResume()
-        binding.layoutContent.loRate.isVisible = !getPref(this@HomeThemesActivity, AppConstants.RATED, false)
+//        binding.layoutContent.loRate.isVisible = !getPref(this@HomeThemesActivity, AppConstants.RATED, false)
 //        wallpaperAdapter.setCheckNewItem(prefs.getString(AppConstants.KEY_NAME_EFFECT, "") ?: "")
     }
 }

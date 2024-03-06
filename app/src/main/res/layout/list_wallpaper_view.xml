@@ -21,9 +21,10 @@
             android:gravity="center"
             android:paddingHorizontal="@dimen/_16sdp"
             android:paddingVertical="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:text="@string/pick_effect"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

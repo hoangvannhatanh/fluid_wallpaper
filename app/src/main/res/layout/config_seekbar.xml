@@ -27,10 +27,15 @@
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="0.5"
+            android:thumbOffset="5dp"
             android:progressBackgroundTint="@color/color_454F59"
-            android:progressTint="@color/color_918FF4"
+            android:progressTint="@color/color_85FFC4"
             android:thumbTint="@color/color_BD86FF" />
     </LinearLayout>
+
+<!--    android:splitTrack="false"-->
+<!--    android:indeterminate="false"-->
+<!--    android:progressDrawable="@drawable/background_progress_gradient"-->
 
     <View
         android:layout_width="match_parent"

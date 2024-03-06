@@ -24,8 +24,18 @@ object CommonData {
 
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_71,
-                "Exotic Energy 4",
+                R.drawable.ntd_theme_6,
+                "NTD THEME 6",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.TRENDING
+            )
+        )
+
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.ntd_theme_9,
+                "NTD THEME 9",
                 Status.FREE,
                 false,
                 typePresetModel = TypePresetModel.TRENDING
@@ -33,8 +43,8 @@ object CommonData {
         )
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_74,
-                "Fantastic Filaments 2",
+                R.drawable.ntd_theme_7,
+                "NTD THEME 7",
                 Status.FREE,
                 false,
                 typePresetModel = TypePresetModel.TRENDING
@@ -42,8 +52,8 @@ object CommonData {
         )
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_77,
-                "Fire Flies 3",
+                R.drawable.ntd_theme_8,
+                "NTD THEME 8",
                 Status.FREE,
                 false,
                 typePresetModel = TypePresetModel.TRENDING
@@ -51,17 +61,8 @@ object CommonData {
         )
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_80,
-                "Fire Flies 6",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_83,
-                "Fire Flies 9",
+                R.drawable.ntd_theme_10,
+                "NTD THEME 10",
                 Status.FREE,
                 false,
                 typePresetModel = TypePresetModel.TRENDING
@@ -108,87 +109,6 @@ object CommonData {
             PresetModel(
                 R.drawable.bg_preset_100,
                 "Lake of Lava 6",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_103,
-                "Magic Trail by Toni 2",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip1,
-                "Flow Canvas",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip3,
-                "Aqua Ripple",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip4,
-                "Dynamic Ink",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip5,
-                "Ephemeral Wave",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip6,
-                "Lumina Flow",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip7,
-                "Mirage Flow",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip9,
-                "Liquid Dreamscape",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.TRENDING
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip10,
-                "Lustrous Liquidity",
                 Status.FREE,
                 false,
                 typePresetModel = TypePresetModel.TRENDING
@@ -493,7 +413,7 @@ object CommonData {
         )
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_33,
+                R.drawable.ntd_theme_14,
                 "Wizard Wand",
                 Status.FREE,
                 false,
@@ -558,33 +478,6 @@ object CommonData {
         )
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_82,
-                "Fire Flies 8",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_79,
-                "Fire Flies 5",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_76,
-                "Fire Flies 2",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
                 R.drawable.bg_preset_92,
                 "Floating Flames 9",
                 Status.FREE,
@@ -639,15 +532,6 @@ object CommonData {
         )
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_vip2,
-                "Liquid Spectra",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
                 R.drawable.bg_preset_105,
                 "Magic Trail by Toni 4",
                 Status.FREE,
@@ -677,24 +561,6 @@ object CommonData {
             PresetModel(
                 R.drawable.bg_preset_61,
                 "Floating Flames",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_vip8,
-                "Transcend Ripples",
-                Status.FREE,
-                false,
-                typePresetModel = TypePresetModel.NEW
-            )
-        )
-        listPresetModel.add(
-            PresetModel(
-                R.drawable.bg_preset_59,
-                "Magic Trail",
                 Status.FREE,
                 false,
                 typePresetModel = TypePresetModel.NEW
@@ -885,6 +751,52 @@ object CommonData {
 
         listPresetModel.add(
             PresetModel(
+                R.drawable.ntd_theme_11,
+                "NTD THEME 11",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.ntd_theme_12,
+                "NTD THEME 12",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_82,
+                "Fire Flies 8",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_79,
+                "Fire Flies 5",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+        listPresetModel.add(
+            PresetModel(
+                R.drawable.bg_preset_76,
+                "Fire Flies 2",
+                Status.FREE,
+                false,
+                typePresetModel = TypePresetModel.FEATURE
+            )
+        )
+
+        listPresetModel.add(
+            PresetModel(
                 R.drawable.ntd_theme_3,
                 "NTD THEME 3",
                 Status.FREE,
@@ -1057,7 +969,7 @@ object CommonData {
         )
         listPresetModel.add(
             PresetModel(
-                R.drawable.bg_preset_53,
+                R.drawable.ntd_theme_13,
                 "Glowing Glare",
                 Status.FREE,
                 false,

@@ -52,7 +52,7 @@
                         android:text="@string/english"
                         app:layout_constraintEnd_toStartOf="@+id/ivCheck"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         app:layout_constraintBottom_toBottomOf="@+id/imLangLogo"
                         app:layout_constraintStart_toEndOf="@+id/imLangLogo"
                         app:layout_constraintTop_toTopOf="@+id/imLangLogo" />
